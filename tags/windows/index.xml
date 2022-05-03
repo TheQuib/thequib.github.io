@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>windows on QuibTech</title><link>https://thequib.github.io/tags/windows/</link><description>Recent content in windows on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Create a Static Website</title><link>https://thequib.github.io/p/create-a-static-website/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/create-a-static-website/</guid><description>&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
+&lt;p>Hugo is one of many different static site generators. The most popular is called &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
+>Jekyll&lt;/a>, and is a bit simpler to use than Hugo. It&amp;rsquo;s mostly personal preference, but here we&amp;rsquo;ll be going through setup for Hugo.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A computer running Windows / Mac / Linux / OpenBSD / FreeBSD&lt;/li>
+&lt;li>IDE that supports YAML and Markdown&lt;/li>
+&lt;li>Basic command line knowledge&lt;/li>
+&lt;li>Basic understanding of websites (HTML, CSS)&lt;/li>
+&lt;/ul>
+&lt;p>In this post, I&amp;rsquo;ll be using Visual Studio Code as my IDE, you can download that &lt;a class="link" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"
+>here&lt;/a> if you are interested.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="install-hugo">Install Hugo&lt;/h1>
+&lt;p>Firstly, you&amp;rsquo;ll have to install Hugo. This differs between operating systems&amp;hellip; But the official instructions can be found &lt;a class="link" href="https://gohugo.io/getting-started/installing/" target="_blank" rel="noopener"
+>here&lt;/a>.&lt;/p>
+&lt;p>Below, you can find instructions for Windows and Linux systems.&lt;/p>
+&lt;h2 id="install-on-windows">Install on Windows&lt;/h2>
+&lt;p>The best way to install on Windows is to use the &lt;a class="link" href="https://chocolatey.org/" target="_blank" rel="noopener"
+>chocolatey&lt;/a> method. You can find installation instructions for that &lt;a class="link" href="https://chocolatey.org/install#individual" target="_blank" rel="noopener"
+>here&lt;/a>&lt;/p>
+&lt;p>Once that is installed, run&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ps" data-lang="ps">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">choco&lt;/span> &lt;span class="nf">install&lt;/span> &lt;span class="nf">hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="install-on-linux">Install on Linux&lt;/h2>
+&lt;p>If you want to use Linux, I found it&amp;rsquo;s best to get the latest version from Hugo&amp;rsquo;s GitHub repo &lt;a class="link" href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener"
+>releases&lt;/a> page. If you try to install using apt, it will install an older version.&lt;/p>
+&lt;p>Download the latest release to a directory of your choosing&lt;/p>
+&lt;p>Ex:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">wget https://github.com/gohugoio/hugo/releases/hugo_0.96.0_Linux-64it.deb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo dpkg -i hugo_0.96.0_Linux-64it.deb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="confirm-installation">Confirm installation&lt;/h2>
+&lt;p>To confirm you&amp;rsquo;ve installed Hugo, just run &lt;code>hugo --version&lt;/code> in your command line&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="generate-hugo-site-files">Generate Hugo site files&lt;/h1>
+&lt;p>To get started, will need to generate site files that you can edit&lt;/p>
+&lt;ol>
+&lt;li>Open a terminal / command prompt&lt;/li>
+&lt;li>&lt;code>cd&lt;/code> into an empty directory on your machine&lt;/li>
+&lt;li>Run &lt;code>hugo new site sitename&lt;/code>&lt;/li>
+&lt;li>Run &lt;code>ls&lt;/code> to view all of the new files&lt;/li>
+&lt;/ol>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="add-theme-to-site">Add theme to site&lt;/h1>
+&lt;p>First thing you will need to do after creating a site is to add a theme to it. You can find a whole big list of themes directly from Hugo&amp;rsquo;s website &lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>here&lt;/a>.&lt;/p>
+&lt;p>There are two methods to add a theme to a site&amp;hellip; Via a git submodule or just copying all theme files into your site.&lt;/p>
+&lt;p>In this example, I will be using the &lt;a class="link" href="https://github.com/adityatelange/hugo-PaperMod" target="_blank" rel="noopener"
+>PaperMod&lt;/a>.&lt;/p>
+&lt;h2 id="git-submodule-method">Git Submodule Method&lt;/h2>
+&lt;p>The benefit to cloning a submodule from git is you can quickly update the theme without having to re-copy all files manually. Git will take care of this for you :)&lt;/p>
+&lt;ol>
+&lt;li>Find the theme you want, and go to its GitHub repository.&lt;/li>
+&lt;li>Copy the URL of the repository&lt;/li>
+&lt;li>Open a terminal session, &lt;code>cd&lt;/code> in to your new site directory&lt;/li>
+&lt;li>Run: &lt;code>git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod&lt;/code> &lt;em>(substituting the URL of your chosen theme)&lt;/em>&lt;/li>
+&lt;li>To update the submodule, run &lt;code>git submodule update --remote --merge&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;em>Note: If your site is in a git repository, you must run &lt;code>git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod&lt;/code> to pull the submodule, as this is not done by default&lt;/em>&lt;/p>
+&lt;h2 id="copy-method">Copy Method&lt;/h2>
+&lt;p>You can also just copy the contents of the repository by clicking the &amp;ldquo;Code&amp;rdquo; button on the GitHub repo, extract the files from the downloaded &lt;code>zip&lt;/code> file, and place those in your &lt;code>themes&lt;/code> folder.&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/images/posts/createastaticwebsite/gitHubCodeButton.png"
+loading="lazy"
+alt="GitHub Code Button"
+>&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="file-structure">File structure&lt;/h1>
+&lt;p>As you may have noticed, Hugo created a bunch of directories for you, including the &lt;code>themes&lt;/code> directory from the last section.&lt;/p>
+&lt;p>The most notable and important directories are:&lt;/p>
+&lt;ul>
+&lt;li>content
+&lt;ul>
+&lt;li>Storage for Markdown files that will be used to generate pages&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>layouts
+&lt;ul>
+&lt;li>Storage for HTML files that are used as templates to place markdown data into&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>static
+&lt;ul>
+&lt;li>Storage for all static files the website will use, such as CSS and image files&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>themes
+&lt;ul>
+&lt;li>Stores the theme you are using for your site&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="site-configuration">Site configuration&lt;/h1>
+&lt;p>Each site contains a configuration file, this can be either &lt;code>toml&lt;/code> or &lt;code>yaml&lt;/code> file types, and using one over another is dependent first on what your theme supports, and personal preference.&lt;/p>
+&lt;p>Typically, it is best to reference your chosen theme&amp;rsquo;s documentation to get base configuration to get started.&lt;/p>
+&lt;p>The default &lt;code>config.yml&lt;/code> file for PaperMod can be found &lt;a class="link" href="https://github.com/adityatelange/hugo-PaperMod/blob/exampleSite/config.yml" target="_blank" rel="noopener"
+>here&lt;/a>. Feel free to make changes as you see fit.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="create-your-first-page">Create your first page&lt;/h1>
+&lt;p>Now it is time to create your first page!&lt;/p>
+&lt;p>First create a file named &lt;code>about.md&lt;/code> under the &lt;code>content&lt;/code> directory.&lt;/p>
+&lt;p>Now, paste in the following lines:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Markdown" data-lang="Markdown">&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">title: &amp;#34;About&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">description: &amp;#34;Description of page.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">aliases: [&amp;#34;contact&amp;#34;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">author: &amp;#34;Your Name&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Make sure to save the file.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="view-your-configured-site">View your configured site&lt;/h1>
+&lt;p>To spin up a quick webserver on your local machine, run the command &lt;code>hugo server&lt;/code> in the directory containing your site files.&lt;/p>
+&lt;p>This will generate the website files, and serve an HTTP server locally on your machine (the output of the command will give you the url).&lt;/p>
+&lt;p>By default, Hugo will server on port &lt;code>1313&lt;/code>, so you can open a web browser and go to http://localhost:1313&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Once you&amp;rsquo;ve done this, there is your new site! If you want to check out the &lt;code>about.md&lt;/code> page we created above, you can navigate to http://localhost:1313/about.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="extra-note">Extra note&lt;/h1>
+&lt;p>If you want to generate all HTML files for this site, run the command &lt;code>hugo -v&lt;/code>, this will create a directory named &lt;code>public&lt;/code> and you can copy the files there to your webserver of choice.&lt;/p></description></item></channel></rss>

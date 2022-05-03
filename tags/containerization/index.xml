@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 02 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with GNS3</title><link>https://thequib.github.io/p/getting-started-with-gns3/</link><pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-gns3/</guid><description>&lt;p>When diving into learning networking, GNS3 is a great tool to get started. GNS3 allows you to build out and design networks without having to buy all of the expensive hardware to do so.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A GNS3 VM server, or server running on your local machine
+&lt;ul>
+&lt;li>Check out &lt;a class="link" href="https://thequib.github.io/gns3-vm-in-proxmox-ve" >GNS3 in Proxmox VE&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>GNS3 client on your local computer
+&lt;ul>
+&lt;li>Download the GNS3 Client from the &lt;a class="link" href="https://www.gns3.com/software/download" target="_blank" rel="noopener"
+>official website&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="optional">Optional&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://learningnetworkstore.cisco.com/cisco-modeling-labs-personal/cisco-cml-personal" target="_blank" rel="noopener"
+>Cisco Modeling Labs IOSv router/switch images&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="loading-gns3">Loading GNS3&lt;/h1>
+&lt;p>Start by opening your GNS3 client. Here, a dialog shows to create a new project.&lt;/p>
+&lt;ul>
+&lt;li>If you are running the GNS3 server on your local machine, go ahead and create a new project, name it whatever you want&lt;/li>
+&lt;li>If you are running the GNS3 server on a remote machine
+&lt;ul>
+&lt;li>Go to Edit &amp;gt; Preferences &amp;gt; Server&lt;/li>
+&lt;li>Change &amp;lsquo;Host&amp;rsquo; to the IP address of your server&lt;/li>
+&lt;li>Change the port to &amp;lsquo;80 TCP&amp;rsquo; (Or the port you have it set to if you&amp;rsquo;ve changed it)&lt;/li>
+&lt;li>Fill out the &amp;lsquo;user&amp;rsquo; and &amp;lsquo;password&amp;rsquo; fields (Default user is &amp;lsquo;gns3&amp;rsquo; and password is &amp;lsquo;password&amp;rsquo;)&lt;/li>
+&lt;li>Click &amp;lsquo;Apply&amp;rsquo; and close the preferences window&lt;/li>
+&lt;li>Go to File &amp;gt; New blank project, name the new project whatever you want&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="installing-an-appliance">Installing an appliance&lt;/h1>
+&lt;p>On the left hand side of the window, you will find a toolbar with the following icons:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-sidebarItems.png"
+loading="lazy"
+alt="GNS3 - Sidebar Items"
+>&lt;/p>
+&lt;p>From top to bottom, these items are &lt;em>Routers&lt;/em>, &lt;em>Switches&lt;/em>, &lt;em>End Devices&lt;/em>, &lt;em>Security Devices&lt;/em>, &lt;em>All Devices&lt;/em>, and &lt;em>Add a link&lt;/em>. These buttons contain what are called templates, templates are virtual devices that can be manipulated just as if they were the real deal.&lt;/p>
+&lt;p>All of these are relatively self explanatory, the last &lt;em>&amp;ldquo;Add a link&amp;rdquo;&lt;/em> is for connecting devices together using a virtual network cable.&lt;/p>
+&lt;p>To get started and testing things, go to &lt;em>End Devices&lt;/em> and click &amp;ldquo;+ New template&amp;rdquo;. You will want to install an appliance from the server, so click &amp;ldquo;Next &amp;gt;&amp;rdquo;, expand &amp;ldquo;Guests&amp;rdquo;, and scroll to find an appliance that interests you. I&amp;rsquo;ll be choosing the &amp;ldquo;Ubuntu Docker Guest&amp;rdquo; as docker containers start up in just a few seconds.&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-applianceSelection.png"
+loading="lazy"
+alt="GNS3 - Appliance Selection"
+>&lt;/p>
+&lt;p>Once you have found the device you want, click &amp;ldquo;Install&amp;rdquo;, then &amp;ldquo;Next&amp;rdquo; to install on the main server, then &amp;ldquo;Finish&amp;rdquo;. Now, the appliance should be installed!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="adding-devices-to-a-project">Adding devices to a project&lt;/h1>
+&lt;p>Now, the newly installed appliance should show up under &lt;em>End Devices&lt;/em>. Click this, and drag the device into the blank space of the project. This will do some downloading work if you have just installed it, then add itself into the project.&lt;/p>
+&lt;p>To use the device, you can either click the green play button at the top of the window (this would start all devices in the project), or you can right click an individual device, and click &amp;ldquo;Start&amp;rdquo;.&lt;/p>
+&lt;p>You can confirm that the device has started by looking at the &amp;ldquo;Topology Summary&amp;rdquo; on the top right of the window. A green circle indicates that a device is online.&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-applianceOnline.png"
+loading="lazy"
+alt="GNS3 - Appliance Online"
+>&lt;/p>
+&lt;p>To get console access to this docker guest, you can double click on the node, or right click and hit &amp;ldquo;console&amp;rdquo;. This, by default, will open the Solarwinds Solar-PuTTY application on your computer. You can interact with the device just as if it were a physical one.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="final-thoughts">Final thoughts&lt;/h1>
+&lt;p>Keep in mind, each devices has its own configuration settings that you can mess with, as well as console types depending on if the device has a GUI or not (Such as between the Ubuntu Docker and Ubuntu Desktop guests). Some of these settings include amount of CPU cores, RAM, and type of console access you have to the device.&lt;/p>
+&lt;p>Feel free to play around with these and figure some stuff out! The beauty of GNS3 is that you can do anything you want, and not have to worry about breaking anything of importance :)&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="conclusion">Conclusion&lt;/h1>
+&lt;p>And there you have it! Go ahead and play with the different end devices, as well as switching/routing appliances that exist. If you have the Cisco Modeling labs subscription, you are also able to import the IOSv images into GNS3, which will allow you to interact and play with Cisco IOS devices.&lt;/p></description></item></channel></rss>
