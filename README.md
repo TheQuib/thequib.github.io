@@ -1,1 +1,0 @@
-# thequib.github.io
