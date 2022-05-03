@@ -3,7 +3,8 @@ author: "Quinn Henry"
 title: "UniFi Doorbell G4 Custom Chime"
 date: "2022-03-15"
 description: "Custom chime for UniFi G4 Doorbell"
-tags: ["unifi", "ubiquiti", "doorbell", "iot", "networking"]
+tags: ["unifi", "ubiquiti", "doorbell", "iot", "networking", "ssh", "automation"]
+categories: ["UniFi", "Automation"]
 ---
 
 So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.

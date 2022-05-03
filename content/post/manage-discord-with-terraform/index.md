@@ -3,7 +3,8 @@ author: "Quinn Henry"
 title: "Manage Discord Servers with Terraform"
 date: "2022-05-01"
 description: "Managing Discord servers with code has never been easier."
-tags: ["networking", "automation", "terraform", "IaC"]
+tags: ["networking", "terraform", "IaC"]
+categories: ["Terraform", "Discord", "Infrastructure as Code", "Automation"]
 image: featuredImage.png
 ---
 

@@ -4,6 +4,7 @@ title: "Getting Started with Network Automation"
 date: "2021-09-17"
 description: "Ever thought about automating your networks?"
 tags: ["networking", "gns3", "automation", "python"]
+categories: ["Automation", "Python", "GNS3"]
 ---
 
 Ever though about an easier way to configure tons of network devices easily? Python is definitely the answer to get started, and as long as you have a basic understanding of programming, it's pretty simple, and tons of fun!
