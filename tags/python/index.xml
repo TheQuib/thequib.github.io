@@ -32,9 +32,15 @@
 &lt;li>Select &amp;ldquo;&lt;em>Entire Workspace&lt;/em>&amp;rdquo;&lt;/li>
 &lt;li>Choose the following option from the list:&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithnetworkautomation/selectInterpreter.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter.png"
+width="898"
+height="70"
+srcset="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Select Python Interpreter"
+class="gallery-image"
+data-flex-grow="1282"
+data-flex-basis="3078px"
 >&lt;/p>
 &lt;p>Now you should be all goood to go!&lt;/p>
 &lt;!-- raw HTML omitted -->

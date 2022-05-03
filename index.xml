@@ -1,9 +1,103 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QuibTech</title><link>https://thequib.github.io/</link><description>Recent content on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QuibTech</title><link>https://thequib.github.io/</link><description>Recent content on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;img src="https://thequib.github.io/p/welcome-to-the-site/featuredImage.png" alt="Featured image of post Welcome to the site" />&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
 &lt;p>On this site, I post projects I work on both at home and at school. For the most part, I will include items from working in my home lab.&lt;/p>
 &lt;p>This site, built using the &lt;a class="link" href="https://gohugo.io" target="_blank" rel="noopener"
 >Hugo Static Site Generator&lt;/a>, is a fun little project I also took on as a part of my homelab, hosted on GitHub.&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>Manage Discord Servers with Terraform</title><link>https://thequib.github.io/p/manage-discord-servers-with-terraform/</link><pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-discord-servers-with-terraform/</guid><description>&lt;p>Something everyone is dying to do&amp;hellip; Code-driven Discord server management.&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>About</title><link>https://thequib.github.io/about/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/about/</guid><description>&lt;h2 id="-hi-my-name-is-quinn">👋 Hi, my name is Quinn.&lt;/h2>
+&lt;p>I&amp;rsquo;m a network administrator at a public school district, where I provide user support and systems administration of both Linux and Windows systems. I also dabble in all sorts of IT related fields and an avid proponent of open source.&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener"
+>&lt;img src="https://github-readme-stats.vercel.app/api?username=TheQuib&amp;amp;show_icons=true&amp;amp;theme=radical"
+loading="lazy"
+alt="Quinn&amp;rsquo;s GitHub stats"
+>&lt;/a>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="here-youll-find">Here, you&amp;rsquo;ll find&amp;hellip;&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#-interests" >My Interests&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#-currently-working-on" >Current Projects&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#-currently-learning" >Current Learning Adventures&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#-experience" >My Work Experience&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#-education" >My Education&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#-attributions" >Some Attributions&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-interests">😎 Interests&lt;/h2>
+&lt;ul>
+&lt;li>Homelabbing
+&lt;ul>
+&lt;li>Primarily running Proxmox&lt;/li>
+&lt;li>Dabbling in Kubernetes&lt;/li>
+&lt;li>Love for self-hosted projects&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Networking
+&lt;ul>
+&lt;li>I mean, this is in my current job title&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Web Design
+&lt;ul>
+&lt;li>More of a side thing, I definitely find it fun&lt;/li>
+&lt;li>Exceptional in WordPress and Hugo&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Drone Flying
+&lt;ul>
+&lt;li>With my DJI Mini 2, I have a great love for recreational flying&lt;/li>
+&lt;li>With hopes of getting the FAA Part 107 License&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="-currently-working-on">🔭 Currently Working On&lt;/h2>
+&lt;ul>
+&lt;li>Finalizing my &lt;a class="link" href="https:/quibtech.com" target="_blank" rel="noopener"
+>website&lt;/a>!&lt;/li>
+&lt;li>Finishing out my college degree from &lt;a class="link" href="https://pct.edu" target="_blank" rel="noopener"
+>Pennsylvania College of Technology&lt;/a>
+&lt;ul>
+&lt;li>Majoring in &lt;a class="link" href="https://www.pct.edu/academics/et/information-technology/network-administration-engineering-technology" target="_blank" rel="noopener"
+>Network Administration and Engineering Technology&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="-currently-learning">🌱 Currently learning&lt;/h2>
+&lt;ul>
+&lt;li>Kubernetes&lt;/li>
+&lt;li>Grafana&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-experience">📜 Experience&lt;/h2>
+&lt;h3 id="jersey-shore-area-school-district">Jersey Shore Area School District&lt;/h3>
+&lt;p>&lt;a class="link" href="https://www.jsasd.org" target="_blank" rel="noopener"
+>jsasd.org&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Network Technician&lt;/strong>&lt;/p>
+&lt;p>&lt;em>2020 - Present&lt;/em>&lt;/p>
+&lt;p>&lt;strong>Information Technology Intern&lt;/strong>&lt;/p>
+&lt;p>&lt;em>2018 - 2020&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="west-branch-arts-consortium">West Branch Arts Consortium&lt;/h3>
+&lt;p>&lt;a class="link" href="http://westbrancharts.org" target="_blank" rel="noopener"
+>westbrancharts.org&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Website Designer&lt;/strong>&lt;/p>
+&lt;p>&lt;em>2019 - Present&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;h2 id="-education">🎓 Education&lt;/h2>
+&lt;h3 id="pennsylvania-college-of-technology">Pennsylvania College of Technology&lt;/h3>
+&lt;p>&lt;strong>Bachelor&amp;rsquo;s Degree, Computer Systems Networking and Telecommunications&lt;/strong>*&lt;/p>
+&lt;p>&lt;em>2019 - Present&lt;/em>&lt;/p>
+&lt;p>&lt;em>&lt;strong>Associates Degree, Computer and Information Sciences&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>&lt;em>2019-2021&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;h2 id="-attributions">🤝 Attributions&lt;/h2>
+&lt;p>&lt;a class="link" href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener"
+>GitHub Stats&lt;/a> from &lt;a class="link" href="#hi-there-my-name-is-quinn" >above&lt;/a>.&lt;/p></description></item><item><title>Manage Discord Servers with Terraform</title><link>https://thequib.github.io/p/manage-discord-servers-with-terraform/</link><pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-discord-servers-with-terraform/</guid><description>&lt;p>Something everyone is dying to do&amp;hellip; Code-driven Discord server management.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h1 id="requirements">Requirements&lt;/h1>
 &lt;ul>
@@ -434,9 +528,15 @@
 &lt;p>&lt;em>Note: If your site is in a git repository, you must run &lt;code>git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod&lt;/code> to pull the submodule, as this is not done by default&lt;/em>&lt;/p>
 &lt;h2 id="copy-method">Copy Method&lt;/h2>
 &lt;p>You can also just copy the contents of the repository by clicking the &amp;ldquo;Code&amp;rdquo; button on the GitHub repo, extract the files from the downloaded &lt;code>zip&lt;/code> file, and place those in your &lt;code>themes&lt;/code> folder.&lt;/p>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/createastaticwebsite/gitHubCodeButton.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/create-a-static-website/gitHubCodeButton.png"
+width="453"
+height="96"
+srcset="https://thequib.github.io/p/create-a-static-website/gitHubCodeButton_hua3f975403333f98f5c4d3faae3fdabb2_5989_480x0_resize_box_3.png 480w, https://thequib.github.io/p/create-a-static-website/gitHubCodeButton_hua3f975403333f98f5c4d3faae3fdabb2_5989_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="GitHub Code Button"
+class="gallery-image"
+data-flex-grow="471"
+data-flex-basis="1132px"
 >&lt;/p>
 &lt;p> &lt;/p>
 &lt;hr>
@@ -521,7 +621,7 @@ alt="GitHub Code Button"
 &lt;h1 id="extra-note">Extra note&lt;/h1>
 &lt;p>If you want to generate all HTML files for this site, run the command &lt;code>hugo -v&lt;/code>, this will create a directory named &lt;code>public&lt;/code> and you can copy the files there to your webserver of choice.&lt;/p></description></item><item><title>UniFi Doorbell G4 Custom Chime</title><link>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</guid><description>&lt;p>So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.&lt;/p>
 &lt;p>While the out of box experience is great, I couldn’t help myself but look up how I can get my own ring (or &amp;ldquo;chime&amp;rdquo; as Ubiquiti calls it) uploaded to my doorbell. This requires a bit of work using some SSH, but it’s extremely fun to play around with.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="the-scoop">The scoop&lt;/h1>
 &lt;p>While you can do this all manually, the doorbell sadly resets back to it’s default chime when restarted. So as an example, if you loose power, your doorbell will have it’s original chime again.&lt;/p>
 &lt;p>This is no fun, so I made a script for you to use! You can find it on my personal GitHub page at &lt;a class="link" href="https://github.com/TheQuib/G4-Doorbell-Custom-Chime" target="_blank" rel="noopener"
@@ -530,9 +630,9 @@ alt="GitHub Code Button"
 &lt;li>You will need to enable SSH on your doorbell before use, please refer to this section of this post to do so&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>If you want to learn how to do this yourself, please continue on!&lt;/strong>&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="enable-ssh-on-doorbell">Enable SSH on Doorbell&lt;/h1>
 &lt;p>This process is kinda hard to find, but enabling SSH on your UniFi Protect console (whether that be a Dream Machine, Cloud Key Gen 2+, or UniFi NVR) is pretty simple, and a quick google search away… so that won’t be covered here.&lt;/p>
 &lt;p>&lt;strong>So first off, you will need to SSH into your UniFi Protect Console&lt;/strong>&lt;/p>
@@ -545,7 +645,7 @@ alt="GitHub Code Button"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">unifi-os shell
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;/div>&lt;p> &lt;/p>
 &lt;p>&lt;em>Dream Mahcine + All Other Devices:&lt;/em>&lt;/p>
 &lt;ul>
 &lt;li>Edit the file &lt;code>/etc/unifi-protect/config.json&lt;/code>
@@ -562,7 +662,7 @@ alt="GitHub Code Button"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">nano /etc/unifi-protect/config.json
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;/div>&lt;p> &lt;/p>
 &lt;p>Enter the following configuration to the end of the file:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -576,17 +676,17 @@ alt="GitHub Code Button"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;/div>&lt;p> &lt;/p>
 &lt;p>Save the file with the following commands:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>Ctrl+X&lt;/code>&lt;/li>
 &lt;li>&lt;code>y&lt;/code>&lt;/li>
 &lt;li>&lt;code>enter&lt;/code>&lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;p>You should now be able to SSH to all of your UniFi Protect devices! The username is ubnt and the password can be set in your UniFi/Protect Console settings.&lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="prepare-audio-file">Prepare audio file&lt;/h1>
 &lt;p>Now, you will need to get a working &lt;code>.wav&lt;/code> file to be later uploaded to your doorbell. I would recommend to use a clip that is 10 seconds maximum (though I haven’t tested lengths yet).&lt;/p>
 &lt;p>&lt;em>If you’re familiar with how to use Audacity, here are the file specifications you need:&lt;/em>&lt;/p>
@@ -605,9 +705,9 @@ alt="GitHub Code Button"
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;p>First, get your audio file that you would like to trim down.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;p>Now, open the file in Audacity&lt;/p>
 &lt;ul>
 &lt;li>The audio file will show in the main area, click the down arrow next to the file name
@@ -617,16 +717,28 @@ alt="GitHub Code Button"
 &lt;/li>
 &lt;li>Delete the second track&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/unificustomchime/trainHornDownArrow.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow.png"
+width="108"
+height="29"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow_hu0617b5948a0bcdf8691f18cffbbf2219_532_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow_hu0617b5948a0bcdf8691f18cffbbf2219_532_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Down Arrow Image"
+class="gallery-image"
+data-flex-grow="372"
+data-flex-basis="893px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Make sure the track is selected&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/unificustomchime/trainHornSelect.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect.png"
+width="88"
+height="23"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect_hu2af23e231cffb0d25523acd4e631daae_440_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect_hu2af23e231cffb0d25523acd4e631daae_440_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Train Horn Select"
+class="gallery-image"
+data-flex-grow="382"
+data-flex-basis="918px"
 >&lt;/p>
 &lt;ul>
 &lt;li>In the toolbar, click &amp;ldquo;Effect&amp;rdquo; &amp;gt; Normalize
@@ -636,9 +748,15 @@ alt="Train Horn Select"
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/unificustomchime/trainHornNormalize.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize.png"
+width="423"
+height="177"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize_huee635ea39d93803df652af3e0f9505ce_7249_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize_huee635ea39d93803df652af3e0f9505ce_7249_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Normalize Window"
+class="gallery-image"
+data-flex-grow="238"
+data-flex-basis="573px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Again in the toolbar, click &amp;ldquo;Effect&amp;rdquo; &amp;gt; Limiter
@@ -649,16 +767,28 @@ alt="Normalize Window"
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/unificustomchime/trainHornLimiter.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter.png"
+width="422"
+height="306"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter_hu6c9512c1761fc979f6f91657ab2ccef2_10541_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter_hu6c9512c1761fc979f6f91657ab2ccef2_10541_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Limiter Window"
+class="gallery-image"
+data-flex-grow="137"
+data-flex-basis="330px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Make sure the &amp;ldquo;Project Rate (Hz)&amp;rdquo; at the bottom-left of Audacity is set to &amp;ldquo;44100&amp;rdquo;&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/unificustomchime/trainHornProjectRate.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate.png"
+width="104"
+height="49"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate_huc836e71a6f29afb8539919d192d0471c_958_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate_huc836e71a6f29afb8539919d192d0471c_958_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Project Rate"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="509px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Click &amp;ldquo;File&amp;rdquo; &amp;gt; &amp;ldquo;Export&amp;rdquo; &amp;gt; &amp;ldquo;Export as WAV&amp;rdquo;
@@ -668,9 +798,9 @@ alt="Project Rate"
 &lt;/li>
 &lt;li>Save the file to a location you&amp;rsquo;ll remember&lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="upload-audio-file">Upload audio file&lt;/h1>
 &lt;p>Now we get to upload the audio file to the doorbell!&lt;/p>
 &lt;p>To do this, you’ll need to open a terminal of your choice (such as CMD in Windows)&lt;/p>
@@ -703,11 +833,11 @@ alt="Project Rate"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;strong>NOTE: Make sure you remember this file name for later&lt;/strong>&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;p>You may notice t hat I didn&amp;rsquo;t specify a path on the rmoet host, this is because we&amp;rsquo;ll let the file residei n the default directory of &lt;code>/etc/persistent&lt;/code> on the doorbell, and later create a symlink for that file to a different directory.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="create-symlink-of-audio-file">Create symlink of audio file&lt;/h1>
 &lt;p>Now, we’ll backup the original chime.wav just so it can easily be reset later if desired, and then create a symlink from our uploaded file to where chime.wav exists.&lt;/p>
 &lt;p>The reason this is done is because the doorbell seems to only like reading a symlink instead of a regular file when playing the chime sound.&lt;/p>
@@ -758,9 +888,9 @@ alt="Project Rate"
 &lt;/li>
 &lt;li>The new &lt;code>chime.wav&lt;/code> file is the symlink you just created, and now the current doorbell chime!&lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="finishing-up">Finishing up&lt;/h1>
 &lt;p>Now you&amp;rsquo;re all done! You can go ahead and test out the new chime by pressing the ring button on your doorbell, and it should play your uploaded file.&lt;/p></description></item><item><title>Getting Started with Network Automation</title><link>https://thequib.github.io/p/getting-started-with-network-automation/</link><pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-network-automation/</guid><description>&lt;p>Ever though about an easier way to configure tons of network devices easily? Python is definitely the answer to get started, and as long as you have a basic understanding of programming, it&amp;rsquo;s pretty simple, and tons of fun!&lt;/p>
 &lt;!-- raw HTML omitted -->
@@ -796,9 +926,15 @@ alt="Project Rate"
 &lt;li>Select &amp;ldquo;&lt;em>Entire Workspace&lt;/em>&amp;rdquo;&lt;/li>
 &lt;li>Choose the following option from the list:&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithnetworkautomation/selectInterpreter.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter.png"
+width="898"
+height="70"
+srcset="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Select Python Interpreter"
+class="gallery-image"
+data-flex-grow="1282"
+data-flex-basis="3078px"
 >&lt;/p>
 &lt;p>Now you should be all goood to go!&lt;/p>
 &lt;!-- raw HTML omitted -->
@@ -1004,9 +1140,9 @@ alt="Select Python Interpreter"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>Getting Started with GNS3</title><link>https://thequib.github.io/p/getting-started-with-gns3/</link><pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-gns3/</guid><description>&lt;p>When diving into learning networking, GNS3 is a great tool to get started. GNS3 allows you to build out and design networks without having to buy all of the expensive hardware to do so.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>
 &lt;li>A GNS3 VM server, or server running on your local machine
@@ -1026,9 +1162,9 @@ alt="Select Python Interpreter"
 &lt;li>&lt;a class="link" href="https://learningnetworkstore.cisco.com/cisco-modeling-labs-personal/cisco-cml-personal" target="_blank" rel="noopener"
 >Cisco Modeling Labs IOSv router/switch images&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="loading-gns3">Loading GNS3&lt;/h1>
 &lt;p>Start by opening your GNS3 client. Here, a dialog shows to create a new project.&lt;/p>
 &lt;ul>
@@ -1044,44 +1180,62 @@ alt="Select Python Interpreter"
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="installing-an-appliance">Installing an appliance&lt;/h1>
 &lt;p>On the left hand side of the window, you will find a toolbar with the following icons:&lt;/p>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-sidebarItems.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-gns3/gns3-sidebarItems.png"
+width="410"
+height="60"
+srcset="https://thequib.github.io/p/getting-started-with-gns3/gns3-sidebarItems_hucffda01e01af67cd5907afd761ffd267_7563_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-gns3/gns3-sidebarItems_hucffda01e01af67cd5907afd761ffd267_7563_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="GNS3 - Sidebar Items"
+class="gallery-image"
+data-flex-grow="683"
+data-flex-basis="1640px"
 >&lt;/p>
 &lt;p>From top to bottom, these items are &lt;em>Routers&lt;/em>, &lt;em>Switches&lt;/em>, &lt;em>End Devices&lt;/em>, &lt;em>Security Devices&lt;/em>, &lt;em>All Devices&lt;/em>, and &lt;em>Add a link&lt;/em>. These buttons contain what are called templates, templates are virtual devices that can be manipulated just as if they were the real deal.&lt;/p>
 &lt;p>All of these are relatively self explanatory, the last &lt;em>&amp;ldquo;Add a link&amp;rdquo;&lt;/em> is for connecting devices together using a virtual network cable.&lt;/p>
 &lt;p>To get started and testing things, go to &lt;em>End Devices&lt;/em> and click &amp;ldquo;+ New template&amp;rdquo;. You will want to install an appliance from the server, so click &amp;ldquo;Next &amp;gt;&amp;rdquo;, expand &amp;ldquo;Guests&amp;rdquo;, and scroll to find an appliance that interests you. I&amp;rsquo;ll be choosing the &amp;ldquo;Ubuntu Docker Guest&amp;rdquo; as docker containers start up in just a few seconds.&lt;/p>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-applianceSelection.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceSelection.png"
+width="855"
+height="259"
+srcset="https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceSelection_hu9ee5d7adef6fcf242a8fda80466466d2_21661_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceSelection_hu9ee5d7adef6fcf242a8fda80466466d2_21661_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="GNS3 - Appliance Selection"
+class="gallery-image"
+data-flex-grow="330"
+data-flex-basis="792px"
 >&lt;/p>
 &lt;p>Once you have found the device you want, click &amp;ldquo;Install&amp;rdquo;, then &amp;ldquo;Next&amp;rdquo; to install on the main server, then &amp;ldquo;Finish&amp;rdquo;. Now, the appliance should be installed!&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="adding-devices-to-a-project">Adding devices to a project&lt;/h1>
 &lt;p>Now, the newly installed appliance should show up under &lt;em>End Devices&lt;/em>. Click this, and drag the device into the blank space of the project. This will do some downloading work if you have just installed it, then add itself into the project.&lt;/p>
 &lt;p>To use the device, you can either click the green play button at the top of the window (this would start all devices in the project), or you can right click an individual device, and click &amp;ldquo;Start&amp;rdquo;.&lt;/p>
 &lt;p>You can confirm that the device has started by looking at the &amp;ldquo;Topology Summary&amp;rdquo; on the top right of the window. A green circle indicates that a device is online.&lt;/p>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gettingstartedwithgns3/gns3-applianceOnline.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceOnline.png"
+width="395"
+height="85"
+srcset="https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceOnline_huffc9884081bb913511336a2c8a4f2264_4615_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-gns3/gns3-applianceOnline_huffc9884081bb913511336a2c8a4f2264_4615_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="GNS3 - Appliance Online"
+class="gallery-image"
+data-flex-grow="464"
+data-flex-basis="1115px"
 >&lt;/p>
 &lt;p>To get console access to this docker guest, you can double click on the node, or right click and hit &amp;ldquo;console&amp;rdquo;. This, by default, will open the Solarwinds Solar-PuTTY application on your computer. You can interact with the device just as if it were a physical one.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="final-thoughts">Final thoughts&lt;/h1>
 &lt;p>Keep in mind, each devices has its own configuration settings that you can mess with, as well as console types depending on if the device has a GUI or not (Such as between the Ubuntu Docker and Ubuntu Desktop guests). Some of these settings include amount of CPU cores, RAM, and type of console access you have to the device.&lt;/p>
 &lt;p>Feel free to play around with these and figure some stuff out! The beauty of GNS3 is that you can do anything you want, and not have to worry about breaking anything of importance :)&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;hr>
-&lt;!-- raw HTML omitted -->
+&lt;p> &lt;/p>
 &lt;h1 id="conclusion">Conclusion&lt;/h1>
 &lt;p>And there you have it! Go ahead and play with the different end devices, as well as switching/routing appliances that exist. If you have the Cisco Modeling labs subscription, you are also able to import the IOSv images into GNS3, which will allow you to interact and play with Cisco IOS devices.&lt;/p></description></item><item><title>GNS3 VM in Proxmox VE</title><link>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</guid><description>&lt;p>Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You&amp;rsquo;re in luck, below you can find steps on how to do just that as long as you meet a few server requirements.&lt;/p>
 &lt;!-- raw HTML omitted -->
@@ -1109,26 +1263,44 @@ alt="GNS3 - Appliance Online"
 &lt;li>Connect to your Proxmox server using either its IP address or hostname&lt;/li>
 &lt;li>On the left pane (your local machine), navigate to where the &lt;code>.ova&lt;/code> file is&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/winScp_localFile.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile.png"
+width="488"
+height="85"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile_hu52dbf2389f55907a4797863c40ffd1b2_4546_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile_hu52dbf2389f55907a4797863c40ffd1b2_4546_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Local OVA"
+class="gallery-image"
+data-flex-grow="574"
+data-flex-basis="1377px"
 >&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;ul>
 &lt;li>On the right pane (the server), create a new directory, naming whatever you want&lt;/li>
 &lt;li>I&amp;rsquo;ll be putting mine underthe &lt;code>/root&lt;/code> directory&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/winScp_rootDir.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir.png"
+width="522"
+height="72"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir_hu2df7b9856d778360d197c4fec2391e01_4079_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir_hu2df7b9856d778360d197c4fec2391e01_4079_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Remote Directory"
+class="gallery-image"
+data-flex-grow="725"
+data-flex-basis="1740px"
 >&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;ul>
 &lt;li>Now, drag the &lt;code>.ova&lt;/code> file from the left side to the right side, and you will see the upload begin&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/winScp_upload.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload.png"
+width="357"
+height="201"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload_hud8dcb7040d4e35f6ee477344c55964e0_9760_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload_hud8dcb7040d4e35f6ee477344c55964e0_9760_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="File Upload"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
 >&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;hr>
@@ -1140,24 +1312,42 @@ alt="File Upload"
 &lt;li>Under &amp;ldquo;General&amp;rdquo;, you can use any ID starting from 100 that you like, take note of this. Name it whatever you would like&lt;/li>
 &lt;li>Under &amp;ldquo;OS&amp;rdquo;, select the radio button to not use any media&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/createVm_media.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media.png"
+width="331"
+height="265"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media_hu22615d4374964dd954a424ec944c1a50_11932_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media_hu22615d4374964dd954a424ec944c1a50_11932_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Create VM - Media"
+class="gallery-image"
+data-flex-grow="124"
+data-flex-basis="299px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Under &amp;ldquo;System&amp;rdquo;, select your preferred graphics card (I will be using the VirtIO option), and make sure &amp;ldquo;SeaBIOS&amp;rdquo; is selected&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/createVm_system.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system.png"
+width="370"
+height="203"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system_hu144e48e87e7615a05aa0bed7ee4c5ef0_9687_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system_hu144e48e87e7615a05aa0bed7ee4c5ef0_9687_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Create VM - System"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="437px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Under &amp;ldquo;Storage&amp;rdquo;, make sure SCSI is selected, and a qcow2 compatible storage device is selected&lt;/li>
 &lt;li>Under CPU, give it at least 3 cores to run with, and make sure to select &amp;lsquo;host&amp;rsquo; for the type&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/createVm_cpu.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu.png"
+width="700"
+height="231"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu_hud110e020dfeeb55b5cb563aee5f24613_16409_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu_hud110e020dfeeb55b5cb563aee5f24613_16409_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Create VM - CPU"
+class="gallery-image"
+data-flex-grow="303"
+data-flex-basis="727px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Under &amp;ldquo;Memory&amp;rdquo;, give it at least 4096MB of RAM&lt;/li>
@@ -1171,9 +1361,15 @@ alt="Create VM - CPU"
 &lt;li>Navigate to the newly created VM&lt;/li>
 &lt;li>Go to the &amp;ldquo;Hardware&amp;rdquo; tab&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/hardware_add.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add.png"
+width="222"
+height="142"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add_hu5728a90c7b8a6edcc3c64c33f0836e44_7121_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add_hu5728a90c7b8a6edcc3c64c33f0836e44_7121_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="VM - Add Hardware"
+class="gallery-image"
+data-flex-grow="156"
+data-flex-basis="375px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Select the same storage device that you chose when creating the VM&lt;/li>
@@ -1189,9 +1385,15 @@ alt="VM - Add Hardware"
 &lt;ul>
 &lt;li>First access the shell of the Proxmox server, this can be either over SSH, or using the shell tab in Proxmox&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://thequib.github.io/images/posts/gns3InProxmoxVe/proxmoxHost_shell.png"
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell.png"
+width="338"
+height="131"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell_hu4ca0cf01b7ef3c90e0e860582e6030be_9278_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell_hu4ca0cf01b7ef3c90e0e860582e6030be_9278_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="Proxmox Shell"
+class="gallery-image"
+data-flex-grow="258"
+data-flex-basis="619px"
 >&lt;/p>
 &lt;ul>
 &lt;li>Change your current directory to where you stored the .ova file earlier using the &amp;lsquo;cd&amp;rsquo; command. In my case, that would be:&lt;/li>
@@ -1325,4 +1527,56 @@ alt="Proxmox Shell"
 &lt;li>This will update the repository, install the guest agent, and start the guest agent service&lt;/li>
 &lt;li>Now, click the &amp;ldquo;Summary&amp;rdquo; tab of the VM in Proxmox, more information (such as the VM&amp;rsquo;s IP address) will now show right there!&lt;/li>
 &lt;/ul>
-&lt;p>&lt;em>Note: If the guest agent information doesn&amp;rsquo;t show, try reloading the web page&lt;/em>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;em>Note: If the guest agent information doesn&amp;rsquo;t show, try reloading the web page&lt;/em>&lt;/p></description></item><item><title>Archives</title><link>https://thequib.github.io/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://thequib.github.io/archives/</guid><description/></item><item><title>Friends</title><link>https://thequib.github.io/friends/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/friends/</guid><description>&lt;h1 id="a-quick-shout-out-to-these-guys-check-them-out">A quick shout-out to these guys, check them out!&lt;/h1>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;h2 id="austin-barnes">Austin Barnes&lt;/h2>
+&lt;figure>&lt;img src="https://www.cinderblook.com/Portrait_Austin.jpg" width="150"/>&lt;figcaption>
+&lt;h4>Austin Barnes&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>Website: &lt;a class="link" href="https://cinderblook.com" target="_blank" rel="noopener"
+>cinderblook.com&lt;/a>&lt;/p>
+&lt;p>GitHub: &lt;a class="link" href="https://github.com/Cinderblook" target="_blank" rel="noopener"
+>Cinderblook&lt;/a>&lt;/p>
+&lt;p>LinkedIn: &lt;a class="link" href="https://www.linkedin.com/in/austin-barnes-03869218a/" target="_blank" rel="noopener"
+>Austin Barnes&lt;/a>&lt;/p>
+&lt;p>Instagram: &lt;a class="link" href="https://www.instagram.com/austin_barnesz/" target="_blank" rel="noopener"
+>Austin Barnes&lt;/a>&lt;/p>
+&lt;p>BuyMeACoffee: &lt;a class="link" href="https://www.buymeacoffee/Cinderblook" target="_blank" rel="noopener"
+>Cinderblook&lt;/a>&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;h2 id="tate-naugle">Tate Naugle&lt;/h2>
+&lt;figure>&lt;img src="https://scontent.fagc1-2.fna.fbcdn.net/v/t39.30808-1/274083657_1633811710350952_1764325339258279629_n.jpg?stp=dst-jpg_p200x200&amp;amp;_nc_cat=108&amp;amp;ccb=1-5&amp;amp;_nc_sid=7206a8&amp;amp;_nc_ohc=vAvP__gxjEEAX_teLsR&amp;amp;_nc_ht=scontent.fagc1-2.fna&amp;amp;oh=00_AT-fHlJJGkwARzyqqWKBVDxsS-uceEBXkJvDats8jPsNNQ&amp;amp;oe=624B8231" width="150"/>&lt;figcaption>
+&lt;h4>Tate Naugle&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>Website: &lt;a class="link" href="https://perceivestudios.com" target="_blank" rel="noopener"
+>perceivestudios.com&lt;/a>&lt;/p>
+&lt;p>Instagram: &lt;a class="link" href="https://www.instagram.com/tatenaugle/" target="_blank" rel="noopener"
+>Tate Naugle&lt;/a>&lt;/p>
+&lt;p>Instagram (Business): &lt;a class="link" href="https://www.instagram.com/perceivestudios/" target="_blank" rel="noopener"
+>Percieve Studios&lt;/a>&lt;/p></description></item><item><title>Links</title><link>https://thequib.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/links/</guid><description/></item><item><title>Projects</title><link>https://thequib.github.io/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/projects/</guid><description>&lt;p>Just a few projects I&amp;rsquo;ve worked on along the way.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;h2 id="projects">Projects&lt;/h2>
+&lt;h3 id="enterprise-door-access-system">Enterprise Door Access System&lt;/h3>
+&lt;p>Organization and configuration of an enterprise door access system across 6 buildings from &lt;em>Verkada&lt;/em>.&lt;/p>
+&lt;p>&lt;em>&lt;strong>2022&lt;/strong>&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="ubiquiti-unifi-network">Ubiquiti UniFi Network&lt;/h3>
+&lt;p>Deployment of a managed Ubiquiti UniFi network. Including routing, switching and wireless.&lt;/p>
+&lt;p>&lt;em>&lt;strong>2021&lt;/strong>&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="enterprise-wireless-system">Enterprise Wireless System&lt;/h3>
+&lt;p>Migration / deployment of existing and new access points in a managed wireless system from &lt;em>Ruckus Wireless&lt;/em>, including API development of wireless automation tasks with &lt;em>Python&lt;/em>.&lt;/p>
+&lt;p>&lt;em>&lt;strong>2021&lt;/strong>&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="enterprise-security-camera-system">Enterprise Security Camera System&lt;/h3>
+&lt;p>Organization, installation and configuration of an enterprise security camera system across 6 buildings from &lt;em>Verkada&lt;/em>.&lt;/p>
+&lt;p>&lt;em>&lt;strong>2020&lt;/strong>&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="help-desk-ticketing-system">Help Desk Ticketing System&lt;/h3>
+&lt;p>Design, management and automation of a help desk ticketing system built on the Microsoft Power Platform using Power Apps, Power Automate, and SharePoint.&lt;/p>
+&lt;p>&lt;em>&lt;strong>2020&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Search</title><link>https://thequib.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/search/</guid><description/></item></channel></rss>
