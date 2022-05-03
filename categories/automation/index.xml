@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automation on QuibTech</title><link>https://thequib.github.io/categories/automation/</link><description>Recent content in Automation on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Manage Discord Servers with Terraform</title><link>https://thequib.github.io/p/manage-discord-servers-with-terraform/</link><pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-discord-servers-with-terraform/</guid><description>&lt;img src="https://thequib.github.io/p/manage-discord-servers-with-terraform/featuredImage.png" alt="Featured image of post Manage Discord Servers with Terraform" />&lt;p>Something everyone is dying to do&amp;hellip; Code-driven Discord server management.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="requirements">Requirements&lt;/h1>
+&lt;ul>
+&lt;li>Discord API Token
+&lt;ul>
+&lt;li>&lt;a class="link" href="#obtain-discord-api-token" >Learn how to get this&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Some knowledge with Terraform (to understand what is going on)&lt;/li>
+&lt;li>Terraform 0.13 and up&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="source-code">Source Code&lt;/h1>
+&lt;p>All of my code and related files can be found in my &lt;a class="link" href="https://github.com/TheQuib/overture" target="_blank" rel="noopener"
+>Overture Repo&lt;/a>.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="obtain-discord-api-token">Obtain Discord API Token&lt;/h1>
+&lt;ul>
+&lt;li>Head over to the &lt;a class="link" href="https://discord.com/developers/" target="_blank" rel="noopener"
+>Discord Developer Portal&lt;/a>&lt;/li>
+&lt;li>Get logged in&lt;/li>
+&lt;li>Create a new application&lt;/li>
+&lt;li>Name this whatever you want
+&lt;ul>
+&lt;li>Ex: &amp;ldquo;Terraform&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Once in your new application, head over to the &amp;ldquo;Bot&amp;rdquo; section&lt;/li>
+&lt;li>Click &amp;ldquo;Add Bot&amp;rdquo;&lt;/li>
+&lt;li>Give the bot a name (or leave the default name)
+&lt;ul>
+&lt;li>Ex: &amp;ldquo;Mr. Terraform&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Click the &amp;ldquo;Reset Token&amp;rdquo; button
+&lt;ul>
+&lt;li>This will give you your token, and is the only time it will be displayed&lt;/li>
+&lt;li>Make sure you keep this in a safe place, and treat it like a password&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Use this token in your &lt;a class="link" href="credentials.auto.tfvars.example" >credentials.auto.tfvars&lt;/a> file&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="terraform-provider-information">Terraform Provider Information&lt;/h1>
+&lt;p>The provider used here is &lt;a class="link" href="https://registry.terraform.io/providers/Chaotic-Logic/discord/latest" target="_blank" rel="noopener"
+>discord&lt;/a> by &lt;a class="link" href="https://registry.terraform.io/namespaces/Chaotic-Logic" target="_blank" rel="noopener"
+>Chaotic Logic&lt;/a> (&lt;a class="link" href="https://github.com/Chaotic-Logic/terraform-provider-discord" target="_blank" rel="noopener"
+>Source&lt;/a>).&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="get-started">Get started&lt;/h1>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>Make sure you have your Discord API token ready&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="prepare-terraform">Prepare Terraform&lt;/h2>
+&lt;p>To get Terraform ready, create a file in the same directory called &lt;code>provider.tf&lt;/code>, and paste the following information into it:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">terraform&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">required_version&lt;/span> = &lt;span class="s2">&amp;#34;&amp;gt;= 0.13.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">required_providers&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">discord&lt;/span> = &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">source&lt;/span> = &lt;span class="s2">&amp;#34;Chaotic-Logic/discord&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">version&lt;/span> = &lt;span class="s2">&amp;#34;0.0.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">provider&lt;/span> &lt;span class="s2">&amp;#34;discord&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">token&lt;/span> = &lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_token&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, get the required provider downloaded (&lt;code>cd&lt;/code> into your Terraform directory first):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">terraform init
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="create-credentials-file">Create credentials file&lt;/h2>
+&lt;p>Create a new directory, and &lt;code>cd&lt;/code> into it. Then create a file in there called &lt;code>credentials.auto.tfvars&lt;/code>.&lt;/p>
+&lt;p>Paste the following information in:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">discord_token = &amp;#34;YourDiscordApiToken&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server_name = &amp;#34;NewServerName&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server_region = &amp;#34;us-east&amp;#34; # Region to host in (Brazil | Europe | Hong Kong | India | Rapan | Russia | Singapore | South Africa | Sydney | US (Central | East | South | West))
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">category_name = &amp;#34;NewCategoryName&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">text_channel_name = &amp;#34;NewTextChannelName&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You&amp;rsquo;ll want to edit the values (in quotations) as needed, filling in &lt;code>discord_token&lt;/code> with &lt;em>your&lt;/em> API token received from &lt;a class="link" href="#obtain-discord-api-token" >here&lt;/a>, it would be best to choose a region closest to you.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="create-variables-file">Create variables file&lt;/h2>
+&lt;p>While the &lt;code>credentials.auto.tfvars&lt;/code> assigns values to variables, the variables still need to be defined within Terraform. Create a file called &lt;code>variables.tf&lt;/code> to store these, paste the following contents (one per assigned variable from &lt;a class="link" href="#create-credentials-file" >above&lt;/a>):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;discord_token&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">sensitive&lt;/span> = &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;server_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;server_region&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;category_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;text_channel_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="create-a-server">Create a server&lt;/h2>
+&lt;p>In the same directory as your &lt;code>provider.tf&lt;/code> file, create a file called &lt;code>createServer.tf&lt;/code>.&lt;/p>
+&lt;p>Paste the following information:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># Create a server
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resource &amp;#34;discord_server&amp;#34; &amp;#34;my_server&amp;#34; {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> name = var.server_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> region = var.server_region
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> default_message_notifications = 0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Get newly created server&amp;#39;s ID
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">data &amp;#34;discord_server&amp;#34; &amp;#34;createdServerInfo&amp;#34; {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_id = resource.discord_server.my_server.id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The block &lt;code>discord_server.my_server&lt;/code> creates a Discord server with a given name and region assigned from the &lt;code>credentials.auto.tfvars&lt;/code> file.&lt;/li>
+&lt;li>Then saves the &lt;code>id&lt;/code> of the server in &lt;code>data.discord_server.createdServerInfo&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="create-a-text-channel">Create a text channel&lt;/h2>
+&lt;p>Now, we need to add a general channel for the server!&lt;/p>
+&lt;p>I found the provider requires a category channel needs created, and channels be placed under that category&amp;hellip; so we can do this in one shot:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_category_channel&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;general&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">depends_on&lt;/span> = &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr"> data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name&lt;/span> = &lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">category_name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">position&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server_id&lt;/span> = &lt;span class="nb">data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_text_channel&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;general&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">depends_on&lt;/span> = &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr"> resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_category_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name&lt;/span> = &lt;span class="nb">lower&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">text_channel_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">position&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server_id&lt;/span> = &lt;span class="nb">data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">category&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_category_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do-1">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The block &lt;code>discord_category_channel.general&lt;/code> creates a &amp;ldquo;general&amp;rdquo; category, which also depends on &lt;code>data.discords_server.createdServerInfo&lt;/code> to contain information (ensuring the server is created before the category is)
+&lt;ul>
+&lt;li>This places the category in the server that we created by supplying its &lt;code>id&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The block &lt;code>discord_text_channel.general&lt;/code> creates a &amp;ldquo;general&amp;rdquo; text channel, which falls under the &amp;ldquo;general&amp;rdquo; category. Just like the category depends on the server to exist, this text channel depends on the category to exist.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="create-an-invite">Create an invite&lt;/h2>
+&lt;p>Now, we need a way to actually see all of the work Terraform will perform. Since a &lt;a class="link" href="https://discord.com/developers/docs/intro#bots-and-apps" target="_blank" rel="noopener"
+>Bot&lt;/a> is what created the server and everything in it, we need an invite so our own user can join the server and interact with it.&lt;/p>
+&lt;p>So, create yet &lt;strong>another&lt;/strong> file, call this one &lt;code>createServerInvite.tf&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_invite&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;inviteMe&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">channel_id&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_text_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">max_age&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">output&lt;/span> &lt;span class="s2">&amp;#34;invite_info&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">value&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_invite&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">inviteMe&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do-2">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The &lt;code>discord_invite.inviteMe&lt;/code> block will create a non-expiring invite code that we can use to join the server, placing the invite under the channel we created earlier (by &lt;code>id&lt;/code>)&lt;/li>
+&lt;li>The &lt;code>output.invite_info&lt;/code> block will print the invite code as a string to the terminal in a cleaner, more easily-found fashion.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="let-terraform-do-the-work-and-join-your-server">Let Terraform do the work, and join your server!&lt;/h2>
+&lt;p>Now, open a terminal session, &lt;code>cd&lt;/code> into your Terraform files directory and run &lt;code>terraform plan&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>This will show you what Terraform will do
+&lt;ul>
+&lt;li>You may have to correct some errors before you can proceed&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Then, just run &lt;code>terraform apply -auto-approve&lt;/code> to create the server.&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>In the terminal, something like this will show:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Outputs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">invite_info = &amp;#34;kvdyTVBuUs&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>This &lt;code>invite_info&lt;/code> is what you need to join the server. To do this:&lt;/p>
+&lt;ul>
+&lt;li>Open your Discord client&lt;/li>
+&lt;li>Click the &amp;ldquo;+&amp;rdquo; button under the list of joined servers to &amp;ldquo;Add a Server&amp;rdquo;&lt;/li>
+&lt;li>Under &amp;ldquo;Have an invite already?&amp;rdquo;, click the &amp;ldquo;Join Server&amp;rdquo; button&lt;/li>
+&lt;li>Enter the code given by the terminal (you don&amp;rsquo;t need a URL, just the code), and click &amp;ldquo;Join Server&amp;rdquo;!&lt;/li>
+&lt;/ul>
+&lt;p>You should now be a member of the new server, and you should also see a shiny new text channel titled &lt;code>general&lt;/code>.&lt;/p></description></item><item><title>UniFi Doorbell G4 Custom Chime</title><link>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</guid><description>&lt;p>So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.&lt;/p>
+&lt;p>While the out of box experience is great, I couldn’t help myself but look up how I can get my own ring (or &amp;ldquo;chime&amp;rdquo; as Ubiquiti calls it) uploaded to my doorbell. This requires a bit of work using some SSH, but it’s extremely fun to play around with.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="the-scoop">The scoop&lt;/h1>
+&lt;p>While you can do this all manually, the doorbell sadly resets back to it’s default chime when restarted. So as an example, if you loose power, your doorbell will have it’s original chime again.&lt;/p>
+&lt;p>This is no fun, so I made a script for you to use! You can find it on my personal GitHub page at &lt;a class="link" href="https://github.com/TheQuib/G4-Doorbell-Custom-Chime" target="_blank" rel="noopener"
+>https://github.com/TheQuib/G4-Doorbell-Custom-Chime&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>You will need to enable SSH on your doorbell before use, please refer to this section of this post to do so&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>If you want to learn how to do this yourself, please continue on!&lt;/strong>&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="enable-ssh-on-doorbell">Enable SSH on Doorbell&lt;/h1>
+&lt;p>This process is kinda hard to find, but enabling SSH on your UniFi Protect console (whether that be a Dream Machine, Cloud Key Gen 2+, or UniFi NVR) is pretty simple, and a quick google search away… so that won’t be covered here.&lt;/p>
+&lt;p>&lt;strong>So first off, you will need to SSH into your UniFi Protect Console&lt;/strong>&lt;/p>
+&lt;p>&lt;em>Dream Machine Only:&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">unifi-os shell
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>&lt;em>Dream Mahcine + All Other Devices:&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>Edit the file &lt;code>/etc/unifi-protect/config.json&lt;/code>
+&lt;ul>
+&lt;li>If this file does not exist already, don&amp;rsquo;t worry&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">nano /etc/unifi-protect/config.json
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>Enter the following configuration to the end of the file:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;enableSsh&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>Save the file with the following commands:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Ctrl+X&lt;/code>&lt;/li>
+&lt;li>&lt;code>y&lt;/code>&lt;/li>
+&lt;li>&lt;code>enter&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;p>You should now be able to SSH to all of your UniFi Protect devices! The username is ubnt and the password can be set in your UniFi/Protect Console settings.&lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="prepare-audio-file">Prepare audio file&lt;/h1>
+&lt;p>Now, you will need to get a working &lt;code>.wav&lt;/code> file to be later uploaded to your doorbell. I would recommend to use a clip that is 10 seconds maximum (though I haven’t tested lengths yet).&lt;/p>
+&lt;p>&lt;em>If you’re familiar with how to use Audacity, here are the file specifications you need:&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>Specs:
+&lt;ul>
+&lt;li>Mono&lt;/li>
+&lt;li>44100Hz&lt;/li>
+&lt;li>16 bit&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>A good idea to:
+&lt;ul>
+&lt;li>Normalize the audio&lt;/li>
+&lt;li>Apply a limiter, and make sure make-up gain is applied&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;p>First, get your audio file that you would like to trim down.&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Now, open the file in Audacity&lt;/p>
+&lt;ul>
+&lt;li>The audio file will show in the main area, click the down arrow next to the file name
+&lt;ul>
+&lt;li>Click &amp;ldquo;Split stereo to mono&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Delete the second track&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow.png"
+width="108"
+height="29"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow_hu0617b5948a0bcdf8691f18cffbbf2219_532_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornDownArrow_hu0617b5948a0bcdf8691f18cffbbf2219_532_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Down Arrow Image"
+class="gallery-image"
+data-flex-grow="372"
+data-flex-basis="893px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Make sure the track is selected&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect.png"
+width="88"
+height="23"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect_hu2af23e231cffb0d25523acd4e631daae_440_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornSelect_hu2af23e231cffb0d25523acd4e631daae_440_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Train Horn Select"
+class="gallery-image"
+data-flex-grow="382"
+data-flex-basis="918px"
+>&lt;/p>
+&lt;ul>
+&lt;li>In the toolbar, click &amp;ldquo;Effect&amp;rdquo; &amp;gt; Normalize
+&lt;ul>
+&lt;li>Leave the default settings&lt;/li>
+&lt;li>Click &amp;ldquo;OK&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize.png"
+width="423"
+height="177"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize_huee635ea39d93803df652af3e0f9505ce_7249_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornNormalize_huee635ea39d93803df652af3e0f9505ce_7249_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Normalize Window"
+class="gallery-image"
+data-flex-grow="238"
+data-flex-basis="573px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Again in the toolbar, click &amp;ldquo;Effect&amp;rdquo; &amp;gt; Limiter
+&lt;ul>
+&lt;li>Leave the default settings&lt;/li>
+&lt;li>Make sure to &amp;ldquo;Apply Make-up Gain&amp;rdquo; is set to &amp;ldquo;Yes&amp;rdquo;&lt;/li>
+&lt;li>Click &amp;ldquo;OK&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter.png"
+width="422"
+height="306"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter_hu6c9512c1761fc979f6f91657ab2ccef2_10541_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornLimiter_hu6c9512c1761fc979f6f91657ab2ccef2_10541_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Limiter Window"
+class="gallery-image"
+data-flex-grow="137"
+data-flex-basis="330px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Make sure the &amp;ldquo;Project Rate (Hz)&amp;rdquo; at the bottom-left of Audacity is set to &amp;ldquo;44100&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate.png"
+width="104"
+height="49"
+srcset="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate_huc836e71a6f29afb8539919d192d0471c_958_480x0_resize_box_3.png 480w, https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/trainHornProjectRate_huc836e71a6f29afb8539919d192d0471c_958_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Project Rate"
+class="gallery-image"
+data-flex-grow="212"
+data-flex-basis="509px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Click &amp;ldquo;File&amp;rdquo; &amp;gt; &amp;ldquo;Export&amp;rdquo; &amp;gt; &amp;ldquo;Export as WAV&amp;rdquo;
+&lt;ul>
+&lt;li>Set &amp;ldquo;Encoding&amp;rdquo; to &amp;ldquo;Signed 16-bit PCM&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Save the file to a location you&amp;rsquo;ll remember&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="upload-audio-file">Upload audio file&lt;/h1>
+&lt;p>Now we get to upload the audio file to the doorbell!&lt;/p>
+&lt;p>To do this, you’ll need to open a terminal of your choice (such as CMD in Windows)&lt;/p>
+&lt;p>Navigate to where you saved your WAV file using the cd command.&lt;/p>
+&lt;p>Ex:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\Q&lt;/span>uib&lt;span class="se">\D&lt;/span>esktop&lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, we&amp;rsquo;ll use the &lt;code>SCP&lt;/code> command to copy the file to the doorbell via SSH. General usage of SCP is:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">scp localFile user@remoteHost:/path/to/remoteFile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Lets put our variables in there. In my case, I will be using a file name &lt;code>trainHorn.wav&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">scp trainHorn.wav ubnt@192.168.10.100:trainHorn.wav
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>NOTE: Make sure you remember this file name for later&lt;/strong>&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>You may notice t hat I didn&amp;rsquo;t specify a path on the rmoet host, this is because we&amp;rsquo;ll let the file residei n the default directory of &lt;code>/etc/persistent&lt;/code> on the doorbell, and later create a symlink for that file to a different directory.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="create-symlink-of-audio-file">Create symlink of audio file&lt;/h1>
+&lt;p>Now, we’ll backup the original chime.wav just so it can easily be reset later if desired, and then create a symlink from our uploaded file to where chime.wav exists.&lt;/p>
+&lt;p>The reason this is done is because the doorbell seems to only like reading a symlink instead of a regular file when playing the chime sound.&lt;/p>
+&lt;p>**First, lets create the backup:&lt;/p>
+&lt;ul>
+&lt;li>navigate to the &lt;code>/etc/sounds/&lt;/code> directory and list the files to see what&amp;rsquo;s in there:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /etc/sounds
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This should show a list of audio files, one of them being &lt;code>chime.wav&lt;/code>. Lets create a backup of that:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mv chime.wav chime.wav.back
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Now, lets create a symlink of our uploaded file, make sure you replace &lt;code>trainHorn.wav&lt;/code> with the name of the file you uploaded earlier, and list the files in &lt;code>/etc/sounds/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ln -s /etc/persistent/trainHorn.wav /etc/sounds/chime.wav
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>The &lt;code>ls&lt;/code> command should now show two &lt;code>chime&lt;/code> files:
+&lt;ul>
+&lt;li>&lt;code>chime.wav&lt;/code>&lt;/li>
+&lt;li>&lt;code>chime.wav.bak&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The new &lt;code>chime.wav&lt;/code> file is the symlink you just created, and now the current doorbell chime!&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="finishing-up">Finishing up&lt;/h1>
+&lt;p>Now you&amp;rsquo;re all done! You can go ahead and test out the new chime by pressing the ring button on your doorbell, and it should play your uploaded file.&lt;/p></description></item><item><title>Getting Started with Network Automation</title><link>https://thequib.github.io/p/getting-started-with-network-automation/</link><pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-network-automation/</guid><description>&lt;p>Ever though about an easier way to configure tons of network devices easily? Python is definitely the answer to get started, and as long as you have a basic understanding of programming, it&amp;rsquo;s pretty simple, and tons of fun!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>Python version 3.9 or higher&lt;/li>
+&lt;li>An IDE that supports the Python language&lt;/li>
+&lt;li>Some sort of appliance you can connect to via SSH
+&lt;ul>
+&lt;li>I will be using a Cisco IOS appliance here running in GNS3&lt;/li>
+&lt;li>A Linux VM will also work&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>In this post, I&amp;rsquo;ll be using Visual Studio Code as my IDE, you can download that &lt;a class="link" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"
+>here&lt;/a> if you are interested.&lt;/p>
+&lt;p>You can find all of my &lt;a class="link" href="https://github.com/TheQuib/python-network-automation" target="_blank" rel="noopener"
+>scripts&lt;/a>, and other projects on my &lt;a class="link" href="https://github.com/TheQuib" target="_blank" rel="noopener"
+>GitHub page&lt;/a>.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="before-you-start">Before you Start&lt;/h1>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>This is only if you are using Visual Studio Code as your IDE&lt;/em>&lt;/p>
+&lt;p>VS Code gets a little funky when it comes to installed python libraries. First, make sure you install the latest version of Python from the Microsoft Store&amp;hellip; Code will look to the installation path of this by default.&lt;/p>
+&lt;p>After installation:&lt;/p>
+&lt;ol>
+&lt;li>Open VS Code&lt;/li>
+&lt;li>Open or create a Python file (use the extension &lt;em>.py&lt;/em> to tell Code to use Python)&lt;/li>
+&lt;li>On the bottom-left of the window, click the Python version number, this should open a box at the top of the screen&lt;/li>
+&lt;li>Select &amp;ldquo;&lt;em>Entire Workspace&lt;/em>&amp;rdquo;&lt;/li>
+&lt;li>Choose the following option from the list:&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter.png"
+width="898"
+height="70"
+srcset="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Select Python Interpreter"
+class="gallery-image"
+data-flex-grow="1282"
+data-flex-basis="3078px"
+>&lt;/p>
+&lt;p>Now you should be all goood to go!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="installing-netmiko">Installing Netmiko&lt;/h1>
+&lt;p>Netmiko is, in my opinion, the best all-in-one network automation tool to use in Python. Netmiko has a multitude of supported devices; including Linux, Cisco (IOS, NX-OS, etc), HP Enterprise, and TONS more.&lt;/p>
+&lt;p>To install Netmiko on your computer, open a terminal and type:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">python3 -m pip install netmiko
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, open your IDE and create a new Python file, enter the following code and run it to test installation:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">Netmiko&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If you run this, and it doesn&amp;rsquo;t do anything, that&amp;rsquo;s good! This just means that the library imported with no problems.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="setting-up-netmiko">Setting up Netmiko&lt;/h1>
+&lt;p>Network automation is all about doing the similar tasks on tons of devices from a single place. That doesn&amp;rsquo;t mean you have to have a hundred devices to do some automation work.&lt;/p>
+&lt;p>In my case, I will be using the Cisco Modeling Labs IOSv router image (in GNS3), so my commands will be IOS specific. I&amp;rsquo;ll have some information down below so you can set up a Linux machine if you want as well :)&lt;/p>
+&lt;p>First, we&amp;rsquo;ll need to import the ConnectHandler module from Netmiko:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># NEtwork automation module&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">netmiko&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then let&amp;rsquo;s get some username and password information from the user:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Module used to hide passwords in the console&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">getpass&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for username&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">username&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a username to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for password using getpass&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a password to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for secret password&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">secret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a secret password to enable with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now we&amp;rsquo;ll want to set up information that Netmiko will use for the actual connection. Type the following code and note the comments:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">host&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Command to be sent to the machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;ip address&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This code creates a Python dictionary that contains the items &lt;em>device_type&lt;/em>, &lt;em>host&lt;/em>, &lt;em>password&lt;/em>, &lt;em>secret&lt;/em>, and &lt;em>use_keys&lt;/em>, and then sets a variable to the string &lt;em>&amp;lsquo;ip address&amp;rsquo;&lt;/em>.&lt;/p>
+&lt;p>Most of these are pretty self explanatory, &lt;em>use_keys&lt;/em> will bypass the prompt SSH gives back when connecting to an unknown device for the first time.&lt;/p>
+&lt;p>If you wanted to try this on multiple devices, tweak your code to use a list for hosts and a for loop as such:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hosts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;4.3.2.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">host&lt;/span> &lt;span class="ow">in&lt;/span>  &lt;span class="n">hosts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Command to be sent to the machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;sh run&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="sending-your-first-command">Sending your first command&lt;/h1>
+&lt;p>Now we&amp;rsquo;re ready to send a command to your device / devices! Let&amp;rsquo;s get started by creating a Netmiko &lt;code>ConnectHandler&lt;/code> variable by adding this line:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ssh&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">hostConfig&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, we can act on the variable &lt;em>ssh&lt;/em> to send commands to our device. Using &lt;em>send_command&lt;/em>, which is used specifically for sending a single command via Netmiko (this will utilize the &lt;em>command&lt;/em> variable we set in the previous step):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">output&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ssh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_command&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">command&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now go ahead and run your program! If you put everything in correctly, you should see the output of the Linux command &lt;code>ip addr&lt;/code> in your terminal.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="sending-multiple-commands">Sending multiple commands&lt;/h1>
+&lt;p>Automation isn&amp;rsquo;t just about sending a single command to devices. While this can be pretty useful, especially for gathering some information (like switch configs), sending multiple commands can prove to be extremely useful and time-saving, especially when you&amp;rsquo;re configuring tons of devices.&lt;/p>
+&lt;p>In the previous step, we used the function &lt;strong>send_command()&lt;/strong>, which only sends one command. For multiple configuration commands, there is a function called &lt;strong>send_config_set()&lt;/strong>, which accepts a list in its parameters.&lt;/p>
+&lt;p>So first, let&amp;rsquo;s create a list:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">config&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;int gi0/1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;ip address 172.16.0.1 255.255.0.0&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, instead of &lt;em>send_command()&lt;/em>, we can use the following to send our &lt;em>config&lt;/em> variable instead:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ssh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_config_set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

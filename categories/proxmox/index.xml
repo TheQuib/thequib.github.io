@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Proxmox on QuibTech</title><link>https://thequib.github.io/categories/proxmox/</link><description>Recent content in Proxmox on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/proxmox/index.xml" rel="self" type="application/rss+xml"/><item><title>GNS3 VM in Proxmox VE</title><link>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</guid><description>&lt;p>Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You&amp;rsquo;re in luck, below you can find steps on how to do just that as long as you meet a few server requirements.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="requirements">Requirements&lt;/h1>
+&lt;ul>
+&lt;li>Proxmox VE with 3-4&lt;/li>
+&lt;li>A VM storage device that supports .qcow2 files&lt;/li>
+&lt;li>Location of VM disks on your Proxmox Server&lt;/li>
+&lt;li>FTP and Shell access to your Proxmox Server&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="download-the-ova-file">Download the .ova file&lt;/h1>
+&lt;p>Head over to the GNS3 website and download the ESXi VM &lt;a class="link" href="https://gns3.com/software/download-vm" target="_blank" rel="noopener"
+>https://gns3.com/software/download-vm&lt;/a>&lt;/p>
+&lt;p>Keep in mind, this will ask you to create an account before you can download.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="upload-the-ova-file-to-your-server">Upload the .ova file to your server&lt;/h1>
+&lt;p>Now you will need to get the downloaded file onto your Proxmox server&lt;/p>
+&lt;ul>
+&lt;li>Open your favorite FTP client on your computer. In my case, I&amp;rsquo;m using WinSCP to do this&lt;/li>
+&lt;li>Connect to your Proxmox server using either its IP address or hostname&lt;/li>
+&lt;li>On the left pane (your local machine), navigate to where the &lt;code>.ova&lt;/code> file is&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile.png"
+width="488"
+height="85"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile_hu52dbf2389f55907a4797863c40ffd1b2_4546_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winscp_localFile_hu52dbf2389f55907a4797863c40ffd1b2_4546_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Local OVA"
+class="gallery-image"
+data-flex-grow="574"
+data-flex-basis="1377px"
+>&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;ul>
+&lt;li>On the right pane (the server), create a new directory, naming whatever you want&lt;/li>
+&lt;li>I&amp;rsquo;ll be putting mine underthe &lt;code>/root&lt;/code> directory&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir.png"
+width="522"
+height="72"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir_hu2df7b9856d778360d197c4fec2391e01_4079_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_rootDir_hu2df7b9856d778360d197c4fec2391e01_4079_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Remote Directory"
+class="gallery-image"
+data-flex-grow="725"
+data-flex-basis="1740px"
+>&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;ul>
+&lt;li>Now, drag the &lt;code>.ova&lt;/code> file from the left side to the right side, and you will see the upload begin&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload.png"
+width="357"
+height="201"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload_hud8dcb7040d4e35f6ee477344c55964e0_9760_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/winScp_upload_hud8dcb7040d4e35f6ee477344c55964e0_9760_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="File Upload"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="create-a-vm-in-proxmox">Create a VM in Proxmox&lt;/h1>
+&lt;p>Now we&amp;rsquo;re going to want to create a VM in Proxmox that we will be adding hard disk to&lt;/p>
+&lt;ul>
+&lt;li>Create a VM by clicking &amp;ldquo;Create VM&amp;rdquo; on the top right&lt;/li>
+&lt;li>Under &amp;ldquo;General&amp;rdquo;, you can use any ID starting from 100 that you like, take note of this. Name it whatever you would like&lt;/li>
+&lt;li>Under &amp;ldquo;OS&amp;rdquo;, select the radio button to not use any media&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media.png"
+width="331"
+height="265"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media_hu22615d4374964dd954a424ec944c1a50_11932_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_media_hu22615d4374964dd954a424ec944c1a50_11932_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Create VM - Media"
+class="gallery-image"
+data-flex-grow="124"
+data-flex-basis="299px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Under &amp;ldquo;System&amp;rdquo;, select your preferred graphics card (I will be using the VirtIO option), and make sure &amp;ldquo;SeaBIOS&amp;rdquo; is selected&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system.png"
+width="370"
+height="203"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system_hu144e48e87e7615a05aa0bed7ee4c5ef0_9687_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_system_hu144e48e87e7615a05aa0bed7ee4c5ef0_9687_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Create VM - System"
+class="gallery-image"
+data-flex-grow="182"
+data-flex-basis="437px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Under &amp;ldquo;Storage&amp;rdquo;, make sure SCSI is selected, and a qcow2 compatible storage device is selected&lt;/li>
+&lt;li>Under CPU, give it at least 3 cores to run with, and make sure to select &amp;lsquo;host&amp;rsquo; for the type&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu.png"
+width="700"
+height="231"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu_hud110e020dfeeb55b5cb563aee5f24613_16409_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/createVm_cpu_hud110e020dfeeb55b5cb563aee5f24613_16409_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Create VM - CPU"
+class="gallery-image"
+data-flex-grow="303"
+data-flex-basis="727px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Under &amp;ldquo;Memory&amp;rdquo;, give it at least 4096MB of RAM&lt;/li>
+&lt;li>Set your preferred settings under &amp;ldquo;Network&amp;rdquo;, the default model will work just fine and should have the best performance&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="create-secondary-hard-disk">Create secondary hard disk&lt;/h1>
+&lt;ul>
+&lt;li>Navigate to the newly created VM&lt;/li>
+&lt;li>Go to the &amp;ldquo;Hardware&amp;rdquo; tab&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add.png"
+width="222"
+height="142"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add_hu5728a90c7b8a6edcc3c64c33f0836e44_7121_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/hardware_add_hu5728a90c7b8a6edcc3c64c33f0836e44_7121_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="VM - Add Hardware"
+class="gallery-image"
+data-flex-grow="156"
+data-flex-basis="375px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Select the same storage device that you chose when creating the VM&lt;/li>
+&lt;li>Change the size to whatever you would like to make it&lt;/li>
+&lt;li>Click the &amp;lsquo;Add&amp;rsquo; button at the bottom&lt;/li>
+&lt;li>You should now have 2 hard disks in the machine, &amp;lsquo;scsi0&amp;rsquo; and &amp;lsquo;scsi1&amp;rsquo;&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="extract-files-from-the-ova-file">Extract files from the .ova file&lt;/h1>
+&lt;p>We will need to grab files that are packaged into the file downloaded from the GNS3 website. .ova files typically contain 2 main parts: VM Configuration settings (we just did this), and virtual hard disks (In the .vmdk format)&lt;/p>
+&lt;ul>
+&lt;li>First access the shell of the Proxmox server, this can be either over SSH, or using the shell tab in Proxmox&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell.png"
+width="338"
+height="131"
+srcset="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell_hu4ca0cf01b7ef3c90e0e860582e6030be_9278_480x0_resize_box_3.png 480w, https://thequib.github.io/p/gns3-vm-in-proxmox-ve/proxmoxHost_shell_hu4ca0cf01b7ef3c90e0e860582e6030be_9278_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Proxmox Shell"
+class="gallery-image"
+data-flex-grow="258"
+data-flex-basis="619px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Change your current directory to where you stored the .ova file earlier using the &amp;lsquo;cd&amp;rsquo; command. In my case, that would be:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /root/GNS2.2.20
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Now, to extract the files using tar to the current directory, and list the new files&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tar -xvf *.ova
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This will show the new files in the current directory, these should be:
+&lt;ul>
+&lt;li>&lt;code>GNS3 VM-disk001.vmdk&lt;/code>&lt;/li>
+&lt;li>&lt;code>GNS3 VM-disk002.vmdk&lt;/code>&lt;/li>
+&lt;li>&lt;code>GNS3 VM.ovf&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>The 2 &lt;code>.vmdk&lt;/code> files are the virtual hard disks, and the &lt;code>.ovf&lt;/code> file is the VM configuration file&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="convert-vmdk-files-to-qcow2-qemu-files">Convert .vmdk files to .qcow2 qemu files&lt;/h1>
+&lt;p>In order for Proxmox to properly use the hard disks we just snatched, we need to convert them to .qcow2 (qemu) hard disks&lt;/p>
+&lt;ul>
+&lt;li>Get that VM ID you set earlier when creating the VM, I used 501 in my case&lt;/li>
+&lt;li>Convert each file, replacing vmid with your VM ID:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">qemu-img convert -f vmdk &lt;span class="s1">&amp;#39;GNS3 VM-disk001.vmdk&amp;#39;&lt;/span> -O qcow2 vm-vmid-disk-0.qcow2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qemu-img convert -f vmdk &lt;span class="s1">&amp;#39;GNS3 VM-disk002.vmdk&amp;#39;&lt;/span> -O qcow2 vm-vmid-disk-1.qcow2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Here&amp;rsquo;s an example of what mine looked like:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">qemu-img convert -f vmdk &lt;span class="s1">&amp;#39;GNS3 VM-disk001.vmdk&amp;#39;&lt;/span> -O qcow2 vm-501-disk-0.qcow2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">qemu-img convert -f vmdk &lt;span class="s1">&amp;#39;GNS3 VM-disk002.vmdk&amp;#39;&lt;/span> -O qcow2 vm-501-disk-1.qcow2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="copy-the-newly-converted-qcow2-files">Copy the newly converted .qcow2 files&lt;/h1>
+&lt;p>Now we can copy the files to the VM folder!&lt;/p>
+&lt;ul>
+&lt;li>Make sure you&amp;rsquo;re still in the same directory as the .qcow2 files&lt;/li>
+&lt;li>Find the directory of the VM you will be copying the files to
+&lt;ul>
+&lt;li>In my case, my GNS3 VM is located at /mnt/pve/Proxmox-1-VM/images/501&lt;/li>
+&lt;li>501 in this directory is my VM ID&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Use the &lt;code>cp&lt;/code> command to copy the files to the vm directory&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cp vm-vmid-disk-0.qcow2 /directory/of/vm/vm-vmid/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp vm-vmid-disk-1.qcow2 /directory/of/vm/vm-vmid/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Here&amp;rsquo;s an example of what mine looked like:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cp vm-501-disk-0.qcow2 /mnt/pve/Proxmox1-VM-images-501/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cp vm-501-disk-1.qcow2 /mnt/pve/Proxmox1-VM-images-501/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="start-the-vm">Start the VM&lt;/h1>
+&lt;p>Now you should be good to go! Try and start the VM, and head to the console tab. GNS3 should start to load, and you can begin creating your virtual networks!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="optional---install-qemu-guest-agent-on-gns3">Optional - Install qemu-guest-agent on GNS3&lt;/h1>
+&lt;p>I know that when I have a VM in Proxmox, I like to get some quick information sometimes straight from the GUI&amp;hellip; such as the VM&amp;rsquo;s IP address. This is only possible if the qemu guest agent installed on the machine.&lt;/p>
+&lt;p>Lucky for us, the GNS3 VM runs on Ubuntu, so this is pretty easy!&lt;/p>
+&lt;ul>
+&lt;li>Once GNS3 is loaded, go to the console tab, and press enter in the window to hit OK&lt;/li>
+&lt;li>Arrow-down to the option &amp;ldquo;Shell&amp;rdquo; and hit enter&lt;/li>
+&lt;li>In the shell, type the following commands:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install qemu-guest-agent
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl start qemu-guest-agent
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This will update the repository, install the guest agent, and start the guest agent service&lt;/li>
+&lt;li>Now, click the &amp;ldquo;Summary&amp;rdquo; tab of the VM in Proxmox, more information (such as the VM&amp;rsquo;s IP address) will now show right there!&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Note: If the guest agent information doesn&amp;rsquo;t show, try reloading the web page&lt;/em>&lt;/p></description></item></channel></rss>

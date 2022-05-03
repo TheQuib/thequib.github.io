@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on QuibTech</title><link>https://thequib.github.io/categories/python/</link><description>Recent content in Python on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 17 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with Network Automation</title><link>https://thequib.github.io/p/getting-started-with-network-automation/</link><pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-network-automation/</guid><description>&lt;p>Ever though about an easier way to configure tons of network devices easily? Python is definitely the answer to get started, and as long as you have a basic understanding of programming, it&amp;rsquo;s pretty simple, and tons of fun!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>Python version 3.9 or higher&lt;/li>
+&lt;li>An IDE that supports the Python language&lt;/li>
+&lt;li>Some sort of appliance you can connect to via SSH
+&lt;ul>
+&lt;li>I will be using a Cisco IOS appliance here running in GNS3&lt;/li>
+&lt;li>A Linux VM will also work&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>In this post, I&amp;rsquo;ll be using Visual Studio Code as my IDE, you can download that &lt;a class="link" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"
+>here&lt;/a> if you are interested.&lt;/p>
+&lt;p>You can find all of my &lt;a class="link" href="https://github.com/TheQuib/python-network-automation" target="_blank" rel="noopener"
+>scripts&lt;/a>, and other projects on my &lt;a class="link" href="https://github.com/TheQuib" target="_blank" rel="noopener"
+>GitHub page&lt;/a>.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="before-you-start">Before you Start&lt;/h1>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>This is only if you are using Visual Studio Code as your IDE&lt;/em>&lt;/p>
+&lt;p>VS Code gets a little funky when it comes to installed python libraries. First, make sure you install the latest version of Python from the Microsoft Store&amp;hellip; Code will look to the installation path of this by default.&lt;/p>
+&lt;p>After installation:&lt;/p>
+&lt;ol>
+&lt;li>Open VS Code&lt;/li>
+&lt;li>Open or create a Python file (use the extension &lt;em>.py&lt;/em> to tell Code to use Python)&lt;/li>
+&lt;li>On the bottom-left of the window, click the Python version number, this should open a box at the top of the screen&lt;/li>
+&lt;li>Select &amp;ldquo;&lt;em>Entire Workspace&lt;/em>&amp;rdquo;&lt;/li>
+&lt;li>Choose the following option from the list:&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter.png"
+width="898"
+height="70"
+srcset="https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_480x0_resize_box_3.png 480w, https://thequib.github.io/p/getting-started-with-network-automation/selectInterpreter_hua8be6abbf3a39391b195b18f2b73d718_10706_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Select Python Interpreter"
+class="gallery-image"
+data-flex-grow="1282"
+data-flex-basis="3078px"
+>&lt;/p>
+&lt;p>Now you should be all goood to go!&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="installing-netmiko">Installing Netmiko&lt;/h1>
+&lt;p>Netmiko is, in my opinion, the best all-in-one network automation tool to use in Python. Netmiko has a multitude of supported devices; including Linux, Cisco (IOS, NX-OS, etc), HP Enterprise, and TONS more.&lt;/p>
+&lt;p>To install Netmiko on your computer, open a terminal and type:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">python3 -m pip install netmiko
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, open your IDE and create a new Python file, enter the following code and run it to test installation:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">Netmiko&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If you run this, and it doesn&amp;rsquo;t do anything, that&amp;rsquo;s good! This just means that the library imported with no problems.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="setting-up-netmiko">Setting up Netmiko&lt;/h1>
+&lt;p>Network automation is all about doing the similar tasks on tons of devices from a single place. That doesn&amp;rsquo;t mean you have to have a hundred devices to do some automation work.&lt;/p>
+&lt;p>In my case, I will be using the Cisco Modeling Labs IOSv router image (in GNS3), so my commands will be IOS specific. I&amp;rsquo;ll have some information down below so you can set up a Linux machine if you want as well :)&lt;/p>
+&lt;p>First, we&amp;rsquo;ll need to import the ConnectHandler module from Netmiko:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># NEtwork automation module&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">netmiko&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then let&amp;rsquo;s get some username and password information from the user:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Module used to hide passwords in the console&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">getpass&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for username&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">username&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a username to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for password using getpass&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a password to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for secret password&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">secret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a secret password to enable with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now we&amp;rsquo;ll want to set up information that Netmiko will use for the actual connection. Type the following code and note the comments:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">host&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Command to be sent to the machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;ip address&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This code creates a Python dictionary that contains the items &lt;em>device_type&lt;/em>, &lt;em>host&lt;/em>, &lt;em>password&lt;/em>, &lt;em>secret&lt;/em>, and &lt;em>use_keys&lt;/em>, and then sets a variable to the string &lt;em>&amp;lsquo;ip address&amp;rsquo;&lt;/em>.&lt;/p>
+&lt;p>Most of these are pretty self explanatory, &lt;em>use_keys&lt;/em> will bypass the prompt SSH gives back when connecting to an unknown device for the first time.&lt;/p>
+&lt;p>If you wanted to try this on multiple devices, tweak your code to use a list for hosts and a for loop as such:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hosts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;4.3.2.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">host&lt;/span> &lt;span class="ow">in&lt;/span>  &lt;span class="n">hosts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Command to be sent to the machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;sh run&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="sending-your-first-command">Sending your first command&lt;/h1>
+&lt;p>Now we&amp;rsquo;re ready to send a command to your device / devices! Let&amp;rsquo;s get started by creating a Netmiko &lt;code>ConnectHandler&lt;/code> variable by adding this line:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ssh&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ConnectHandler&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="n">hostConfig&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, we can act on the variable &lt;em>ssh&lt;/em> to send commands to our device. Using &lt;em>send_command&lt;/em>, which is used specifically for sending a single command via Netmiko (this will utilize the &lt;em>command&lt;/em> variable we set in the previous step):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">output&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ssh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_command&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">command&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now go ahead and run your program! If you put everything in correctly, you should see the output of the Linux command &lt;code>ip addr&lt;/code> in your terminal.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="sending-multiple-commands">Sending multiple commands&lt;/h1>
+&lt;p>Automation isn&amp;rsquo;t just about sending a single command to devices. While this can be pretty useful, especially for gathering some information (like switch configs), sending multiple commands can prove to be extremely useful and time-saving, especially when you&amp;rsquo;re configuring tons of devices.&lt;/p>
+&lt;p>In the previous step, we used the function &lt;strong>send_command()&lt;/strong>, which only sends one command. For multiple configuration commands, there is a function called &lt;strong>send_config_set()&lt;/strong>, which accepts a list in its parameters.&lt;/p>
+&lt;p>So first, let&amp;rsquo;s create a list:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">config&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;int gi0/1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;ip address 172.16.0.1 255.255.0.0&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, instead of &lt;em>send_command()&lt;/em>, we can use the following to send our &lt;em>config&lt;/em> variable instead:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ssh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_config_set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

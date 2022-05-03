@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terraform on QuibTech</title><link>https://thequib.github.io/categories/terraform/</link><description>Recent content in Terraform on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/terraform/index.xml" rel="self" type="application/rss+xml"/><item><title>Manage Discord Servers with Terraform</title><link>https://thequib.github.io/p/manage-discord-servers-with-terraform/</link><pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-discord-servers-with-terraform/</guid><description>&lt;img src="https://thequib.github.io/p/manage-discord-servers-with-terraform/featuredImage.png" alt="Featured image of post Manage Discord Servers with Terraform" />&lt;p>Something everyone is dying to do&amp;hellip; Code-driven Discord server management.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="requirements">Requirements&lt;/h1>
+&lt;ul>
+&lt;li>Discord API Token
+&lt;ul>
+&lt;li>&lt;a class="link" href="#obtain-discord-api-token" >Learn how to get this&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Some knowledge with Terraform (to understand what is going on)&lt;/li>
+&lt;li>Terraform 0.13 and up&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="source-code">Source Code&lt;/h1>
+&lt;p>All of my code and related files can be found in my &lt;a class="link" href="https://github.com/TheQuib/overture" target="_blank" rel="noopener"
+>Overture Repo&lt;/a>.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="obtain-discord-api-token">Obtain Discord API Token&lt;/h1>
+&lt;ul>
+&lt;li>Head over to the &lt;a class="link" href="https://discord.com/developers/" target="_blank" rel="noopener"
+>Discord Developer Portal&lt;/a>&lt;/li>
+&lt;li>Get logged in&lt;/li>
+&lt;li>Create a new application&lt;/li>
+&lt;li>Name this whatever you want
+&lt;ul>
+&lt;li>Ex: &amp;ldquo;Terraform&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Once in your new application, head over to the &amp;ldquo;Bot&amp;rdquo; section&lt;/li>
+&lt;li>Click &amp;ldquo;Add Bot&amp;rdquo;&lt;/li>
+&lt;li>Give the bot a name (or leave the default name)
+&lt;ul>
+&lt;li>Ex: &amp;ldquo;Mr. Terraform&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Click the &amp;ldquo;Reset Token&amp;rdquo; button
+&lt;ul>
+&lt;li>This will give you your token, and is the only time it will be displayed&lt;/li>
+&lt;li>Make sure you keep this in a safe place, and treat it like a password&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Use this token in your &lt;a class="link" href="credentials.auto.tfvars.example" >credentials.auto.tfvars&lt;/a> file&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h1 id="terraform-provider-information">Terraform Provider Information&lt;/h1>
+&lt;p>The provider used here is &lt;a class="link" href="https://registry.terraform.io/providers/Chaotic-Logic/discord/latest" target="_blank" rel="noopener"
+>discord&lt;/a> by &lt;a class="link" href="https://registry.terraform.io/namespaces/Chaotic-Logic" target="_blank" rel="noopener"
+>Chaotic Logic&lt;/a> (&lt;a class="link" href="https://github.com/Chaotic-Logic/terraform-provider-discord" target="_blank" rel="noopener"
+>Source&lt;/a>).&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="get-started">Get started&lt;/h1>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>Make sure you have your Discord API token ready&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="prepare-terraform">Prepare Terraform&lt;/h2>
+&lt;p>To get Terraform ready, create a file in the same directory called &lt;code>provider.tf&lt;/code>, and paste the following information into it:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">terraform&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">required_version&lt;/span> = &lt;span class="s2">&amp;#34;&amp;gt;= 0.13.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">required_providers&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">discord&lt;/span> = &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">source&lt;/span> = &lt;span class="s2">&amp;#34;Chaotic-Logic/discord&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">version&lt;/span> = &lt;span class="s2">&amp;#34;0.0.1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">provider&lt;/span> &lt;span class="s2">&amp;#34;discord&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">token&lt;/span> = &lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_token&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Now, get the required provider downloaded (&lt;code>cd&lt;/code> into your Terraform directory first):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">terraform init
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="create-credentials-file">Create credentials file&lt;/h2>
+&lt;p>Create a new directory, and &lt;code>cd&lt;/code> into it. Then create a file in there called &lt;code>credentials.auto.tfvars&lt;/code>.&lt;/p>
+&lt;p>Paste the following information in:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">discord_token = &amp;#34;YourDiscordApiToken&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server_name = &amp;#34;NewServerName&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server_region = &amp;#34;us-east&amp;#34; # Region to host in (Brazil | Europe | Hong Kong | India | Rapan | Russia | Singapore | South Africa | Sydney | US (Central | East | South | West))
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">category_name = &amp;#34;NewCategoryName&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">text_channel_name = &amp;#34;NewTextChannelName&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You&amp;rsquo;ll want to edit the values (in quotations) as needed, filling in &lt;code>discord_token&lt;/code> with &lt;em>your&lt;/em> API token received from &lt;a class="link" href="#obtain-discord-api-token" >here&lt;/a>, it would be best to choose a region closest to you.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="create-variables-file">Create variables file&lt;/h2>
+&lt;p>While the &lt;code>credentials.auto.tfvars&lt;/code> assigns values to variables, the variables still need to be defined within Terraform. Create a file called &lt;code>variables.tf&lt;/code> to store these, paste the following contents (one per assigned variable from &lt;a class="link" href="#create-credentials-file" >above&lt;/a>):&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;discord_token&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">sensitive&lt;/span> = &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;server_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;server_region&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;category_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">variable&lt;/span> &lt;span class="s2">&amp;#34;text_channel_name&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">type&lt;/span> = &lt;span class="nx">string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="create-a-server">Create a server&lt;/h2>
+&lt;p>In the same directory as your &lt;code>provider.tf&lt;/code> file, create a file called &lt;code>createServer.tf&lt;/code>.&lt;/p>
+&lt;p>Paste the following information:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># Create a server
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">resource &amp;#34;discord_server&amp;#34; &amp;#34;my_server&amp;#34; {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> name = var.server_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> region = var.server_region
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> default_message_notifications = 0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Get newly created server&amp;#39;s ID
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">data &amp;#34;discord_server&amp;#34; &amp;#34;createdServerInfo&amp;#34; {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_id = resource.discord_server.my_server.id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The block &lt;code>discord_server.my_server&lt;/code> creates a Discord server with a given name and region assigned from the &lt;code>credentials.auto.tfvars&lt;/code> file.&lt;/li>
+&lt;li>Then saves the &lt;code>id&lt;/code> of the server in &lt;code>data.discord_server.createdServerInfo&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="create-a-text-channel">Create a text channel&lt;/h2>
+&lt;p>Now, we need to add a general channel for the server!&lt;/p>
+&lt;p>I found the provider requires a category channel needs created, and channels be placed under that category&amp;hellip; so we can do this in one shot:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_category_channel&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;general&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">depends_on&lt;/span> = &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr"> data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name&lt;/span> = &lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">category_name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">position&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server_id&lt;/span> = &lt;span class="nb">data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_text_channel&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;general&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">depends_on&lt;/span> = &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr"> resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_category_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name&lt;/span> = &lt;span class="nb">lower&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">var&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">text_channel_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">position&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">server_id&lt;/span> = &lt;span class="nb">data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_server&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">createdServerInfo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">category&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_category_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do-1">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The block &lt;code>discord_category_channel.general&lt;/code> creates a &amp;ldquo;general&amp;rdquo; category, which also depends on &lt;code>data.discords_server.createdServerInfo&lt;/code> to contain information (ensuring the server is created before the category is)
+&lt;ul>
+&lt;li>This places the category in the server that we created by supplying its &lt;code>id&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The block &lt;code>discord_text_channel.general&lt;/code> creates a &amp;ldquo;general&amp;rdquo; text channel, which falls under the &amp;ldquo;general&amp;rdquo; category. Just like the category depends on the server to exist, this text channel depends on the category to exist.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="create-an-invite">Create an invite&lt;/h2>
+&lt;p>Now, we need a way to actually see all of the work Terraform will perform. Since a &lt;a class="link" href="https://discord.com/developers/docs/intro#bots-and-apps" target="_blank" rel="noopener"
+>Bot&lt;/a> is what created the server and everything in it, we need an invite so our own user can join the server and interact with it.&lt;/p>
+&lt;p>So, create yet &lt;strong>another&lt;/strong> file, call this one &lt;code>createServerInvite.tf&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">resource&lt;/span> &lt;span class="s2">&amp;#34;discord_invite&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;inviteMe&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">channel_id&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_text_channel&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">general&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">max_age&lt;/span> = &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">output&lt;/span> &lt;span class="s2">&amp;#34;invite_info&amp;#34;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">value&lt;/span> = &lt;span class="nx">resource&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">discord_invite&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">inviteMe&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">id&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-does-this-do-2">What does this do?&lt;/h3>
+&lt;ul>
+&lt;li>The &lt;code>discord_invite.inviteMe&lt;/code> block will create a non-expiring invite code that we can use to join the server, placing the invite under the channel we created earlier (by &lt;code>id&lt;/code>)&lt;/li>
+&lt;li>The &lt;code>output.invite_info&lt;/code> block will print the invite code as a string to the terminal in a cleaner, more easily-found fashion.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="let-terraform-do-the-work-and-join-your-server">Let Terraform do the work, and join your server!&lt;/h2>
+&lt;p>Now, open a terminal session, &lt;code>cd&lt;/code> into your Terraform files directory and run &lt;code>terraform plan&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>This will show you what Terraform will do
+&lt;ul>
+&lt;li>You may have to correct some errors before you can proceed&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Then, just run &lt;code>terraform apply -auto-approve&lt;/code> to create the server.&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>In the terminal, something like this will show:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Outputs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">invite_info = &amp;#34;kvdyTVBuUs&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>This &lt;code>invite_info&lt;/code> is what you need to join the server. To do this:&lt;/p>
+&lt;ul>
+&lt;li>Open your Discord client&lt;/li>
+&lt;li>Click the &amp;ldquo;+&amp;rdquo; button under the list of joined servers to &amp;ldquo;Add a Server&amp;rdquo;&lt;/li>
+&lt;li>Under &amp;ldquo;Have an invite already?&amp;rdquo;, click the &amp;ldquo;Join Server&amp;rdquo; button&lt;/li>
+&lt;li>Enter the code given by the terminal (you don&amp;rsquo;t need a URL, just the code), and click &amp;ldquo;Join Server&amp;rdquo;!&lt;/li>
+&lt;/ul>
+&lt;p>You should now be a member of the new server, and you should also see a shiny new text channel titled &lt;code>general&lt;/code>.&lt;/p></description></item></channel></rss>
