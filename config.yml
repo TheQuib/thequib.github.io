@@ -1,8 +1,17 @@
+# Site settings
+
 baseurl: "https://thequib.github.io"
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
 title: QuibTech
+
+permalinks:
+  post: /p/:slug/
+  page: /:slug/
+
+
+# Language preferences
 
 languages:
   en:
@@ -10,18 +19,17 @@ languages:
     title: QuibTech
     weight: 1
 
-# Change it to your Disqus shortname before using
-disqusShortname: quibtech
-
 DefaultContentLanguage: en
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: false
 
-permalinks:
-  post: /p/:slug/
-  page: /:slug/
+
+disqusShortname: quibtech
+
+
+# site parameters
 
 params:
   mainSections:
