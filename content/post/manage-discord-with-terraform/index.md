@@ -4,7 +4,7 @@ title: "Manage Discord Servers with Terraform"
 date: "2022-05-01"
 description: "Managing Discord servers with code has never been easier."
 tags: ["networking", "terraform", "IaC"]
-categories: ["Terraform", "Discord", "Infrastructure as Code", "Automation"]
+categories: ["Terraform", "Discord", "Automation"]
 image: featuredImage.png
 ---
 
