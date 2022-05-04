@@ -3,15 +3,13 @@
 &lt;p>This site, built using the &lt;a class="link" href="https://gohugo.io" target="_blank" rel="noopener"
 >Hugo Static Site Generator&lt;/a>, is a fun little project I also took on as a part of my homelab, hosted on GitHub.&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>About</title><link>https://thequib.github.io/about/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/about/</guid><description>&lt;h2 id="-hi-my-name-is-quinn">👋 Hi, my name is Quinn.&lt;/h2>
+&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>About</title><link>https://thequib.github.io/about/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/about/</guid><description>&lt;img src="https://thequib.github.io/about/featuredImage.png" alt="Featured image of post About" />&lt;h2 id="-hi-my-name-is-quinn">👋 Hi, my name is Quinn.&lt;/h2>
 &lt;p>I&amp;rsquo;m a network administrator at a public school district, where I provide user support and systems administration of both Linux and Windows systems. I also dabble in all sorts of IT related fields and an avid proponent of open source.&lt;/p>
-&lt;p> &lt;/p>
 &lt;p>&lt;a class="link" href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener"
 >&lt;img src="https://github-readme-stats.vercel.app/api?username=TheQuib&amp;amp;show_icons=true&amp;amp;theme=radical"
 loading="lazy"
 alt="Quinn&amp;rsquo;s GitHub stats"
 >&lt;/a>&lt;/p>
-&lt;p> &lt;/p>
 &lt;h3 id="here-youll-find">Here, you&amp;rsquo;ll find&amp;hellip;&lt;/h3>
 &lt;ul>
 &lt;li>&lt;a class="link" href="#-interests" >My Interests&lt;/a>&lt;/li>
@@ -21,9 +19,7 @@ alt="Quinn&amp;rsquo;s GitHub stats"
 &lt;li>&lt;a class="link" href="#-education" >My Education&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="#-attributions" >Some Attributions&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p> &lt;/p>
 &lt;hr>
-&lt;p> &lt;/p>
 &lt;h2 id="-interests">😎 Interests&lt;/h2>
 &lt;ul>
 &lt;li>Homelabbing
@@ -68,9 +64,7 @@ alt="Quinn&amp;rsquo;s GitHub stats"
 &lt;li>Kubernetes&lt;/li>
 &lt;li>Grafana&lt;/li>
 &lt;/ul>
-&lt;p> &lt;/p>
 &lt;hr>
-&lt;p> &lt;/p>
 &lt;h2 id="-experience">📜 Experience&lt;/h2>
 &lt;h3 id="jersey-shore-area-school-district">Jersey Shore Area School District&lt;/h3>
 &lt;p>&lt;a class="link" href="https://www.jsasd.org" target="_blank" rel="noopener"
@@ -85,7 +79,6 @@ alt="Quinn&amp;rsquo;s GitHub stats"
 >westbrancharts.org&lt;/a>&lt;/p>
 &lt;p>&lt;strong>Website Designer&lt;/strong>&lt;/p>
 &lt;p>&lt;em>2019 - Present&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;hr>
 &lt;h2 id="-education">🎓 Education&lt;/h2>
 &lt;h3 id="pennsylvania-college-of-technology">Pennsylvania College of Technology&lt;/h3>
@@ -93,7 +86,6 @@ alt="Quinn&amp;rsquo;s GitHub stats"
 &lt;p>&lt;em>2019 - Present&lt;/em>&lt;/p>
 &lt;p>&lt;em>&lt;strong>Associates Degree, Computer and Information Sciences&lt;/strong>&lt;/em>&lt;/p>
 &lt;p>&lt;em>2019-2021&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;hr>
 &lt;h2 id="-attributions">🤝 Attributions&lt;/h2>
 &lt;p>&lt;a class="link" href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener"
@@ -446,7 +438,7 @@ alt="Quinn&amp;rsquo;s GitHub stats"
 &lt;li>Under &amp;ldquo;Have an invite already?&amp;rdquo;, click the &amp;ldquo;Join Server&amp;rdquo; button&lt;/li>
 &lt;li>Enter the code given by the terminal (you don&amp;rsquo;t need a URL, just the code), and click &amp;ldquo;Join Server&amp;rdquo;!&lt;/li>
 &lt;/ul>
-&lt;p>You should now be a member of the new server, and you should also see a shiny new text channel titled &lt;code>general&lt;/code>.&lt;/p></description></item><item><title>Create a Static Website</title><link>https://thequib.github.io/p/create-a-static-website/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/create-a-static-website/</guid><description>&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
+&lt;p>You should now be a member of the new server, and you should also see a shiny new text channel titled &lt;code>general&lt;/code>.&lt;/p></description></item><item><title>Create a Static Website</title><link>https://thequib.github.io/p/create-a-static-website/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/create-a-static-website/</guid><description>&lt;img src="https://thequib.github.io/p/create-a-static-website/featuredImage.png" alt="Featured image of post Create a Static Website" />&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
 &lt;p>Hugo is one of many different static site generators. The most popular is called &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
 >Jekyll&lt;/a>, and is a bit simpler to use than Hugo. It&amp;rsquo;s mostly personal preference, but here we&amp;rsquo;ll be going through setup for Hugo.&lt;/p>
 &lt;p> &lt;/p>
@@ -619,7 +611,7 @@ data-flex-basis="1132px"
 &lt;hr>
 &lt;p> &lt;/p>
 &lt;h1 id="extra-note">Extra note&lt;/h1>
-&lt;p>If you want to generate all HTML files for this site, run the command &lt;code>hugo -v&lt;/code>, this will create a directory named &lt;code>public&lt;/code> and you can copy the files there to your webserver of choice.&lt;/p></description></item><item><title>UniFi Doorbell G4 Custom Chime</title><link>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</guid><description>&lt;p>So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.&lt;/p>
+&lt;p>If you want to generate all HTML files for this site, run the command &lt;code>hugo -v&lt;/code>, this will create a directory named &lt;code>public&lt;/code> and you can copy the files there to your webserver of choice.&lt;/p></description></item><item><title>UniFi Doorbell G4 Custom Chime</title><link>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</guid><description>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/featuredImage.png" alt="Featured image of post UniFi Doorbell G4 Custom Chime" />&lt;p>So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.&lt;/p>
 &lt;p>While the out of box experience is great, I couldn’t help myself but look up how I can get my own ring (or &amp;ldquo;chime&amp;rdquo; as Ubiquiti calls it) uploaded to my doorbell. This requires a bit of work using some SSH, but it’s extremely fun to play around with.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h1 id="the-scoop">The scoop&lt;/h1>
@@ -1557,26 +1549,21 @@ data-flex-basis="619px"
 &lt;p>Instagram: &lt;a class="link" href="https://www.instagram.com/tatenaugle/" target="_blank" rel="noopener"
 >Tate Naugle&lt;/a>&lt;/p>
 &lt;p>Instagram (Business): &lt;a class="link" href="https://www.instagram.com/perceivestudios/" target="_blank" rel="noopener"
->Percieve Studios&lt;/a>&lt;/p></description></item><item><title>Links</title><link>https://thequib.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/links/</guid><description/></item><item><title>Projects</title><link>https://thequib.github.io/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/projects/</guid><description>&lt;p>Just a few projects I&amp;rsquo;ve worked on along the way.&lt;/p>
-&lt;p> &lt;/p>
+>Percieve Studios&lt;/a>&lt;/p></description></item><item><title>Posts</title><link>https://thequib.github.io/post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/post/</guid><description/></item><item><title>Projects</title><link>https://thequib.github.io/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/projects/</guid><description>&lt;p>Just a few projects I&amp;rsquo;ve worked on along the way.&lt;/p>
 &lt;hr>
 &lt;h2 id="projects">Projects&lt;/h2>
 &lt;h3 id="enterprise-door-access-system">Enterprise Door Access System&lt;/h3>
 &lt;p>Organization and configuration of an enterprise door access system across 6 buildings from &lt;em>Verkada&lt;/em>.&lt;/p>
 &lt;p>&lt;em>&lt;strong>2022&lt;/strong>&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;h3 id="ubiquiti-unifi-network">Ubiquiti UniFi Network&lt;/h3>
 &lt;p>Deployment of a managed Ubiquiti UniFi network. Including routing, switching and wireless.&lt;/p>
 &lt;p>&lt;em>&lt;strong>2021&lt;/strong>&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;h3 id="enterprise-wireless-system">Enterprise Wireless System&lt;/h3>
 &lt;p>Migration / deployment of existing and new access points in a managed wireless system from &lt;em>Ruckus Wireless&lt;/em>, including API development of wireless automation tasks with &lt;em>Python&lt;/em>.&lt;/p>
 &lt;p>&lt;em>&lt;strong>2021&lt;/strong>&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;h3 id="enterprise-security-camera-system">Enterprise Security Camera System&lt;/h3>
 &lt;p>Organization, installation and configuration of an enterprise security camera system across 6 buildings from &lt;em>Verkada&lt;/em>.&lt;/p>
 &lt;p>&lt;em>&lt;strong>2020&lt;/strong>&lt;/em>&lt;/p>
-&lt;p> &lt;/p>
 &lt;h3 id="help-desk-ticketing-system">Help Desk Ticketing System&lt;/h3>
 &lt;p>Design, management and automation of a help desk ticketing system built on the Microsoft Power Platform using Power Apps, Power Automate, and SharePoint.&lt;/p>
 &lt;p>&lt;em>&lt;strong>2020&lt;/strong>&lt;/em>&lt;/p></description></item><item><title>Search</title><link>https://thequib.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thequib.github.io/search/</guid><description/></item></channel></rss>
