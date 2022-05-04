@@ -3,11 +3,11 @@ title: "Friends"
 description: "A few friends I made along the way."
 slug: "friends"
 comments: false
-menu:
-  main:
-    weight: -80
-    params:
-      icon: infinity
+#menu:
+#  main:
+#    weight: -80
+#    params:
+#      icon: infinity
 ---
 
 # A quick shout-out to these guys, check them out!

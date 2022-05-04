@@ -11,6 +11,7 @@ menu:
     weight: -90
     params:
       icon: user
+image: featuredImage.png
 ---
 
 
@@ -18,11 +19,8 @@ menu:
 
 I'm a network administrator at a public school district, where I provide user support and systems administration of both Linux and Windows systems. I also dabble in all sorts of IT related fields and an avid proponent of open source.
 
-&nbsp;
-
 [![Quinn's GitHub stats](https://github-readme-stats.vercel.app/api?username=TheQuib&show_icons=true&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
 
-&nbsp;
 
 ### Here, you'll find...
 
@@ -33,11 +31,7 @@ I'm a network administrator at a public school district, where I provide user su
  - [My Education](#-education)
  - [Some Attributions](#-attributions)
 
-&nbsp;
-
 ------
-
-&nbsp;
 
 ## 😎 Interests
 
@@ -67,11 +61,7 @@ I'm a network administrator at a public school district, where I provide user su
  - Kubernetes
  - Grafana
 
-&nbsp;
-
 --------
-
-&nbsp;
 
 ## 📜 Experience
 
@@ -96,8 +86,6 @@ I'm a network administrator at a public school district, where I provide user su
 
 *2019 - Present*
 
-&nbsp;
-
 --------
 
 ## 🎓 Education
@@ -112,10 +100,7 @@ I'm a network administrator at a public school district, where I provide user su
 
 *2019-2021*
 
-&nbsp;
-
 --------
-
 
 ## 🤝 Attributions
 

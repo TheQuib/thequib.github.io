@@ -3,11 +3,15 @@ title: "Projects"
 description: "Projects I've led, or been a part of."
 slug: "projects"
 comments: false
+toc: false
+menu:
+    main:
+        weight: -70
+        params: 
+            icon: messages
 ---
 
 Just a few projects I've worked on along the way.
-
-&nbsp;
 
 ------
 
@@ -19,16 +23,12 @@ Organization and configuration of an enterprise door access system across 6 buil
 
 ***2022***
 
-&nbsp;
-
 
 ### Ubiquiti UniFi Network
 
 Deployment of a managed Ubiquiti UniFi network. Including routing, switching and wireless.
 
 ***2021***
-
-&nbsp;
 
 
 ### Enterprise Wireless System
@@ -37,16 +37,12 @@ Migration / deployment of existing and new access points in a managed wireless s
 
 ***2021***
 
-&nbsp;
-
 
 ### Enterprise Security Camera System
 
 Organization, installation and configuration of an enterprise security camera system across 6 buildings from *Verkada*.
 
 ***2020***
-
-&nbsp;
 
 
 ### Help Desk Ticketing System

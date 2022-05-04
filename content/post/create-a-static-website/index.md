@@ -5,6 +5,7 @@ date: "2022-03-28"
 description: "Create a website with the Hugo static site generator."
 tags: ["website", "website-building", "static-websites", "hugo", "linux", "windows"]
 categories: ["Hugo"]
+image: featuredImage.png
 ---
 
 A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.
