@@ -11,6 +11,10 @@ permalinks:
   page: /:slug/
 
 
+# Google Analytics tracking ID
+googleAnalytics: G-8ZBSRDLF9W
+
+
 # Language preferences
 
 languages:
