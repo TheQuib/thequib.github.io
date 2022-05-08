@@ -25,6 +25,11 @@ So as an alternative, I found [infrared](https://github.com/haveachin/infrared),
 
 By the end of this, we will have a working reverse proxy running in a docker container, and two minecraft servers sitting behind `mc-server1.example.com` and `mc-server2.example.com`. Both of these will be accessed using the default minecraft port of `25565`.
 
+
+# Example files
+
+If you want to just view some example files, check out my [Overture](https://github.com/TheQuib/overture) repository, under the `Docker/Infrared` directory.
+
 ------
 
 # Before You Start
