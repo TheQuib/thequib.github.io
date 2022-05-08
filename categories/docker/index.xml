@@ -1,1 +1,237 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on QuibTech</title><link>https://thequib.github.io/categories/docker/</link><description>Recent content in Docker on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://thequib.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on QuibTech</title><link>https://thequib.github.io/categories/docker/</link><description>Recent content in Docker on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 04 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
+&lt;p>When I host Minecraft servers for my friends, I seriously hate having to tell them to connect to &lt;code>example.com:25567&lt;/code> or &lt;code>example.com:25568&lt;/code>.&lt;/p>
+&lt;p>Luckily, there is an amazing solution for this: &lt;em>Reverse Proxies&lt;/em>&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>I tried doing this with &lt;a class="link" href="https://traefik.io/" target="_blank" rel="noopener"
+>Traefik&lt;/a> at first (which is my preferred &lt;code>http&lt;/code> reverse proxy), but I had zero luck, even after hours of scouring the internet for help.&lt;/p>
+&lt;p>So as an alternative, I found &lt;a class="link" href="https://github.com/haveachin/infrared" target="_blank" rel="noopener"
+>infrared&lt;/a>, a reverse proxy for Minecraft by &lt;a class="link" href="https://github.com/haveachin" target="_blank" rel="noopener"
+>Hendrik Schlehlein&lt;/a>, built with &lt;a class="link" href="https://go.dev/" target="_blank" rel="noopener"
+>Go&lt;/a>.&lt;/p>
+&lt;h1 id="what-will-we-be-doing">What will we be doing?&lt;/h1>
+&lt;p>By the end of this, we will have a working reverse proxy running in a docker container, and two minecraft servers sitting behind &lt;code>mc-server1.example.com&lt;/code> and &lt;code>mc-server2.example.com&lt;/code>. Both of these will be accessed using the default minecraft port of &lt;code>25565&lt;/code>.&lt;/p>
+&lt;hr>
+&lt;h1 id="before-you-start">Before You Start&lt;/h1>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A virtual machine with Ubuntu 22.04 or later
+&lt;ul>
+&lt;li>Or bare metal, I won&amp;rsquo;t judge&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>A bit of knowledge in the ways of &lt;code>Docker&lt;/code>
+&lt;ul>
+&lt;li>i.e. you will need &lt;code>Docker&lt;/code> installed on your server&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>At least 2 working Minecraft servers&lt;/li>
+&lt;li>Ability to edit DNS records&lt;/li>
+&lt;/ul>
+&lt;h2 id="optional">Optional&lt;/h2>
+&lt;ul>
+&lt;li>Ability to port forward on your router (if you want to access outside of your network)&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h1 id="set-up-proxy-server">Set up Proxy Server&lt;/h1>
+&lt;h2 id="create-proxy-server">Create Proxy Server&lt;/h2>
+&lt;p>To get it all started, we&amp;rsquo;ll need a server that will act as a proxy.&lt;/p>
+&lt;ul>
+&lt;li>This can be a new virtual machine, or existing. It just needs to have &lt;code>Docker&lt;/code> installed&lt;/li>
+&lt;li>Make sure you take note of its IP Address
+&lt;ul>
+&lt;li>For this example, we&amp;rsquo;ll use &lt;code>192.168.1.10&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="create-necessary-files-and-directories">Create necessary files and directories&lt;/h2>
+&lt;p>&lt;code>cd&lt;/code> to a directory that you want to store your files in, your current user&amp;rsquo;s &lt;code>home&lt;/code> directory is probably best&lt;/p>
+&lt;p>Create the necessary directories and files:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir infrared
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch docker-compose.yml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir configs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> configs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch mc-server1.example.com.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">touch mc-server2.example.com.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ../../
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-these-commands-do">What these commands do&lt;/h3>
+&lt;ul>
+&lt;li>Create a project folder&lt;/li>
+&lt;li>Create &lt;code>docker-compose&lt;/code> file to deploy from&lt;/li>
+&lt;li>Creates a &lt;code>data/configs&lt;/code> directory to store configurations&lt;/li>
+&lt;li>Creates two configuration files, one for each server name listed under &lt;a class="link" href="#what-will-we-be-doing" >What will we be doing?&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="edit-docker-composeyml">Edit docker-compose.yml&lt;/h2>
+&lt;p>Now, you&amp;rsquo;ll want to edit the &lt;code>docker-compose.yml&lt;/code> file:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">nano docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>And paste in the following text:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;3&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">infrared&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ghcr.io/haveachin/infrared:1.3.3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">infrared&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">stdin_open&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">tty&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ports&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;25565:25565/tcp&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;./data/configs:/configs&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">expose&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;25565&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">INFRARED_CONFIG_PATH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/configs&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="what-this-bit-of-yaml-does">What this bit of Yaml does&lt;/h3>
+&lt;ul>
+&lt;li>Uses docker-compose version 3&lt;/li>
+&lt;li>Creates a service called &lt;code>infrared&lt;/code>
+&lt;ul>
+&lt;li>With the image &lt;code>ghcr.io/haveachin/infrared:1.3.3&lt;/code>&lt;/li>
+&lt;li>With a name of &lt;code>infrared&lt;/code>&lt;/li>
+&lt;li>Don&amp;rsquo;t restart the container unless we (the admin) stops it&lt;/li>
+&lt;li>Open up a port&lt;/li>
+&lt;li>Define a location for configurations&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="edit-configurations">Edit configurations&lt;/h2>
+&lt;p>Now, go into the configurations directory&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /data/configs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You may want to change the names of the created files to match the &lt;code>FQDN&lt;/code>&amp;rsquo;s of your actual servers.&lt;/p>
+&lt;p>I will continue to use the names &lt;code>mc-server1.example.com&lt;/code> and &lt;code>mc-server2.example.com&lt;/code> for this tutorial, however.&lt;/p>
+&lt;p>Edit each file and include the following contents:&lt;/p>
+&lt;h3 id="mc-serverexamplecomjson">&lt;code>mc-server.example.com.json&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;domainName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;mc-server1.example.com&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;proxyTo&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.0.11:25565&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;listenTo&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;0.0.0.0:25565&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;disconnectMessage&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Goodbye&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;offlineStatus&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;motd&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Server is currently offline :(&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="mc-server2examplecomjson">&lt;code>mc-server2.example.com.json&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;domainName&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;mc-server2.example.com&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;proxyTo&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;192.168.0.12:25565&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;listenTo&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;0.0.0.0:25565&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;disconnectMessage&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Goodbye&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;offlineStatus&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;motd&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Server is currently offline :(&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="configuration-note">Configuration note&lt;/h3>
+&lt;p>Make sure that you change &lt;code>domainName&lt;/code> to your server&amp;rsquo;s &lt;code>FQDN&lt;/code> and the &lt;code>proxyTo&lt;/code> address and port to match your Minecraft server.&lt;/p>
+&lt;hr>
+&lt;h1 id="set-up-dns">Set up DNS&lt;/h1>
+&lt;p>Reverse Proxies rely on DNS to route the incoming connection to the intended server.&lt;/p>
+&lt;p>Let&amp;rsquo;s say, for this example we are going to proxy 2 servers:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>mc-server1.example.com&lt;/code>&lt;/li>
+&lt;li>&lt;code>mc-server2.example.com&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>On your DNS server, create an A record for each of the servers, pointed at your proxy server. For eaxmple:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>A&lt;/code>: &lt;code>mc-server1.example.com&lt;/code> &amp;gt; &lt;code>192.168.1.10&lt;/code>&lt;/li>
+&lt;li>&lt;code>A&lt;/code>: &lt;code>mc-server2.example.com&lt;/code> &amp;gt; &lt;code>192.168.1.10&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h1 id="test-er-out">Test &amp;rsquo;er out&lt;/h1>
+&lt;h2 id="spin-up-your-container">Spin up your container&lt;/h2>
+&lt;p>Now you&amp;rsquo;re ready to spin up your container!&lt;/p>
+&lt;p>Make sure you&amp;rsquo;re in the same directory as your &lt;code>docker-compose.yml&lt;/code> file, and run:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo docker-compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="launch-minecraft-and-check-your-work">Launch Minecraft, and check your work&lt;/h2>
+&lt;p>Now, launch Minecraft, head over to the multiplayer menu, and add servers that point to the &lt;code>FQDN&lt;/code>s for your A records created in &lt;a class="link" href="#set-up-dns" >Set up DNS&lt;/a>.&lt;/p>
+&lt;p>If you did everything correctly, these should be showing as online! (If not make sure they&amp;rsquo;re running first 😉)&lt;/p></description></item></channel></rss>
