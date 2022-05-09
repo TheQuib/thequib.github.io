@@ -2,7 +2,7 @@
 author: "Quinn Henry"
 title: "Stop using weird ports for your Minecraft Servers"
 date: "2022-05-04"
-description: "With MC-Proxy, a reverse proxy for Minecraft servers, you can host all of your servers via a single port."
+description: "With Infrared, a reverse proxy for Minecraft servers, you can host all of your servers via a single port."
 tags: ["networking", "docker", "containerization"]
 categories: ["Docker", "Reverse Proxy"]
 image: featuredImage.png
