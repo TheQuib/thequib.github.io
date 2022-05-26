@@ -28,7 +28,7 @@ If you do need to add your bank account, don't worry! Because of the awesomeness
 
 ## GitHub Repo
 
-All configuration files and example files can be found on my [Overture](https://github.com/TheQuib/overture) repo, under [Terraform/Compute/Linode/SimpleLinode](https://github.com/TheQuib/overture/tree/master/Terraform/Compute/Linode/SimpleLinode) and [/Terraform/Minecraft-Server-Deploy/Linode](https://github.com/TheQuib/overture/tree/master/Terraform/Minecraft-Server-Deploy/Linode).
+All configuration files and example files can be found on my [Overture](https://github.com/TheQuib/overture) repo, under [Terraform/Compute/Linode/SimpleLinode](https://github.com/TheQuib/overture/tree/master/Terraform/Compute/Linode/SimpleLinode).
 
 ## Create some Terraform files
 
