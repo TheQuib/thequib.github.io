@@ -1,9 +1,268 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on QuibTech</title><link>https://thequib.github.io/post/</link><description>Recent content in Posts on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;img src="https://thequib.github.io/p/welcome-to-the-site/featuredImage.png" alt="Featured image of post Welcome to the site" />&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on QuibTech</title><link>https://thequib.github.io/post/</link><description>Recent content in Posts on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 27 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;img src="https://thequib.github.io/p/welcome-to-the-site/featuredImage.png" alt="Featured image of post Welcome to the site" />&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
 &lt;p>On this site, I post projects I work on both at home and at school. For the most part, I will include items from working in my home lab.&lt;/p>
 &lt;p>This site, built using the &lt;a class="link" href="https://gohugo.io" target="_blank" rel="noopener"
 >Hugo Static Site Generator&lt;/a>, is a fun little project I also took on as a part of my homelab, hosted on GitHub.&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
+&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>Manage infrastructure with Terraform Cloud</title><link>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</link><pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</guid><description>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/featuredImage.png" alt="Featured image of post Manage infrastructure with Terraform Cloud" />&lt;p>Yeah, Terraform is cool and all. But that&amp;rsquo;s typically done locally. The cloud is even better, and free.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="why-would-i-do-this">Why would I do this?&lt;/h2>
+&lt;p>There are tons of reasons you may want to deploy with Terraform in the cloud. A few of my personal favorite highlights are&amp;hellip;&lt;/p>
+&lt;ul>
+&lt;li>Less load put on local hardware&lt;/li>
+&lt;li>It&amp;rsquo;s still as simple as running locally&lt;/li>
+&lt;li>It can be easily automated, especially if &lt;code>git&lt;/code> is used
+&lt;ul>
+&lt;li>Runs can occur on a push&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>It&amp;rsquo;s &lt;strong>free&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>Knowledge with getting Terraform working locally&lt;/li>
+&lt;li>An existing and &lt;em>working&lt;/em> Terraform project&lt;/li>
+&lt;li>&lt;strong>FREE&lt;/strong> Terraform Cloud Account
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://app.terraform.io/signup/account" target="_blank" rel="noopener"
+>Get this here&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="deployment-methods">Deployment Methods&lt;/h2>
+&lt;p>As of May 2022, there are 3 methods to deploy code with Terraform Cloud:&lt;/p>
+&lt;ol>
+&lt;li>&lt;a class="link" href="#-method-1-version-control-workflow" >Version control workflow&lt;/a>
+- Store your Terraform configuration in a git repository, and trigger runs based on pull requests and merges&lt;/li>
+&lt;li>&lt;a class="link" href="#-method-2-cli-driven-workflow" >CLI-driven workflow&lt;/a>
+- Trigger remote Terraform runs from your local command line&lt;/li>
+&lt;li>API-driven workflow
+- A more advanced option. Integrate Terraform into a larger pipeline using the Terraform API&lt;/li>
+&lt;/ol>
+&lt;p>For the purposes of this post, we will only be going over the first two: Version control and CLI-driven workflows.&lt;/p>
+&lt;p>The reason? They are the most common, especially if you&amp;rsquo;re just getting started with Terraform. Most don&amp;rsquo;t have a need to run API-driven workflows.&lt;/p>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-method-1-version-control-workflow">📕 &lt;strong>Method 1: Version control workflow&lt;/strong>&lt;/h2>
+&lt;p>In this post, I will be using GitHub to keep my repositories. Any git provider will work, as long as it is internet-accesible. If you are new to git, this is typically a good place to start.&lt;/p>
+&lt;p>This method is best used if you want to automate your workflows, as this can be done via updates to the repository.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="extra-requirements">Extra requirements&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://desktop.github.com/" target="_blank" rel="noopener"
+>GitHub Desktop&lt;/a> is a super useful tool for pushing changes to a GitHub repo without the command line.&lt;/li>
+&lt;li>If you don&amp;rsquo;t want to use this, and know how to use gitbash, that is perfectly fine too!&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>NOTE&lt;/strong>&lt;/em>: If you structure your Terraform projects as I do, your repository created &lt;a class="link" href="#clone-repository-locally" >below&lt;/a>, you will need to update your &lt;code>.gitignore&lt;/code> file to include &lt;code>*.auto.tfvars&lt;/code> so that your credentials are not stored for just anyone to see (such as API tokens)&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="create-a-git-repository">Create a Git repository&lt;/h3>
+&lt;p>Login into &lt;a class="link" href="https://github.com" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>Create a new repository with the &amp;ldquo;New&amp;rdquo; button &lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/github-newButton.png"
+width="105"
+height="42"
+srcset="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/github-newButton_hu1340ded5362da2ecf241505dd23953d3_1281_480x0_resize_box_3.png 480w, https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/github-newButton_hu1340ded5362da2ecf241505dd23953d3_1281_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="New Button"
+class="gallery-image"
+data-flex-grow="250"
+data-flex-basis="600px"
+>&lt;/li>
+&lt;li>Make sure this is set as &lt;code>Public&lt;/code> to make things a bit easier
+&lt;ul>
+&lt;li>Setting this as private would require setting up SSH keys for Terraform Cloud to read the repo&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Give this repository a name, and initialize it with a &lt;code>README&lt;/code> file and choose the &lt;code>Terraform&lt;/code> &lt;code>.gitignore&lt;/code> template.&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h3 id="clone-repository-locally">Clone repository locally&lt;/h3>
+&lt;p>In GitHub desktop, login to your account, and add a new repository by searching for the one you just created.&lt;/p>
+&lt;ul>
+&lt;li>You&amp;rsquo;ll have to choose a location to store this, it would be best to keep this somewhere simple (such as a shorter path)&lt;/li>
+&lt;/ul>
+&lt;p>You can also clone the repository via the command line with:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /path/to/directory
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/YourUserName/YourRepositoryName
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h3 id="set-up-terraform-cloud">Set up Terraform Cloud&lt;/h3>
+&lt;p>Head over to the &lt;a class="link" href="https://app.terraform.io" target="_blank" rel="noopener"
+>Terraform Cloud web interface&lt;/a>, and log in.&lt;/p>
+&lt;ol>
+&lt;li>Create a new &lt;code>Organization&lt;/code>, if needed.&lt;/li>
+&lt;li>Create a new &lt;code>Workspace&lt;/code> within the organization&lt;/li>
+&lt;li>Here you are presented with 3 options, make sure to select &lt;code>Version Control Workflow&lt;/code>&lt;/li>
+&lt;li>Get connected to your git provider&lt;/li>
+&lt;li>This will open a new window, asking you to sign into your provider&lt;/li>
+&lt;li>In the list that shows, select the repository you will be using&lt;/li>
+&lt;li>By default, the workspace name will auto-populate with the repo name, probably best to keep this for readability&amp;rsquo;s sake&lt;/li>
+&lt;li>Click &lt;code>Create Workspace&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p> &lt;/p>
+&lt;h3 id="add-variables-to-your-workspace">Add variables to your workspace&lt;/h3>
+&lt;p>The best and safest way to store variables for Terraform is to actually use Terraform Cloud. To create variables to use for your project, click on the &lt;code>Variables&lt;/code> tab, and create each variable you have in your local project.&lt;/p>
+&lt;p>Now Terraform Cloud is ready!&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="add-terraform-configurations-to-repo">Add Terraform configurations to repo&lt;/h3>
+&lt;p>Now, find your working terraform project, and copy &lt;em>ALL&lt;/em> of the files from there into your local repository location.&lt;/p>
+&lt;p>Once they are copied in, bring GitHub Desktop back up, enter a &amp;ldquo;Commit Summary&amp;rdquo; on the bottom-left:  &lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/commit-message.png"
+width="314"
+height="281"
+srcset="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/commit-message_hu41da6f9157f83e0cd0d449e77449e47c_10754_480x0_resize_box_3.png 480w, https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/commit-message_hu41da6f9157f83e0cd0d449e77449e47c_10754_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="111"
+data-flex-basis="268px"
+>&lt;/p>
+&lt;p>And then at the top, push your changes to GitHub:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/push-button.png"
+width="340"
+height="71"
+srcset="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/push-button_huabbe41b5e33ec5449aa2e50771782804_4582_480x0_resize_box_3.png 480w, https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/push-button_huabbe41b5e33ec5449aa2e50771782804_4582_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="478"
+data-flex-basis="1149px"
+>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="stage-changes-in-terraform-cloud">Stage changes in Terraform Cloud&lt;/h3>
+&lt;p>Back in Terraform Cloud, click the &lt;code>Overview&lt;/code> tab, and then &lt;code>Start new plan&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>This is the equivalent to running &lt;code>terraform plan&lt;/code> in the local CLI&lt;/li>
+&lt;/ul>
+&lt;p>Once the plan is complete, it will show you the changes it will make!&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="run-plan">Run plan!&lt;/h3>
+&lt;p>To run the latest plan, scroll to the bottom of the page and click &lt;code>Confirm and Apply&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>This is the equivalent to running &lt;code>terraform plan -auto-approve&lt;/code> in the local CLI&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Now&amp;hellip; Watch the magic happen.&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>If your plan had &lt;code>Outputs&lt;/code>, you can see those values by droping down the &amp;ldquo;Outputs&amp;rdquo; section:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/terraformCloud-outputs.png"
+width="339"
+height="161"
+srcset="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/terraformCloud-outputs_hu26b0759bf22f0a86a8a6ade19a4f92e3_7650_480x0_resize_box_3.png 480w, https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/terraformCloud-outputs_hu26b0759bf22f0a86a8a6ade19a4f92e3_7650_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="210"
+data-flex-basis="505px"
+>&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="destroy-infrastructure">Destroy infrastructure&lt;/h3>
+&lt;p>To destroy the newly-created infrastructure, scroll back up to the top of the page, click &lt;code>Settings&lt;/code> &amp;gt; &lt;code>Destruction and Deletion&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Click &lt;code>Queue destroy plan&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Enter your workspace name to confirm&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Click &lt;code>Queue destroy plan&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Once the plan finishes, click &lt;code>Confirm and apply&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This is the equivalent to running &lt;code>terraform destroy -auto-approve&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-method-2-cli-driven-workflow">⌨️ &lt;strong>Method 2: CLI-driven workflow&lt;/strong>&lt;/h2>
+&lt;p>This method uses the local command-line to trigger workflows in Terraform Cloud. A command that is run locally will actually perform in the cloud, showing a &amp;ldquo;remote window&amp;rdquo; of the remote CLI locally. You&amp;rsquo;ll see what I mean shortly&amp;hellip;&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="get-ready">Get Ready&lt;/h3>
+&lt;p>As always for Terraform, &lt;code>cd&lt;/code> into your project directory.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="get-authenticated">Get authenticated&lt;/h3>
+&lt;p>So first, once you have your &lt;a class="link" href="https://app.terraform.io" target="_blank" rel="noopener"
+>Terraform Cloud&lt;/a> account, we&amp;rsquo;ll need to log into to the terraform CLI.&lt;/p>
+&lt;p>To do this, run:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">terraform login
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will prompt you to type &lt;code>yes&lt;/code> and automatically open a web browser to the page to create an access token.&lt;/p>
+&lt;ul>
+&lt;li>On this page, give the token a name, and hit create&lt;/li>
+&lt;li>Then copy the token and paste it into your terminal session
+&lt;ul>
+&lt;li>&lt;em>Note&lt;/em>: This is the only time the token will show&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Then you&amp;rsquo;re logged in!&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h3 id="set-up-terraform-cloud-1">Set up Terraform Cloud&lt;/h3>
+&lt;p>Head over to the &lt;a class="link" href="https://app.terraform.io" target="_blank" rel="noopener"
+>Terraform Cloud web interface&lt;/a>, and log in.&lt;/p>
+&lt;ol>
+&lt;li>Create a new &lt;code>Organization&lt;/code>, if needed.&lt;/li>
+&lt;li>Create a new &lt;code>Workspace&lt;/code> within the organization&lt;/li>
+&lt;li>Here you are presented with 3 options, make sure to select &lt;code>CLI-driven workflow&lt;/code>&lt;/li>
+&lt;li>Name your workspace &lt;code>Terraform-CLI-Test&lt;/code>&lt;/li>
+&lt;li>Click &lt;code>Create Workspace&lt;/code>&lt;/li>
+&lt;li>Take note of the &lt;code>Example code&lt;/code> for CLI-driven runs&lt;/li>
+&lt;/ol>
+&lt;p> &lt;/p>
+&lt;h3 id="create-terraform-cloud-file">Create Terraform Cloud file&lt;/h3>
+&lt;p>Now, we need a way to tell our local Terraform installation run the configurations in the cloud.&lt;/p>
+&lt;p>To do this, create a file called &lt;code>TerraformCloud.tf&lt;/code>, and add the example code from &lt;a class="link" href="#set-up-terraform-cloud-1" >earlier&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-tf" data-lang="tf">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">terraform&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">cloud&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">organization&lt;/span> = &lt;span class="s2">&amp;#34;YourOrganization&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">workspaces&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="na">name&lt;/span> = &lt;span class="s2">&amp;#34;Terraform-CLI-Test&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;em>Note&lt;/em>: If using the above example, make sure to change the organization name to your own&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="test-er-out">Test &amp;rsquo;er out&lt;/h3>
+&lt;p>Now, this should be pretty much it. Assuming your project works correctly, you can now run all of the regular Terraform CLI commands locally, and they will execute in the cloud.&lt;/p>
+&lt;p>To test this out, try running &lt;code>terraform plan&lt;/code> and check the web interface to see the plan in action.&lt;/p>
+&lt;p>Once that is all good to go, run &lt;code>terraform apply -auto-approve&lt;/code> and watch the magic happen!&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>If that is all good, and you want to destroy it, just run &lt;code>terraform destroy -auto-approve&lt;/code>.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h1 id="conclusion">Conclusion&lt;/h1>
+&lt;p>Doing jobs with Terraform in the cloud is pretty cool. It takes the load off of local hardware, and allows the automation of workflows to be performed, and is just plain fun to use.&lt;/p>
+&lt;p>Hopefully this helped at least get your foot in the door for the wonders of Terraform Cloud, and feel free to comment if you have any questions!&lt;/p></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>
