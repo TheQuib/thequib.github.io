@@ -20,8 +20,7 @@
 &lt;h2 id="github-repo">GitHub Repo&lt;/h2>
 &lt;p>All configuration files and example files can be found on my &lt;a class="link" href="https://github.com/TheQuib/overture" target="_blank" rel="noopener"
 >Overture&lt;/a> repo, under &lt;a class="link" href="https://github.com/TheQuib/overture/tree/master/Terraform/Compute/Linode/SimpleLinode" target="_blank" rel="noopener"
->Terraform/Compute/Linode/SimpleLinode&lt;/a> and &lt;a class="link" href="https://github.com/TheQuib/overture/tree/master/Terraform/Minecraft-Server-Deploy/Linode" target="_blank" rel="noopener"
->/Terraform/Minecraft-Server-Deploy/Linode&lt;/a>.&lt;/p>
+>Terraform/Compute/Linode/SimpleLinode&lt;/a>.&lt;/p>
 &lt;h2 id="create-some-terraform-files">Create some Terraform files&lt;/h2>
 &lt;p>First thing&amp;rsquo;s first, let&amp;rsquo;s create the Terraform files that will define this project.&lt;/p>
 &lt;ul>
