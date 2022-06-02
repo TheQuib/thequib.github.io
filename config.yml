@@ -136,6 +136,12 @@ menu:
       params:
         icon: brand-instagram
 
+    - identifier: twitter
+      name: twitter
+      url: https://twitter.com/QuibTech
+      params:
+        icon: brand-twitter
+
 related:
   includeNewer: true
   threshold: 60
