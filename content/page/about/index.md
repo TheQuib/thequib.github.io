@@ -92,7 +92,7 @@ I'm a network administrator at a public school district, where I provide user su
 
 ### Pennsylvania College of Technology
 
-**Bachelor's Degree, Computer Systems Networking and Telecommunications***
+***Bachelor's Degree, Network Administration and Engineering Technology***
 
 *2019 - Present*
 
