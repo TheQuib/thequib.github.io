@@ -15,6 +15,8 @@ If my calculations are correct, this extends out to September 20, 2022.
 
 This challenge calls for 100 days of homelabbing from everyone! Dedicating at least 1 hour a day to learning something new, adding something, figuring something out... anything!
 
+The official website can be found [here](https://100daysofhomelab.com)!
+
 
 ## 📝 Keeping track 📱
 
@@ -28,6 +30,7 @@ With no particular dates or order, here's what I'm planning on accomplishing:
 
  - [ ] The constant improvement and documentation on this website (completed projects)
    - [ ] Fix Favicon not showing on every page except home
+   - [ ] A self-hosted GitHub runner for pushing out this site
  - [ ] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
  - [ ] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
  - [ ] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
