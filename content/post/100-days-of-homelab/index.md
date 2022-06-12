@@ -21,7 +21,7 @@ The official website can be found [here](https://100daysofhomelab.com)!
 ## 📝 Keeping track 📱
 
  - This post is meant to keep track of my plans for the next 100 days. I will be adding and changing the different things I will be doing as I go, with a few starters for now.
- - I will also be posting to social media, hopefully each day. I have a full time job and a life outside of the great homelab, but I will try to do something each day and 
+ - I will also be posting to social media with all of my accomplishments for the day
 
 
 ## 🛣️ Roadmap
