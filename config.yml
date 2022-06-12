@@ -128,13 +128,13 @@ menu:
       name: linkedin
       url: https://www.linkedin.com/in/quinn-henry/
       params:
-        icon: brand-linkedin
+        icon: brand-linkedin-thin
 
     - identifier: instagram
       name: Instagram
       url: https://instagram.com/brit_boi_
       params:
-        icon: brand-instagram
+        icon: brand-instagram-thin
 
     - identifier: twitter
       name: twitter
