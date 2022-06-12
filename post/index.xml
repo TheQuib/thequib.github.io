@@ -23,6 +23,7 @@
 >Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
 &lt;/ul></description></item><item><title>Manage infrastructure with Terraform Cloud</title><link>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</link><pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</guid><description>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/featuredImage.png" alt="Featured image of post Manage infrastructure with Terraform Cloud" />&lt;p>Yeah, Terraform is cool and all. But that&amp;rsquo;s typically done locally. The cloud is even better, and free.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="why-would-i-do-this">Why would I do this?&lt;/h2>
