@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 04 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>100 Days of Homelab</title><link>https://thequib.github.io/p/100-days-of-homelab/</link><pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/100-days-of-homelab/</guid><description>&lt;img src="https://thequib.github.io/p/100-days-of-homelab/featuredImage.png" alt="Featured image of post 100 Days of Homelab" />&lt;h2 id="-the-challenge">📆 The challenge!&lt;/h2>
+&lt;p>If my calculations are correct, this extends out to September 20, 2022.&lt;/p>
+&lt;p>This challenge calls for 100 days of homelabbing from everyone! Dedicating at least 1 hour a day to learning something new, adding something, figuring something out&amp;hellip; anything!&lt;/p>
+&lt;h2 id="-keeping-track-">📝 Keeping track 📱&lt;/h2>
+&lt;ul>
+&lt;li>This post is meant to keep track of my plans for the next 100 days. I will be adding and changing the different things I will be doing as I go, with a few starters for now.&lt;/li>
+&lt;li>I will also be posting to social media, hopefully each day. I have a full time job and a life outside of the great homelab, but I will try to do something each day and&lt;/li>
+&lt;/ul>
+&lt;h2 id="-roadmap">🛣️ Roadmap&lt;/h2>
+&lt;p>With no particular dates or order, here&amp;rsquo;s what I&amp;rsquo;m planning on accomplishing:&lt;/p>
+&lt;ul>
+&lt;li>Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
+>Packer&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
+>Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
+&lt;li>The constant improvement and documentation on this website (completed projects)&lt;/li>
+&lt;li>Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
+&lt;li>Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
+&lt;/ul></description></item><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
 &lt;p>When I host Minecraft servers for my friends, I seriously hate having to tell them to connect to &lt;code>example.com:25567&lt;/code> or &lt;code>example.com:25568&lt;/code>.&lt;/p>
 &lt;p>Luckily, there is an amazing solution for this: &lt;em>Reverse Proxies&lt;/em>&lt;/p>
 &lt;p> &lt;/p>
