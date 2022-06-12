@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>automation on QuibTech</title><link>https://thequib.github.io/tags/automation/</link><description>Recent content in automation on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>100 Days of Homelab</title><link>https://thequib.github.io/p/100-days-of-homelab/</link><pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/100-days-of-homelab/</guid><description>&lt;img src="https://thequib.github.io/p/100-days-of-homelab/featuredImage.png" alt="Featured image of post 100 Days of Homelab" />&lt;h2 id="-the-challenge">📆 The challenge!&lt;/h2>
 &lt;p>If my calculations are correct, this extends out to September 20, 2022.&lt;/p>
 &lt;p>This challenge calls for 100 days of homelabbing from everyone! Dedicating at least 1 hour a day to learning something new, adding something, figuring something out&amp;hellip; anything!&lt;/p>
+&lt;p>The official website can be found &lt;a class="link" href="https://100daysofhomelab.com" target="_blank" rel="noopener"
+>here&lt;/a>!&lt;/p>
 &lt;h2 id="-keeping-track-">📝 Keeping track 📱&lt;/h2>
 &lt;ul>
 &lt;li>This post is meant to keep track of my plans for the next 100 days. I will be adding and changing the different things I will be doing as I go, with a few starters for now.&lt;/li>
@@ -12,6 +14,7 @@
 &lt;li>&lt;input disabled="" type="checkbox"> The constant improvement and documentation on this website (completed projects)
 &lt;ul>
 &lt;li>&lt;input disabled="" type="checkbox"> Fix Favicon not showing on every page except home&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
