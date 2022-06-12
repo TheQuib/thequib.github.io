@@ -26,8 +26,9 @@ This challenge calls for 100 days of homelabbing from everyone! Dedicating at le
 
 With no particular dates or order, here's what I'm planning on accomplishing:
 
- - Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
- - [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
- - The constant improvement and documentation on this website (completed projects)
- - Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
- - Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
+ - [ ] The constant improvement and documentation on this website (completed projects)
+   - [ ] Fix Favicon not showing on every page except home
+ - [ ] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
+ - [ ] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
+ - [ ] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
+ - [ ] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
