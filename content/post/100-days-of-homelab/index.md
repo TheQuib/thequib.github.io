@@ -38,3 +38,5 @@ With no particular dates or order, here's what I'm planning on accomplishing:
  - [ ] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
  - [ ] SSH Key *everything*
  - [ ] Set up IPMI port on Proxmox host
+ - [ ] Run updates on all servers
+ - [ ] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
