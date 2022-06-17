@@ -17,10 +17,15 @@
 &lt;li>&lt;input disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
 &lt;/ul>
 &lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> &amp;ldquo;Production&amp;rdquo; Kubernetes cluster (k3s)
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> With running services&lt;/li>
+&lt;/ul>
+&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Creation of website as a subdomain for drone flying&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
 >Packer&lt;/a>&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
 >Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
