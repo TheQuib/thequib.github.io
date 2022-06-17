@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ssh on QuibTech</title><link>https://thequib.github.io/tags/ssh/</link><description>Recent content in ssh on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>UniFi Doorbell G4 Custom Chime</title><link>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</link><pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/</guid><description>&lt;img src="https://thequib.github.io/p/unifi-doorbell-g4-custom-chime/featuredImage.png" alt="Featured image of post UniFi Doorbell G4 Custom Chime" />&lt;p>So, I just got my new UniFi G4 Doorbell installed. Out of the box, it’s great! I can view live video, past video, and spy on my dog when she’s in my front yard… All with my data being stored on my local network with no subscription fee.&lt;/p>
 &lt;p>While the out of box experience is great, I couldn’t help myself but look up how I can get my own ring (or &amp;ldquo;chime&amp;rdquo; as Ubiquiti calls it) uploaded to my doorbell. This requires a bit of work using some SSH, but it’s extremely fun to play around with.&lt;/p>
 &lt;p> &lt;/p>
-&lt;h1 id="the-scoop">The scoop&lt;/h1>
+&lt;h2 id="the-scoop">The scoop&lt;/h2>
 &lt;p>While you can do this all manually, the doorbell sadly resets back to it’s default chime when restarted. So as an example, if you loose power, your doorbell will have it’s original chime again.&lt;/p>
 &lt;p>This is no fun, so I made a script for you to use! You can find it on my personal GitHub page at &lt;a class="link" href="https://github.com/TheQuib/G4-Doorbell-Custom-Chime" target="_blank" rel="noopener"
 >https://github.com/TheQuib/G4-Doorbell-Custom-Chime&lt;/a>&lt;/p>
@@ -12,7 +12,7 @@
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="enable-ssh-on-doorbell">Enable SSH on Doorbell&lt;/h1>
+&lt;h2 id="enable-ssh-on-doorbell">Enable SSH on Doorbell&lt;/h2>
 &lt;p>This process is kinda hard to find, but enabling SSH on your UniFi Protect console (whether that be a Dream Machine, Cloud Key Gen 2+, or UniFi NVR) is pretty simple, and a quick google search away… so that won’t be covered here.&lt;/p>
 &lt;p>&lt;strong>So first off, you will need to SSH into your UniFi Protect Console&lt;/strong>&lt;/p>
 &lt;p>&lt;em>Dream Machine Only:&lt;/em>&lt;/p>
@@ -66,7 +66,7 @@
 &lt;p>You should now be able to SSH to all of your UniFi Protect devices! The username is ubnt and the password can be set in your UniFi/Protect Console settings.&lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="prepare-audio-file">Prepare audio file&lt;/h1>
+&lt;h2 id="prepare-audio-file">Prepare audio file&lt;/h2>
 &lt;p>Now, you will need to get a working &lt;code>.wav&lt;/code> file to be later uploaded to your doorbell. I would recommend to use a clip that is 10 seconds maximum (though I haven’t tested lengths yet).&lt;/p>
 &lt;p>&lt;em>If you’re familiar with how to use Audacity, here are the file specifications you need:&lt;/em>&lt;/p>
 &lt;ul>
@@ -180,7 +180,7 @@ data-flex-basis="509px"
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="upload-audio-file">Upload audio file&lt;/h1>
+&lt;h2 id="upload-audio-file">Upload audio file&lt;/h2>
 &lt;p>Now we get to upload the audio file to the doorbell!&lt;/p>
 &lt;p>To do this, you’ll need to open a terminal of your choice (such as CMD in Windows)&lt;/p>
 &lt;p>Navigate to where you saved your WAV file using the cd command.&lt;/p>
@@ -217,7 +217,7 @@ data-flex-basis="509px"
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="create-symlink-of-audio-file">Create symlink of audio file&lt;/h1>
+&lt;h2 id="create-symlink-of-audio-file">Create symlink of audio file&lt;/h2>
 &lt;p>Now, we’ll backup the original chime.wav just so it can easily be reset later if desired, and then create a symlink from our uploaded file to where chime.wav exists.&lt;/p>
 &lt;p>The reason this is done is because the doorbell seems to only like reading a symlink instead of a regular file when playing the chime sound.&lt;/p>
 &lt;p>**First, lets create the backup:&lt;/p>
@@ -270,5 +270,5 @@ data-flex-basis="509px"
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="finishing-up">Finishing up&lt;/h1>
+&lt;h2 id="finishing-up">Finishing up&lt;/h2>
 &lt;p>Now you&amp;rsquo;re all done! You can go ahead and test out the new chime by pressing the ring button on your doorbell, and it should play your uploaded file.&lt;/p></description></item></channel></rss>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualization on QuibTech</title><link>https://thequib.github.io/categories/virtualization/</link><description>Recent content in Virtualization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/virtualization/index.xml" rel="self" type="application/rss+xml"/><item><title>GNS3 VM in Proxmox VE</title><link>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</guid><description>&lt;p>Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You&amp;rsquo;re in luck, below you can find steps on how to do just that as long as you meet a few server requirements.&lt;/p>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="requirements">Requirements&lt;/h1>
+&lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>
 &lt;li>Proxmox VE with 3-4&lt;/li>
 &lt;li>A VM storage device that supports .qcow2 files&lt;/li>
@@ -10,14 +10,14 @@
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="download-the-ova-file">Download the .ova file&lt;/h1>
+&lt;h2 id="download-the-ova-file">Download the .ova file&lt;/h2>
 &lt;p>Head over to the GNS3 website and download the ESXi VM &lt;a class="link" href="https://gns3.com/software/download-vm" target="_blank" rel="noopener"
 >https://gns3.com/software/download-vm&lt;/a>&lt;/p>
 &lt;p>Keep in mind, this will ask you to create an account before you can download.&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="upload-the-ova-file-to-your-server">Upload the .ova file to your server&lt;/h1>
+&lt;h2 id="upload-the-ova-file-to-your-server">Upload the .ova file to your server&lt;/h2>
 &lt;p>Now you will need to get the downloaded file onto your Proxmox server&lt;/p>
 &lt;ul>
 &lt;li>Open your favorite FTP client on your computer. In my case, I&amp;rsquo;m using WinSCP to do this&lt;/li>
@@ -66,7 +66,7 @@ data-flex-basis="426px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="create-a-vm-in-proxmox">Create a VM in Proxmox&lt;/h1>
+&lt;h2 id="create-a-vm-in-proxmox">Create a VM in Proxmox&lt;/h2>
 &lt;p>Now we&amp;rsquo;re going to want to create a VM in Proxmox that we will be adding hard disk to&lt;/p>
 &lt;ul>
 &lt;li>Create a VM by clicking &amp;ldquo;Create VM&amp;rdquo; on the top right&lt;/li>
@@ -117,7 +117,7 @@ data-flex-basis="727px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="create-secondary-hard-disk">Create secondary hard disk&lt;/h1>
+&lt;h2 id="create-secondary-hard-disk">Create secondary hard disk&lt;/h2>
 &lt;ul>
 &lt;li>Navigate to the newly created VM&lt;/li>
 &lt;li>Go to the &amp;ldquo;Hardware&amp;rdquo; tab&lt;/li>
@@ -141,7 +141,7 @@ data-flex-basis="375px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="extract-files-from-the-ova-file">Extract files from the .ova file&lt;/h1>
+&lt;h2 id="extract-files-from-the-ova-file">Extract files from the .ova file&lt;/h2>
 &lt;p>We will need to grab files that are packaged into the file downloaded from the GNS3 website. .ova files typically contain 2 main parts: VM Configuration settings (we just did this), and virtual hard disks (In the .vmdk format)&lt;/p>
 &lt;ul>
 &lt;li>First access the shell of the Proxmox server, this can be either over SSH, or using the shell tab in Proxmox&lt;/li>
@@ -193,7 +193,7 @@ data-flex-basis="619px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="convert-vmdk-files-to-qcow2-qemu-files">Convert .vmdk files to .qcow2 qemu files&lt;/h1>
+&lt;h2 id="convert-vmdk-files-to-qcow2-qemu-files">Convert .vmdk files to .qcow2 qemu files&lt;/h2>
 &lt;p>In order for Proxmox to properly use the hard disks we just snatched, we need to convert them to .qcow2 (qemu) hard disks&lt;/p>
 &lt;ul>
 &lt;li>Get that VM ID you set earlier when creating the VM, I used 501 in my case&lt;/li>
@@ -223,7 +223,7 @@ data-flex-basis="619px"
 &lt;/div>&lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="copy-the-newly-converted-qcow2-files">Copy the newly converted .qcow2 files&lt;/h1>
+&lt;h2 id="copy-the-newly-converted-qcow2-files">Copy the newly converted .qcow2 files&lt;/h2>
 &lt;p>Now we can copy the files to the VM folder!&lt;/p>
 &lt;ul>
 &lt;li>Make sure you&amp;rsquo;re still in the same directory as the .qcow2 files&lt;/li>
@@ -259,12 +259,12 @@ data-flex-basis="619px"
 &lt;/div>&lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="start-the-vm">Start the VM&lt;/h1>
+&lt;h2 id="start-the-vm">Start the VM&lt;/h2>
 &lt;p>Now you should be good to go! Try and start the VM, and head to the console tab. GNS3 should start to load, and you can begin creating your virtual networks!&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="optional---install-qemu-guest-agent-on-gns3">Optional - Install qemu-guest-agent on GNS3&lt;/h1>
+&lt;h2 id="optional---install-qemu-guest-agent-on-gns3">Optional - Install qemu-guest-agent on GNS3&lt;/h2>
 &lt;p>I know that when I have a VM in Proxmox, I like to get some quick information sometimes straight from the GUI&amp;hellip; such as the VM&amp;rsquo;s IP address. This is only possible if the qemu guest agent installed on the machine.&lt;/p>
 &lt;p>Lucky for us, the GNS3 VM runs on Ubuntu, so this is pretty easy!&lt;/p>
 &lt;ul>

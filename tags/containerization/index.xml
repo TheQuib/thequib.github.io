@@ -298,7 +298,7 @@
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="loading-gns3">Loading GNS3&lt;/h1>
+&lt;h2 id="loading-gns3">Loading GNS3&lt;/h2>
 &lt;p>Start by opening your GNS3 client. Here, a dialog shows to create a new project.&lt;/p>
 &lt;ul>
 &lt;li>If you are running the GNS3 server on your local machine, go ahead and create a new project, name it whatever you want&lt;/li>
@@ -316,7 +316,7 @@
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="installing-an-appliance">Installing an appliance&lt;/h1>
+&lt;h2 id="installing-an-appliance">Installing an appliance&lt;/h2>
 &lt;p>On the left hand side of the window, you will find a toolbar with the following icons:&lt;/p>
 &lt;p>&lt;img src="https://thequib.github.io/p/getting-started-with-gns3/gns3-sidebarItems.png"
 width="410"
@@ -345,7 +345,7 @@ data-flex-basis="792px"
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="adding-devices-to-a-project">Adding devices to a project&lt;/h1>
+&lt;h2 id="adding-devices-to-a-project">Adding devices to a project&lt;/h2>
 &lt;p>Now, the newly installed appliance should show up under &lt;em>End Devices&lt;/em>. Click this, and drag the device into the blank space of the project. This will do some downloading work if you have just installed it, then add itself into the project.&lt;/p>
 &lt;p>To use the device, you can either click the green play button at the top of the window (this would start all devices in the project), or you can right click an individual device, and click &amp;ldquo;Start&amp;rdquo;.&lt;/p>
 &lt;p>You can confirm that the device has started by looking at the &amp;ldquo;Topology Summary&amp;rdquo; on the top right of the window. A green circle indicates that a device is online.&lt;/p>
@@ -363,11 +363,11 @@ data-flex-basis="1115px"
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="final-thoughts">Final thoughts&lt;/h1>
+&lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
 &lt;p>Keep in mind, each devices has its own configuration settings that you can mess with, as well as console types depending on if the device has a GUI or not (Such as between the Ubuntu Docker and Ubuntu Desktop guests). Some of these settings include amount of CPU cores, RAM, and type of console access you have to the device.&lt;/p>
 &lt;p>Feel free to play around with these and figure some stuff out! The beauty of GNS3 is that you can do anything you want, and not have to worry about breaking anything of importance :)&lt;/p>
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
-&lt;h1 id="conclusion">Conclusion&lt;/h1>
+&lt;h3 id="conclusion">Conclusion&lt;/h3>
 &lt;p>And there you have it! Go ahead and play with the different end devices, as well as switching/routing appliances that exist. If you have the Cisco Modeling labs subscription, you are also able to import the IOSv images into GNS3, which will allow you to interact and play with Cisco IOS devices.&lt;/p></description></item></channel></rss>

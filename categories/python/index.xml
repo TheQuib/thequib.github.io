@@ -21,7 +21,7 @@
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="before-you-start">Before you Start&lt;/h1>
+&lt;h2 id="before-you-start">Before you Start&lt;/h2>
 &lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>This is only if you are using Visual Studio Code as your IDE&lt;/em>&lt;/p>
 &lt;p>VS Code gets a little funky when it comes to installed python libraries. First, make sure you install the latest version of Python from the Microsoft Store&amp;hellip; Code will look to the installation path of this by default.&lt;/p>
 &lt;p>After installation:&lt;/p>
@@ -46,7 +46,7 @@ data-flex-basis="3078px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="installing-netmiko">Installing Netmiko&lt;/h1>
+&lt;h2 id="installing-netmiko">Installing Netmiko&lt;/h2>
 &lt;p>Netmiko is, in my opinion, the best all-in-one network automation tool to use in Python. Netmiko has a multitude of supported devices; including Linux, Cisco (IOS, NX-OS, etc), HP Enterprise, and TONS more.&lt;/p>
 &lt;p>To install Netmiko on your computer, open a terminal and type:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -70,7 +70,7 @@ data-flex-basis="3078px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="setting-up-netmiko">Setting up Netmiko&lt;/h1>
+&lt;h2 id="setting-up-netmiko">Setting up Netmiko&lt;/h2>
 &lt;p>Network automation is all about doing the similar tasks on tons of devices from a single place. That doesn&amp;rsquo;t mean you have to have a hundred devices to do some automation work.&lt;/p>
 &lt;p>In my case, I will be using the Cisco Modeling Labs IOSv router image (in GNS3), so my commands will be IOS specific. I&amp;rsquo;ll have some information down below so you can set up a Linux machine if you want as well :)&lt;/p>
 &lt;p>First, we&amp;rsquo;ll need to import the ConnectHandler module from Netmiko:&lt;/p>
@@ -199,7 +199,7 @@ data-flex-basis="3078px"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;sh run&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="sending-your-first-command">Sending your first command&lt;/h1>
+&lt;/div>&lt;h2 id="sending-your-first-command">Sending your first command&lt;/h2>
 &lt;p>Now we&amp;rsquo;re ready to send a command to your device / devices! Let&amp;rsquo;s get started by creating a Netmiko &lt;code>ConnectHandler&lt;/code> variable by adding this line:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -224,7 +224,7 @@ data-flex-basis="3078px"
 &lt;!-- raw HTML omitted -->
 &lt;hr>
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="sending-multiple-commands">Sending multiple commands&lt;/h1>
+&lt;h2 id="sending-multiple-commands">Sending multiple commands&lt;/h2>
 &lt;p>Automation isn&amp;rsquo;t just about sending a single command to devices. While this can be pretty useful, especially for gathering some information (like switch configs), sending multiple commands can prove to be extremely useful and time-saving, especially when you&amp;rsquo;re configuring tons of devices.&lt;/p>
 &lt;p>In the previous step, we used the function &lt;strong>send_command()&lt;/strong>, which only sends one command. For multiple configuration commands, there is a function called &lt;strong>send_config_set()&lt;/strong>, which accepts a list in its parameters.&lt;/p>
 &lt;p>So first, let&amp;rsquo;s create a list:&lt;/p>
