@@ -31,9 +31,11 @@ With no particular dates or order, here's what I'm planning on accomplishing:
  - [ ] The constant improvement and documentation on this website (completed projects)
    - [ ] Fix Favicon not showing on every page except home
    - [ ] A self-hosted GitHub runner for pushing out this site
+ - [X] "Production" Kubernetes cluster (k3s)
+   - [ ] With running services
  - [ ] Creation of website as a subdomain for drone flying
  - [X] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
- - [ ] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
+ - [X] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
  - [ ] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
  - [ ] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
  - [ ] SSH Key *everything*
