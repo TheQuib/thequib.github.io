@@ -14,7 +14,7 @@ While the out of box experience is great, I couldn’t help myself but look up h
 
 &nbsp;
 
-# The scoop
+## The scoop
 
 While you can do this all manually, the doorbell sadly resets back to it’s default chime when restarted. So as an example, if you loose power, your doorbell will have it’s original chime again.
 
@@ -30,7 +30,7 @@ This is no fun, so I made a script for you to use! You can find it on my persona
 
 &nbsp;
 
-# Enable SSH on Doorbell
+## Enable SSH on Doorbell
 
 This process is kinda hard to find, but enabling SSH on your UniFi Protect console (whether that be a Dream Machine, Cloud Key Gen 2+, or UniFi NVR) is pretty simple, and a quick google search away… so that won’t be covered here.
 
@@ -78,7 +78,7 @@ You should now be able to SSH to all of your UniFi Protect devices! The username
 
 &nbsp;
 
-# Prepare audio file
+## Prepare audio file
 
 Now, you will need to get a working `.wav` file to be later uploaded to your doorbell. I would recommend to use a clip that is 10 seconds maximum (though I haven’t tested lengths yet).
 
@@ -135,7 +135,7 @@ Now, open the file in Audacity
 
 &nbsp;
 
-# Upload audio file
+## Upload audio file
 
 Now we get to upload the audio file to the doorbell!
 
@@ -170,7 +170,7 @@ You may notice t hat I didn't specify a path on the rmoet host, this is because 
 
 &nbsp;
 
-# Create symlink of audio file
+## Create symlink of audio file
 
 Now, we’ll backup the original chime.wav just so it can easily be reset later if desired, and then create a symlink from our uploaded file to where chime.wav exists.
 
@@ -206,6 +206,6 @@ ls
 
 &nbsp;
 
-# Finishing up
+## Finishing up
 
 Now you're all done! You can go ahead and test out the new chime by pressing the ring button on your doorbell, and it should play your uploaded file.

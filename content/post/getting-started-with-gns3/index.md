@@ -31,7 +31,7 @@ When diving into learning networking, GNS3 is a great tool to get started. GNS3 
 
 &nbsp;
 
-# Loading GNS3
+## Loading GNS3
 
 Start by opening your GNS3 client. Here, a dialog shows to create a new project.
  - If you are running the GNS3 server on your local machine, go ahead and create a new project, name it whatever you want
@@ -49,7 +49,7 @@ Start by opening your GNS3 client. Here, a dialog shows to create a new project.
 
 &nbsp;
 
-# Installing an appliance
+## Installing an appliance
 
 On the left hand side of the window, you will find a toolbar with the following icons:
 
@@ -71,7 +71,7 @@ Once you have found the device you want, click "Install", then "Next" to install
 
 &nbsp;
 
-# Adding devices to a project
+## Adding devices to a project
 
 Now, the newly installed appliance should show up under *End Devices*. Click this, and drag the device into the blank space of the project. This will do some downloading work if you have just installed it, then add itself into the project.
 
@@ -89,7 +89,7 @@ To get console access to this docker guest, you can double click on the node, or
 
 &nbsp;
 
-# Final thoughts
+## Final thoughts
 
 Keep in mind, each devices has its own configuration settings that you can mess with, as well as console types depending on if the device has a GUI or not (Such as between the Ubuntu Docker and Ubuntu Desktop guests). Some of these settings include amount of CPU cores, RAM, and type of console access you have to the device.
 
@@ -101,6 +101,6 @@ Feel free to play around with these and figure some stuff out! The beauty of GNS
 
 &nbsp;
 
-# Conclusion
+### Conclusion
 
 And there you have it! Go ahead and play with the different end devices, as well as switching/routing appliances that exist. If you have the Cisco Modeling labs subscription, you are also able to import the IOSv images into GNS3, which will allow you to interact and play with Cisco IOS devices.

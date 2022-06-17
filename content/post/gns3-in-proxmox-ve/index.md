@@ -11,7 +11,7 @@ Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 
 
 <br>
 
-# Requirements
+## Requirements
 
 - Proxmox VE with 3-4
 - A VM storage device that supports .qcow2 files
@@ -24,7 +24,7 @@ Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 
 
 <br>
 
-# Download the .ova file
+## Download the .ova file
 
 Head over to the GNS3 website and download the ESXi VM [https://gns3.com/software/download-vm](https://gns3.com/software/download-vm)
 
@@ -36,7 +36,7 @@ Keep in mind, this will ask you to create an account before you can download.
 
 <br>
 
-# Upload the .ova file to your server
+## Upload the .ova file to your server
 
 Now you will need to get the downloaded file onto your Proxmox server
 
@@ -65,7 +65,7 @@ Now you will need to get the downloaded file onto your Proxmox server
 
 <br>
 
-# Create a VM in Proxmox
+## Create a VM in Proxmox
 
 Now we're going to want to create a VM in Proxmox that we will be adding hard disk to
 
@@ -93,7 +93,7 @@ Now we're going to want to create a VM in Proxmox that we will be adding hard di
 
  <br>
 
- # Create secondary hard disk
+ ## Create secondary hard disk
 
  - Navigate to the newly created VM
  - Go to the "Hardware" tab
@@ -111,7 +111,7 @@ Now we're going to want to create a VM in Proxmox that we will be adding hard di
 
 <br>
 
-# Extract files from the .ova file
+## Extract files from the .ova file
 
 We will need to grab files that are packaged into the file downloaded from the GNS3 website. .ova files typically contain 2 main parts: VM Configuration settings (we just did this), and virtual hard disks (In the .vmdk format)
 
@@ -145,7 +145,7 @@ The 2 `.vmdk` files are the virtual hard disks, and the `.ovf` file is the VM co
 
 <br>
 
-# Convert .vmdk files to .qcow2 qemu files
+## Convert .vmdk files to .qcow2 qemu files
 
 In order for Proxmox to properly use the hard disks we just snatched, we need to convert them to .qcow2 (qemu) hard disks
 
@@ -170,7 +170,7 @@ qemu-img convert -f vmdk 'GNS3 VM-disk002.vmdk' -O qcow2 vm-501-disk-1.qcow2
 
 <br>
 
-# Copy the newly converted .qcow2 files
+## Copy the newly converted .qcow2 files
 
 Now we can copy the files to the VM folder!
 
@@ -198,7 +198,7 @@ cp vm-501-disk-1.qcow2 /mnt/pve/Proxmox1-VM-images-501/
 
 <br>
 
-# Start the VM
+## Start the VM
 
 Now you should be good to go! Try and start the VM, and head to the console tab. GNS3 should start to load, and you can begin creating your virtual networks!
 
@@ -208,7 +208,7 @@ Now you should be good to go! Try and start the VM, and head to the console tab.
 
 <br>
 
-# Optional - Install qemu-guest-agent on GNS3
+## Optional - Install qemu-guest-agent on GNS3
 
 I know that when I have a VM in Proxmox, I like to get some quick information sometimes straight from the GUI... such as the VM's IP address. This is only possible if the qemu guest agent installed on the machine.
 

@@ -33,7 +33,7 @@ You can find all of my [scripts](https://github.com/TheQuib/python-network-autom
 
 <br>
 
-# Before you Start
+## Before you Start
 
 ***Note:*** *This is only if you are using Visual Studio Code as your IDE*
 
@@ -56,7 +56,7 @@ Now you should be all goood to go!
 
 <br>
 
-# Installing Netmiko
+## Installing Netmiko
 
 Netmiko is, in my opinion, the best all-in-one network automation tool to use in Python. Netmiko has a multitude of supported devices; including Linux, Cisco (IOS, NX-OS, etc), HP Enterprise, and TONS more.
 
@@ -80,7 +80,7 @@ If you run this, and it doesn't do anything, that's good! This just means that t
 
 <br>
 
-# Setting up Netmiko
+## Setting up Netmiko
 
 Network automation is all about doing the similar tasks on tons of devices from a single place. That doesn't mean you have to have a hundred devices to do some automation work.
 
@@ -158,7 +158,7 @@ for host in  hosts:
     command = 'sh run'
 ```
 
-# Sending your first command
+## Sending your first command
 
 Now we're ready to send a command to your device / devices! Let's get started by creating a Netmiko `ConnectHandler` variable by adding this line:
 
@@ -181,7 +181,7 @@ Now go ahead and run your program! If you put everything in correctly, you shoul
 
 <br>
 
-# Sending multiple commands
+## Sending multiple commands
 
 Automation isn't just about sending a single command to devices. While this can be pretty useful, especially for gathering some information (like switch configs), sending multiple commands can prove to be extremely useful and time-saving, especially when you're configuring tons of devices.
 
