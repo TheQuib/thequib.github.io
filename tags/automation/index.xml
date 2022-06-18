@@ -30,7 +30,7 @@
 &lt;li>&lt;input disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
 &lt;/ul></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
