@@ -43,3 +43,4 @@ With no particular dates or order, here's what I'm planning on accomplishing:
  - [ ] Run updates on all servers
  - [ ] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
  - [ ] SnipeIT for inventory of all the things
+ - [ ] Automate Cloudflare DNS records using host data from Traefik's API
