@@ -33,6 +33,7 @@
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> SnipeIT for inventory of all the things&lt;/li>
 &lt;/ul></description></item><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
 &lt;p>When I host Minecraft servers for my friends, I seriously hate having to tell them to connect to &lt;code>example.com:25567&lt;/code> or &lt;code>example.com:25568&lt;/code>.&lt;/p>
 &lt;p>Luckily, there is an amazing solution for this: &lt;em>Reverse Proxies&lt;/em>&lt;/p>

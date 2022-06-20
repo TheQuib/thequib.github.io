@@ -33,6 +33,7 @@
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> SnipeIT for inventory of all the things&lt;/li>
 &lt;/ul></description></item><item><title>Manage infrastructure with Terraform Cloud</title><link>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</link><pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/</guid><description>&lt;img src="https://thequib.github.io/p/manage-infrastructure-with-terraform-cloud/featuredImage.png" alt="Featured image of post Manage infrastructure with Terraform Cloud" />&lt;p>Yeah, Terraform is cool and all. But that&amp;rsquo;s typically done locally. The cloud is even better, and free.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="why-would-i-do-this">Why would I do this?&lt;/h2>
