@@ -4,7 +4,7 @@ title: "100 Days of Homelab"
 date: "2022-06-12"
 description: "A challenge by TechnoTim, challenging everyone to work on something in their homelab at least 1 hour a day, for 100 days."
 tags: ["100DaysOfHomelab", "automation", "homelab", "networking", "containerization"]
-categories: ["100DaysOfHomelab"]
+categories: ["Pinned", "100DaysOfHomelab"]
 weight: 1
 image: featuredImage.png
 ---
@@ -42,3 +42,4 @@ With no particular dates or order, here's what I'm planning on accomplishing:
  - [X] Set up IPMI port on Proxmox host
  - [ ] Run updates on all servers
  - [ ] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
+ - [ ] SnipeIT for inventory of all the things
