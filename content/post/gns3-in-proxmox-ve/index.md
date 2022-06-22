@@ -5,6 +5,7 @@ date: "2021-04-23"
 description: "Ever wanted to use GNS3 in your Proxmox Server?"
 tags: ["networking", "gns3", "proxmox", "virtualization"]
 categories: ["Virtualization", "Proxmox", "GNS3"]
+image: featuredImage.png
 ---
 
 Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You're in luck, below you can find steps on how to do just that as long as you meet a few server requirements.
