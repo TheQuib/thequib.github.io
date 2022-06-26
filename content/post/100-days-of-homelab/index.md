@@ -33,14 +33,13 @@ With no particular dates or order, here's what I'm planning on accomplishing:
    - [ ] A self-hosted GitHub runner for pushing out this site
  - [X] "Production" Kubernetes cluster (k3s)
    - [ ] With running services
- - [ ] Creation of website as a subdomain for drone flying
  - [X] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
  - [X] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
  - [ ] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
- - [ ] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
+ - [X] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
  - [ ] SSH Key *everything*
  - [X] Set up IPMI port on Proxmox host
  - [ ] Run updates on all servers
- - [ ] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
+ - [X] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
  - [ ] SnipeIT for inventory of all the things
  - [ ] Automate Cloudflare DNS records using host data from Traefik's API
