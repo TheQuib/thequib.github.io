@@ -5,6 +5,7 @@ date: "2021-05-02"
 description: "Stuck on where to start in GNS3? Start here!"
 tags: ["networking", "gns3", "proxmox", "virtualization", "containerization"]
 categories: ["GNS3"]
+image: featuredImage.png
 ---
 
 When diving into learning networking, GNS3 is a great tool to get started. GNS3 allows you to build out and design networks without having to buy all of the expensive hardware to do so.
