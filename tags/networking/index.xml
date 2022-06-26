@@ -1401,7 +1401,7 @@ data-flex-basis="3078px"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">ssh&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send_config_set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Getting Started with GNS3</title><link>https://thequib.github.io/p/getting-started-with-gns3/</link><pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-gns3/</guid><description>&lt;p>When diving into learning networking, GNS3 is a great tool to get started. GNS3 allows you to build out and design networks without having to buy all of the expensive hardware to do so.&lt;/p>
+&lt;/div></description></item><item><title>Getting Started with GNS3</title><link>https://thequib.github.io/p/getting-started-with-gns3/</link><pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/getting-started-with-gns3/</guid><description>&lt;img src="https://thequib.github.io/p/getting-started-with-gns3/featuredImage.png" alt="Featured image of post Getting Started with GNS3" />&lt;p>When diving into learning networking, GNS3 is a great tool to get started. GNS3 allows you to build out and design networks without having to buy all of the expensive hardware to do so.&lt;/p>
 &lt;p> &lt;/p>
 &lt;hr>
 &lt;p> &lt;/p>
