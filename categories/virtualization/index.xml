@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualization on QuibTech</title><link>https://thequib.github.io/categories/virtualization/</link><description>Recent content in Virtualization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/virtualization/index.xml" rel="self" type="application/rss+xml"/><item><title>GNS3 VM in Proxmox VE</title><link>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</guid><description>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/featuredImage.png" alt="Featured image of post GNS3 VM in Proxmox VE" />&lt;p>Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You&amp;rsquo;re in luck, below you can find steps on how to do just that as long as you meet a few server requirements.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualization on QuibTech</title><link>https://thequib.github.io/categories/virtualization/</link><description>Recent content in Virtualization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 26 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/virtualization/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Docker Containers in Proxmox LXC</title><link>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</link><pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</guid><description>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/featuredImage.png" alt="Featured image of post Run Docker Containers in Proxmox LXC" />&lt;h2 id="-why-would-i-do-this">🙋 Why would I do this?&lt;/h2>
+&lt;p>One awesome feature in Proxmox VE is to run an LXC (Linux Container) directly from the web interface. A quick machine can be spun up that works and acts just like a regular full-blown Linux Virtual machine.&lt;/p>
+&lt;p>The downside to this is we are limited to what resources you provide the VM, not the resources that are given to an LXC (which is essentially the maximum of the host system).&lt;/p>
+&lt;h2 id="-side-note">➡️ Side Note&lt;/h2>
+&lt;p>This requires running an LXC as &lt;code>Unprivileged&lt;/code>. To learn more about what this means, please refer to the &lt;a class="link" href="https://pve.proxmox.com/wiki/Unprivileged_LXC_containers" target="_blank" rel="noopener"
+>Proxmox documentation&lt;/a> on this.&lt;/p>
+&lt;h2 id="-preparing-proxmox">⌨️ Preparing Proxmox&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong>&lt;/em> &lt;em>This will need to be done on each Proxmox host you have, so each command will need to be done for how ever many hosts you have&lt;/em>&lt;/p>
+&lt;h3 id="enable-kernel-modules">Enable Kernel Modules&lt;/h3>
+&lt;p>The &lt;code>overlay&lt;/code> and &lt;code>aufs&lt;/code> kernel modules need to be enabled to support running containers:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> -e &lt;span class="s2">&amp;#34;overlay\naufs&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/modules-load.d/modules.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Please note that the &lt;code>aufs&lt;/code> module is deprecated as of Proxmox VE 7.0
+&lt;ul>
+&lt;li>This CAN be explicitly enabled, but it won&amp;rsquo;t do anything&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="reboot-host">Reboot host&lt;/h3>
+&lt;p>For the changes to take effect, reboot the host&lt;/p>
+&lt;h3 id="check-changes">Check changes&lt;/h3>
+&lt;p>Upon starting back up, run the follwing:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">lsmod &lt;span class="p">|&lt;/span> grep -E &lt;span class="s1">&amp;#39;overlay|aufs&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This should return something like:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">overlay &lt;span class="m">131072&lt;/span> &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="create-an-unprivileged-container">Create an unprivileged container&lt;/h2>
+&lt;p>The creation process is pretty standard, and what you&amp;rsquo;re used to. But there are a few changes you will need to make along the way:&lt;/p>
+&lt;ul>
+&lt;li>On the Proxmox GUI, click the &lt;code>Create CT&lt;/code> button&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/createCTButton.png"
+width="131"
+height="33"
+srcset="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/createCTButton_hu00a5d41f30fad5d502f6a18ff7e8846c_1581_480x0_resize_box_3.png 480w, https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/createCTButton_hu00a5d41f30fad5d502f6a18ff7e8846c_1581_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="396"
+data-flex-basis="952px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Make sure you have &amp;ldquo;Unprivileged container&amp;rdquo; checked&lt;/li>
+&lt;li>For the rest of the setup, give it your preferred configuration&lt;/li>
+&lt;li>Make sure you don&amp;rsquo;t start the container upon creation&lt;/li>
+&lt;/ul>
+&lt;h2 id="edit-containers-features">Edit container&amp;rsquo;s features&lt;/h2>
+&lt;p>Click on your new container&lt;/p>
+&lt;ul>
+&lt;li>Go to &lt;code>Options&lt;/code>&lt;/li>
+&lt;li>Double-click on the &lt;code>Features&lt;/code> row&lt;/li>
+&lt;li>Ensure that the following are checked:
+&lt;ul>
+&lt;li>&lt;code>keyctl&lt;/code>&lt;/li>
+&lt;li>&lt;code>nesting&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Click &lt;code>OK&lt;/code>&lt;/li>
+&lt;li>Start the container&lt;/li>
+&lt;/ul>
+&lt;h2 id="install-docker">Install Docker&lt;/h2>
+&lt;p>Head over to &lt;a class="link" href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener"
+>Docker&amp;rsquo;s docs&lt;/a>, and find the steps to install docker for your distro.&lt;/p>
+&lt;p>Once all set up, test out the installation with &lt;code>docker run hello-world&lt;/code> and it should be working!&lt;/p></description></item><item><title>GNS3 VM in Proxmox VE</title><link>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/gns3-vm-in-proxmox-ve/</guid><description>&lt;img src="https://thequib.github.io/p/gns3-vm-in-proxmox-ve/featuredImage.png" alt="Featured image of post GNS3 VM in Proxmox VE" />&lt;p>Do you use Proxmox VE as your main homelab hypervisor, and want to run the GNS3 VM on it? You&amp;rsquo;re in luck, below you can find steps on how to do just that as long as you meet a few server requirements.&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>
