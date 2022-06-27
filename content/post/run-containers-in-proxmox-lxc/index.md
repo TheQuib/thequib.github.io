@@ -5,7 +5,6 @@ date: "2022-06-26"
 description: "Quick guide on getting Docker to run in a Proxmox LXC."
 tags: ["homelab", "containerization"]
 categories: ["Docker", "Proxmox", "Virtualization"]
-weight: 1
 image: featuredImage.png
 ---
 
