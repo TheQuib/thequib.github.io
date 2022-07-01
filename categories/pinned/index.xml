@@ -14,7 +14,7 @@
 &lt;li>&lt;input disabled="" type="checkbox"> The constant improvement and documentation on this website (completed projects)
 &lt;ul>
 &lt;li>&lt;input disabled="" type="checkbox"> Fix Favicon not showing on every page except home&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> &amp;ldquo;Production&amp;rdquo; Kubernetes cluster (k3s)
