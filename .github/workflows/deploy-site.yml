@@ -1,19 +1,19 @@
-name: github pages
+name: Update Site
 
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - master
   pull_request:
 
 jobs:
   deploy:
-    runs-on: self-hosted # use self hosted runner  #ubuntu-20.04
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
