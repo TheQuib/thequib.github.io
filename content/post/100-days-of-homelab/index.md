@@ -30,7 +30,7 @@ With no particular dates or order, here's what I'm planning on accomplishing:
 
  - [ ] The constant improvement and documentation on this website (completed projects)
    - [ ] Fix Favicon not showing on every page except home
-   - [ ] A self-hosted GitHub runner for pushing out this site
+   - [X] A self-hosted GitHub runner for pushing out this site
  - [X] "Production" Kubernetes cluster (k3s)
    - [ ] With running services
  - [X] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
