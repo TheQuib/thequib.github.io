@@ -1,4 +1,210 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo on QuibTech</title><link>https://thequib.github.io/tags/hugo/</link><description>Recent content in hugo on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Create a Static Website</title><link>https://thequib.github.io/p/create-a-static-website/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/create-a-static-website/</guid><description>&lt;img src="https://thequib.github.io/p/create-a-static-website/featuredImage.png" alt="Featured image of post Create a Static Website" />&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo on QuibTech</title><link>https://thequib.github.io/tags/hugo/</link><description>Recent content in hugo on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Host your website on GitHub</title><link>https://thequib.github.io/p/host-your-website-on-github/</link><pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-github/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-github/featuredImage.png" alt="Featured image of post Host your website on GitHub" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
+&lt;p>GitHub pages is a static site hosting platform that hosts websites for free. It is available for free to anyone with a GitHub account, organization, and / or project.&lt;/p>
+&lt;p>With a little bit of static site generation using your favorite generator, and GitHub actions, your website will be up and running live on the internet in no time!&lt;/p>
+&lt;p>I will be using &lt;code>Hugo&lt;/code> in this post, but it can be tweaked to accomodate for other site generators.&lt;/p>
+&lt;h2 id="-requirements">📝 Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A GitHub account&lt;/li>
+&lt;li>GitHub desktop&lt;/li>
+&lt;li>An IDE to work in (such as Visual Studio Code)&lt;/li>
+&lt;li>A generated static site
+&lt;ul>
+&lt;li>Don&amp;rsquo;t know where to get started? &lt;a class="link" href="https://quibtech.com/p/create-a-static-website/" target="_blank" rel="noopener"
+>I have a post on this&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="-prepare-github">🔍 Prepare GitHub&lt;/h2>
+&lt;h3 id="-create-a-repository">🚩 Create a repository&lt;/h3>
+&lt;p>First, let&amp;rsquo;s get started by creating the site&amp;rsquo;s repository. There are a few requirements for this:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Must be your &lt;code>username&lt;/code>, &lt;code>organization&lt;/code> or &lt;code>project&lt;/code> title and end with &lt;code>.github.io&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>An example for me would be: &lt;code>thequib.github.io&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Make sure this is set to &lt;code>public&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>You can initalize a README if you would like&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>If you&amp;rsquo;re using &lt;em>Jekyll&lt;/em>, it may be a good idea to initalize with a &lt;code>.gitignore&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="-add-gh-pages-branch">➕ Add gh-pages branch&lt;/h4>
+&lt;p>Now, in your repository:&lt;/p>
+&lt;ul>
+&lt;li>Click on the link titled &lt;code>1 branch&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/host-your-website-on-github/branchButton.png"
+width="86"
+height="37"
+srcset="https://thequib.github.io/p/host-your-website-on-github/branchButton_hu4f28305167a0905e9a2a4a4332b28f01_1105_480x0_resize_box_3.png 480w, https://thequib.github.io/p/host-your-website-on-github/branchButton_hu4f28305167a0905e9a2a4a4332b28f01_1105_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="557px"
+>&lt;/p>
+&lt;ul>
+&lt;li>At the top right of the list, click &lt;code>New Branch&lt;/code>&lt;/li>
+&lt;li>Name this branch &lt;code>gh-pages&lt;/code>&lt;/li>
+&lt;li>Click &lt;code>Create Branch&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="change-repository-settings">Change repository settings&lt;/h3>
+&lt;p>Under the name of your repository:&lt;/p>
+&lt;ul>
+&lt;li>Click the &lt;code>Settings&lt;/code> tab&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/host-your-website-on-github/settingsButton.png"
+width="86"
+height="35"
+srcset="https://thequib.github.io/p/host-your-website-on-github/settingsButton_hu2fe49c549b79b34262c504ecf73c155f_1320_480x0_resize_box_3.png 480w, https://thequib.github.io/p/host-your-website-on-github/settingsButton_hu2fe49c549b79b34262c504ecf73c155f_1320_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="245"
+data-flex-basis="589px"
+>&lt;/p>
+&lt;ul>
+&lt;li>On the left sidebar, click &lt;code>Pages&lt;/code>&lt;/li>
+&lt;li>Click the &lt;code>Branch&lt;/code> dropdown, and select your newly-created branch, &lt;em>gh-pages&lt;/em>&lt;/li>
+&lt;li>Click &lt;code>Save&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="-clone-the-repository">🔽 Clone the repository&lt;/h2>
+&lt;p>Now, we&amp;rsquo;ll get the repository down to the local machine to work on it. You can either do this in a GUI with &lt;a class="link" href="https://desktop.github.com/" target="_blank" rel="noopener"
+>GitHub Desktop&lt;/a> or by using the &lt;a class="link" href="https://git-scm.com/" target="_blank" rel="noopener"
+>Git CLI&lt;/a> with the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> directory/to/clone/to/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/YourUsername/yourRepository
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="add-necessary-files">Add necessary files&lt;/h2>
+&lt;h3 id="-open-in-your-ide">🔼 Open in your IDE&lt;/h3>
+&lt;ul>
+&lt;li>It&amp;rsquo;s super easy to work with a git repository in an IDE, such as Visual Studio code. But your favorite IDE should work anyways.&lt;/li>
+&lt;li>Open up the directory you cloned your repository to&lt;/li>
+&lt;/ul>
+&lt;h3 id="-add-site-files">➕ Add site files&lt;/h3>
+&lt;p>It would be beneficial to add your hugo project files into this repository (if you are using Hugo). Again, other site generators are similar in workflows.&lt;/p>
+&lt;h3 id="-create-your-actions-workflow">➕ Create your Actions workflow&lt;/h3>
+&lt;p>A workflow in GitHub is an automation process defined by a &lt;code>yaml&lt;/code> file. These can be anything from super simple, to extremely complex.&lt;/p>
+&lt;p>For GitHub Pages, it&amp;rsquo;s pretty simple.&lt;/p>
+&lt;ol>
+&lt;li>First, create a directory in the root of the repository titled &lt;code>.github&lt;/code>&lt;/li>
+&lt;li>In this directory, create another directory titled &lt;code>workflows&lt;/code>&lt;/li>
+&lt;li>In &lt;em>this&lt;/em> directory, create a file titled &lt;code>deploy-site.yml&lt;/code>&lt;/li>
+&lt;li>This &lt;code>yaml&lt;/code> file will contain all of the instructions GitHub will use to deploy the site
+&lt;ul>
+&lt;li>An example of this file can be found below:&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy Hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">push&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">branches&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">master&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">pull_request&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">jobs&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">deploy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">runs-on&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ubuntu-20.04&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">steps&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">actions/checkout@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">submodules&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">fetch-depth&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Setup Hugo&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-hugo@v2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">hugo-version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;latest&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">extended&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Build&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">hugo --minify&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">Deploy&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">uses&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">peaceiris/actions-gh-pages@v3&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">github_token&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">${{ secrets.GITHUB_TOKEN }}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">publish_dir&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">./public&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>But, you can find tons of examples online if this doesn&amp;rsquo;t suit your needs (such as with a different static site generator like Jekyll).&lt;/p>
+&lt;h4 id="-what-will-this-action-do">❓ What will this action do?&lt;/h4>
+&lt;ol>
+&lt;li>In an Ubuntu 20.04 image&lt;/li>
+&lt;li>The repository will be checked out&lt;/li>
+&lt;li>Hugo will be set up, using the &lt;code>extended&lt;/code> version in case needed&lt;/li>
+&lt;li>Site will be built using the command &lt;code>hugo --minify&lt;/code>&lt;/li>
+&lt;li>Site will deploy to the repository, using the contents of the &lt;code>./public&lt;/code> directory created from the previous command
+&lt;ul>
+&lt;li>In essence, the contents of &lt;code>./public&lt;/code> are committed to the &lt;code>gh-pages&lt;/code> branch&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>This will run a deployment action automatically that makes the site live&lt;/li>
+&lt;/ol>
+&lt;h2 id="-commit">✅ Commit!&lt;/h2>
+&lt;p>Now, let&amp;rsquo;s get everything commited to GitHub, and your site should deploy!&lt;/p>
+&lt;h2 id="a-few-references">A few references&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-github/" target="_blank" rel="noopener"
+>Deploying Hugo with GitHub actions&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://docs.github.com/en/actions" target="_blank" rel="noopener"
+>GitHub actions documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/TheQuib/thequib.github.io" target="_blank" rel="noopener"
+>This website&amp;rsquo;s repository!&lt;/a>
+&lt;ul>
+&lt;li>As I use hugo, this contains the necessary actions workflow file and directory structure for Hugo&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Create a Static Website</title><link>https://thequib.github.io/p/create-a-static-website/</link><pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/create-a-static-website/</guid><description>&lt;img src="https://thequib.github.io/p/create-a-static-website/featuredImage.png" alt="Featured image of post Create a Static Website" />&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
 &lt;p>Hugo is one of many different static site generators. The most popular is called &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
 >Jekyll&lt;/a>, and is a bit simpler to use than Hugo. It&amp;rsquo;s mostly personal preference, but here we&amp;rsquo;ll be going through setup for Hugo.&lt;/p>
 &lt;p> &lt;/p>
