@@ -3,7 +3,7 @@ author: "Quinn Henry"
 title: "Host your website on GitHub"
 date: "2022-07-06"
 description: "GitHub pages provides a free hosting platform for static websites. It's a great place to get your first website going!"
-tags: ["devOps", "cloud", "hugo", "linux", "static-websites", "website", "website-building", ]
+tags: ["devOps", "cloud", "hugo", "linux", "static-websites", "website", "website-building"]
 categories: ["Cloud", "Automation", "Hugo"]
 image: featuredImage.png
 ---
