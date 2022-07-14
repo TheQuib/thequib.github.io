@@ -1,4 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on QuibTech</title><link>https://thequib.github.io/categories/hugo/</link><description>Recent content in Hugo on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Host your website on GitHub</title><link>https://thequib.github.io/p/host-your-website-on-github/</link><pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-github/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-github/featuredImage.png" alt="Featured image of post Host your website on GitHub" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on QuibTech</title><link>https://thequib.github.io/categories/hugo/</link><description>Recent content in Hugo on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 13 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Host your website on Cloudflare</title><link>https://thequib.github.io/p/host-your-website-on-cloudflare/</link><pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-cloudflare/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-cloudflare/featuredImage.png" alt="Featured image of post Host your website on Cloudflare" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
+&lt;p>&lt;a class="link" href="https://pages.cloudflare.com/" target="_blank" rel="noopener"
+>Cloudflare pages&lt;/a> is a web app hosting platform that hosts websites for free. It&amp;rsquo;s free to anyone with a Cloudflare account, and super easy to set up!&lt;/p>
+&lt;p>I&amp;rsquo;ll be using the Hugo static site generator. I have a full tutorial on how to get this set up and working in your own environment &lt;a class="link" href="https://quibtech.com/p/create-a-static-website/" target="_blank" rel="noopener"
+>here&lt;/a>.&lt;/p>
+&lt;h2 id="-requirements">📝 Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A Cloudflare account&lt;/li>
+&lt;li>A GitHub account&lt;/li>
+&lt;li>GitHub desktop&lt;/li>
+&lt;li>An IDE to work in (such as Visual Studio Code)&lt;/li>
+&lt;li>Your static site files
+&lt;ul>
+&lt;li>Don&amp;rsquo;t know where to get started? &lt;a class="link" href="https://quibtech.com/p/create-a-static-website/" target="_blank" rel="noopener"
+>I have a post on this&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="-prepare-github">🔍 Prepare GitHub&lt;/h2>
+&lt;h3 id="-create-a-repository">🚩 Create a repository&lt;/h3>
+&lt;p>First, let&amp;rsquo;s get started by creating the site&amp;rsquo;s repository. This can be named whatever you want:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>An example for me would be: &lt;code>my-website&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Make sure this is set to &lt;code>public&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>You can initalize a README if you would like&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>If you&amp;rsquo;re using &lt;em>Jekyll&lt;/em>, it may be a good idea to initalize with a &lt;code>.gitignore&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="-clone-the-repository">🔽 Clone the repository&lt;/h2>
+&lt;p>Now, we&amp;rsquo;ll get the repository down to the local machine to work on it. You can either do this in a GUI with &lt;a class="link" href="https://desktop.github.com/" target="_blank" rel="noopener"
+>GitHub Desktop&lt;/a> or by using the &lt;a class="link" href="https://git-scm.com/" target="_blank" rel="noopener"
+>Git CLI&lt;/a> with the following command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> directory/to/clone/to/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/YourUsername/yourRepository
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="add-necessary-files">Add necessary files&lt;/h2>
+&lt;h3 id="-open-in-your-ide">🔼 Open in your IDE&lt;/h3>
+&lt;ul>
+&lt;li>It&amp;rsquo;s super easy to work with a git repository in an IDE, such as Visual Studio code. But your favorite IDE should work anyways.&lt;/li>
+&lt;li>Open up the directory you cloned your repository to&lt;/li>
+&lt;/ul>
+&lt;h3 id="-add-site-files">➕ Add site files&lt;/h3>
+&lt;p>Get your hugo project files into this repository&amp;rsquo;s directory (if you are using Hugo). Or again, other site generators will do just fine.&lt;/p>
+&lt;h2 id="-commit">✅ Commit&lt;/h2>
+&lt;p>Now, let&amp;rsquo;s get everything commited to GitHub.&lt;/p>
+&lt;ul>
+&lt;li>In &lt;em>GitHub Desktop&lt;/em>, enter a message and click &lt;code>Commit&lt;/code> on the bottom-left of the application&lt;/li>
+&lt;li>In &lt;em>Git CLI&lt;/em>, cd into your cloned directory and enter the following commands, substituting your own message if you would like:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git commit -m &amp;#34;Add site files&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="-get-cloudflare-set-up">🔍 Get cloudflare set up&lt;/h2>
+&lt;ul>
+&lt;li>Log into the cloudflare dashboard, and head over to the &lt;code>Pages&lt;/code> tab:&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="pagesButton.png" >&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>Click &lt;code>Create a Project&lt;/code> &amp;gt; &lt;code>Connect to Git&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="createButton.png" >&lt;/a>&lt;/p>
+&lt;h3 id="-link-github">🔗 Link GitHub&lt;/h3>
+&lt;ul>
+&lt;li>Click &lt;code>Add account&lt;/code> to link your GitHub account&lt;/li>
+&lt;li>Once linked, click the account dropdown, and select your account&lt;/li>
+&lt;li>Select the repository you created from the list that shows&lt;/li>
+&lt;li>Click &lt;code>Begin setup&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="-project-settings">⚙️ Project Settings&lt;/h3>
+&lt;p>If you would like, go ahead and make a few tweaks:&lt;/p>
+&lt;ul>
+&lt;li>Name the project whatever you would like
+&lt;ul>
+&lt;li>Such as &amp;ldquo;My website&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Make sure &amp;ldquo;master&amp;rdquo; is set as the &lt;em>Production branch&lt;/em>&lt;/li>
+&lt;li>Leave &lt;em>Framework preset&lt;/em> set as none
+&lt;ul>
+&lt;li>If you are using anything other than Hugo, check out the dropdown to see if your framework is there!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Enter &lt;code>hugo --minify&lt;/code> as the build command&lt;/li>
+&lt;li>Enter &lt;code>public&lt;/code> as the &lt;em>Build output directory&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;h3 id="-environment-variables">👨‍💻 Environment variables&lt;/h3>
+&lt;p>In order to specify a Hugo version, we will need to configure an environment variable&lt;/p>
+&lt;p>You can find the latest Hugo version &lt;a class="link" href="https://gohugo.io/categories/releases" target="_blank" rel="noopener"
+>here&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>Click the &lt;code>Environment variables&lt;/code> link&lt;/li>
+&lt;li>Click the &lt;code>Add variable&lt;/code> button&lt;/li>
+&lt;li>Use the following in the text boxes:
+&lt;ul>
+&lt;li>&lt;em>Variable name&lt;/em>: &lt;code>HUGO_VERSION&lt;/code>&lt;/li>
+&lt;li>&lt;em>Value&lt;/em>: &lt;code>0.98.0&lt;/code>
+&lt;ul>
+&lt;li>This is as of July 13, 2022. The latest version may be different for you&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Click &lt;code>Save and Deploy&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="-watch-the-magic-happen">✅ Watch the magic happen!&lt;/h2>
+&lt;p>Now, you will see a terminal output, giving you the status of the deployment.&lt;/p>
+&lt;p>If it worked, it will present you with a URL for you to go to with your website!&lt;/p>
+&lt;h2 id="a-few-references">A few references&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-github/" target="_blank" rel="noopener"
+>Deploying Hugo with GitHub actions&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://docs.github.com/en/actions" target="_blank" rel="noopener"
+>GitHub actions documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/TheQuib/thequib.github.io" target="_blank" rel="noopener"
+>This website&amp;rsquo;s repository!&lt;/a>
+&lt;ul>
+&lt;li>As I use hugo, this contains the necessary actions workflow file and directory structure for Hugo&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Host your website on GitHub</title><link>https://thequib.github.io/p/host-your-website-on-github/</link><pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-github/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-github/featuredImage.png" alt="Featured image of post Host your website on GitHub" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
 &lt;p>GitHub pages is a static site hosting platform that hosts websites for free. It is available for free to anyone with a GitHub account, organization, and / or project.&lt;/p>
 &lt;p>With a little bit of static site generation using your favorite generator, and GitHub actions, your website will be up and running live on the internet in no time!&lt;/p>
 &lt;p>I will be using &lt;code>Hugo&lt;/code> in this post, but it can be tweaked to accomodate for other site generators.&lt;/p>
