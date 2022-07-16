@@ -17,9 +17,9 @@
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> &amp;ldquo;Production&amp;rdquo; Kubernetes cluster (k3s)
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Kubernetes cluster (k3s)
 &lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> With running services&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> With running services&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
@@ -34,6 +34,7 @@
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> SnipeIT for inventory of all the things&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Automate Cloudflare DNS records using host data from Traefik&amp;rsquo;s API&lt;/li>
+&lt;li>&lt;input disabled="" type="checkbox"> Create functions for Bash and Powershell to make command line tasks more efficient (and maybe a bit easier)&lt;/li>
 &lt;/ul></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
