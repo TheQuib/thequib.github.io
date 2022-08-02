@@ -35,9 +35,9 @@ With no particular dates or order, here's what I'm planning on accomplishing:
    - [X] With running services
  - [X] Custom Linux images on Proxmox with [Packer](https://www.packer.io/)
  - [X] [Terraform](https://www.hashicorp.com/products/terraform) projects that create virtual machines from the previous Packer image
- - [ ] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
+ - [X] Getting to know the Cloudflare platform (and it's dashboard) a little better, and taking advantage of their free products
  - [X] Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain
- - [ ] SSH Key *everything*
+ - [X] SSH Key *everything*
  - [X] Set up IPMI port on Proxmox host
  - [ ] Run updates on all servers
  - [X] Take a dive into Jekyll and other static site generators (as I primarily use Hugo)
