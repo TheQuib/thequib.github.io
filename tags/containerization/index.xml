@@ -26,9 +26,9 @@
 >Packer&lt;/a>&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
 >Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
+&lt;li>&lt;input checked="" disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
 &lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
 &lt;li>&lt;input checked="" disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
