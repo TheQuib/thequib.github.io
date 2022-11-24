@@ -4,7 +4,7 @@ title: "Welcome to the site"
 date: "2022-03-20"
 description: "Thanks for visiting!"
 categories: ["Welcome!"]
-#weight: 1
+weight: 1
 image: "featuredImage.png"
 ---
 
