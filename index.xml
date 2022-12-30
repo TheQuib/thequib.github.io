@@ -1,9 +1,166 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QuibTech</title><link>https://thequib.github.io/</link><description>Recent content on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 13 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;img src="https://thequib.github.io/p/welcome-to-the-site/featuredImage.png" alt="Featured image of post Welcome to the site" />&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QuibTech</title><link>https://thequib.github.io/</link><description>Recent content on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 24 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to the site</title><link>https://thequib.github.io/p/welcome-to-the-site/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/welcome-to-the-site/</guid><description>&lt;img src="https://thequib.github.io/p/welcome-to-the-site/featuredImage.png" alt="Featured image of post Welcome to the site" />&lt;p>Welcome! My name is Quinn. I currently work as a Network Specialist at public school district part-time and attend Pennsylvania College of Technology as a full-time student, majoring in Network Administration and Engineering.&lt;/p>
 &lt;p>On this site, I post projects I work on both at home and at school. For the most part, I will include items from working in my home lab.&lt;/p>
 &lt;p>This site, built using the &lt;a class="link" href="https://gohugo.io" target="_blank" rel="noopener"
 >Hugo Static Site Generator&lt;/a>, is a fun little project I also took on as a part of my homelab, hosted on GitHub.&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>Host your website on Cloudflare</title><link>https://thequib.github.io/p/host-your-website-on-cloudflare/</link><pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-cloudflare/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-cloudflare/featuredImage.png" alt="Featured image of post Host your website on Cloudflare" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
+&lt;p>Please feel free to check out my socials, and to share the content!&lt;/p></description></item><item><title>Backup Linux Directories to Backblaze B2</title><link>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</link><pubDate>Thu, 24 Nov 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</guid><description>&lt;img src="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/featuredImage.png" alt="Featured image of post Backup Linux Directories to Backblaze B2" />&lt;p>I recently set off to find a cheap (and hopefully free) cloud backup solution for some crucial files in my home infrastructure. I stumbled upon Backblaze&amp;rsquo;s B2 object storage solution (similar to Amazon S3 or Azure Blob). Backblaze is pretty awesome, and provides up to 10GB free storage across multiple buckets to try it out!&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A Linux machine (virtual, container, or bare metal)&lt;/li>
+&lt;li>Super sudoer powers&lt;/li>
+&lt;li>A Backblaze account&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-prepare-linux">🐧 Prepare Linux&lt;/h2>
+&lt;h3 id="-make-sure-you-have-the-latest-updates">⬆️ Make sure you have the latest updates&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt update
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt upgrade
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-install-curl-if-not-already">✨ Install &lt;code>curl&lt;/code> (if not already)&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt install curl
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-install-rclone">✨ Install &lt;code>Rclone&lt;/code>&lt;/h3>
+&lt;p>Rclone is a tool written in Go that allows the movement of files between local and remote directories. It can be installed by following the tutorial on &lt;a class="link" href="https://rclone.org/install/" target="_blank" rel="noopener"
+>their docs&lt;/a>.&lt;/p>
+&lt;p>To check if &lt;code>Rclone&lt;/code> is installed properly, just type &lt;code>rclone&lt;/code> in your CLI. As long as you don&amp;rsquo;t get the &amp;ldquo;Unrecognized command&amp;rdquo; error, you&amp;rsquo;re good!&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="-prepare-backblaze">🔥 Prepare Backblaze&lt;/h2>
+&lt;p>Make sure you have a Backblaze account created, and log in.&lt;/p>
+&lt;h3 id="-create-a-bucket">🪣 Create a Bucket&lt;/h3>
+&lt;ul>
+&lt;li>Make sure you are in your buckets list&lt;/li>
+&lt;li>Create a bucket
+&lt;ul>
+&lt;li>Give it a unique name&lt;/li>
+&lt;li>Private&lt;/li>
+&lt;li>Encryption disabled&lt;/li>
+&lt;li>Object lock disabled&lt;/li>
+&lt;li>Click create&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="-create-app-key">🔑 Create App key&lt;/h3>
+&lt;ul>
+&lt;li>Click &lt;code>App keys&lt;/code> on the left&lt;/li>
+&lt;li>Scroll down, click &lt;code>Add a New Application Key&lt;/code>
+&lt;ul>
+&lt;li>Give it a friendly name&lt;/li>
+&lt;li>If you want to restrict the key to a specific bucket, choose it from the dropdown&lt;/li>
+&lt;li>Keep it set to read/write&lt;/li>
+&lt;li>Click create&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Make sure to save the &lt;code>keyID&lt;/code> and &lt;code>applicationKey&lt;/code> for later&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="-set-up-rclone">🎚️ Set up Rclone&lt;/h2>
+&lt;p>In Linux, enter the command &lt;code>rclone config&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Type &lt;code>n&lt;/code> for a new remote&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Give it a name (such as backblaze-bucketname)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This will list a bunch of supported remotes, find &lt;code>Backblaze B2&lt;/code> in the list, and enter the corresponding number into the prompt&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>For &lt;code>Account&lt;/code>, use the &lt;code>keyID&lt;/code> received from generating the App key&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>For &lt;code>Key&lt;/code>, use the `applicationKey1 received from generating the App key&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Set the following values as you see fit. The defaults should be good for most cases.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Once the list of current remotes shows, you can quit the config CLI with &lt;code>q&lt;/code>
+&lt;img src="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-remoteComplete.png"
+width="441"
+height="415"
+srcset="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-remoteComplete_hue41f00ea6755fe8e9d18e69fd85ef5db_8255_480x0_resize_box_3.png 480w, https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-remoteComplete_hue41f00ea6755fe8e9d18e69fd85ef5db_8255_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="106"
+data-flex-basis="255px"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Remotes can be checked by using &lt;code>rclone listremotes&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>This will return a list of all of your remotes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="-copy-a-file-or-directory-to-your-b2-bucket">📃 Copy a file (or directory) to your B2 bucket&lt;/h2>
+&lt;p>The proper syntax to copy a file is&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rclone copy &lt;span class="o">[&lt;/span>directoryOrFileName&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>nameOfRemote&lt;span class="o">]&lt;/span>:&lt;span class="o">[&lt;/span>bucket&lt;span class="o">]&lt;/span>/&lt;span class="o">[&lt;/span>directoryOrFileToCopyTo&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>cd&lt;/code> into a directory that contains the file you want to copy up. Let&amp;rsquo;s say this file is named &lt;code>file.txt&lt;/code>&lt;/li>
+&lt;li>Use &lt;code>rclone copy&lt;/code> to copy up the file
+&lt;ul>
+&lt;li>Keep in mind, my remote&amp;rsquo;s name is &lt;code>backblaze-testing&lt;/code> and my bucket&amp;rsquo;s name is &lt;code>quib-testing&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rclone copy file.txt backblaze-testing:quib-testing/file.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-copyFile.png"
+width="1206"
+height="118"
+srcset="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-copyFile_hu1f57d3b8cec23c8c6968f5d3746ab669_8608_480x0_resize_box_3.png 480w, https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/backupLinuxToBackblaze-copyFile_hu1f57d3b8cec23c8c6968f5d3746ab669_8608_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="1022"
+data-flex-basis="2452px"
+>&lt;/p>
+&lt;ul>
+&lt;li>For a directory, this is very similar. Let&amp;rsquo;s say this directory is named &lt;code>directory/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">rclone copy directory backblaze-testing:quib-testing/directory
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If this was successful, nothing is returned.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="-check-if-your-file-is-uploaded">✅ Check if your file is uploaded&lt;/h2>
+&lt;p>Back in Backblaze, click &lt;code>Browse Files&lt;/code>, and select the bucket you would like to browse.&lt;/p>
+&lt;p>If the file uploaded properly, it should show up there!&lt;/p></description></item><item><title>Host your website on Cloudflare</title><link>https://thequib.github.io/p/host-your-website-on-cloudflare/</link><pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-cloudflare/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-cloudflare/featuredImage.png" alt="Featured image of post Host your website on Cloudflare" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
 &lt;p>&lt;a class="link" href="https://pages.cloudflare.com/" target="_blank" rel="noopener"
 >Cloudflare pages&lt;/a> is a web app hosting platform that hosts websites for free. It&amp;rsquo;s free to anyone with a Cloudflare account, and super easy to set up!&lt;/p>
 &lt;p>I&amp;rsquo;ll be using the Hugo static site generator. I have a full tutorial on how to get this set up and working in your own environment &lt;a class="link" href="https://quibtech.com/p/create-a-static-website/" target="_blank" rel="noopener"
