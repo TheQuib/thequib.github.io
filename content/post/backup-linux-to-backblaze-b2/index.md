@@ -1,7 +1,7 @@
 ---
 author: "Quinn Henry"
 title: "Backup Linux Directories to Backblaze B2"
-date: "2022-11-24"
+date: "2022-12-30"
 description: "Automate the deployment of servers in minutes using Terraform, feat. Minecraft"
 tags: ["cloud", "automation", "virtualization"]
 categories: ["Cloud", "Automation", "Virtualization"]
