@@ -134,3 +134,28 @@ If this was successful, nothing is returned.
 Back in Backblaze, click `Browse Files`, and select the bucket you would like to browse.
 
 If the file uploaded properly, it should show up there!
+
+
+&nbsp;
+
+
+## ♾️ Automate it
+
+Now, you're probably here because you want to automate this. To do so, you'll need to create a cron job for each backup interval you want.
+
+To edit cron tasks:
+
+```bash
+sudo crontab -e
+```
+
+ - And select your desired text editor
+ - Cron jobs are formatted by the desired time interval, followed by the command to run
+ - Ex. `* * * * * /home/user/script.sh` will run the file `/home/user/script.sh` every minute
+   - You can generate times to your liking easily with [this website](https://crontab.guru/#*_*_*_*_*)
+
+Example cron job:
+
+```bash
+# Run Backblaze automation every day at 12:00 AM
+0 12 * * * /home/user/backblaze-backup.sh
