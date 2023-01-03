@@ -155,7 +155,41 @@ data-flex-basis="2452px"
 &lt;p> &lt;/p>
 &lt;h2 id="-check-if-your-file-is-uploaded">✅ Check if your file is uploaded&lt;/h2>
 &lt;p>Back in Backblaze, click &lt;code>Browse Files&lt;/code>, and select the bucket you would like to browse.&lt;/p>
-&lt;p>If the file uploaded properly, it should show up there!&lt;/p></description></item><item><title>Host your website on Cloudflare</title><link>https://thequib.github.io/p/host-your-website-on-cloudflare/</link><pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-cloudflare/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-cloudflare/featuredImage.png" alt="Featured image of post Host your website on Cloudflare" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
+&lt;p>If the file uploaded properly, it should show up there!&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="-automate-it">♾️ Automate it&lt;/h2>
+&lt;p>Now, you&amp;rsquo;re probably here because you want to automate this. To do so, you&amp;rsquo;ll need to create a cron job for each backup interval you want.&lt;/p>
+&lt;p>To edit cron tasks:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo crontab -e
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>And select your desired text editor&lt;/li>
+&lt;li>Cron jobs are formatted by the desired time interval, followed by the command to run&lt;/li>
+&lt;li>Ex. &lt;code>* * * * * /home/user/script.sh&lt;/code> will run the file &lt;code>/home/user/script.sh&lt;/code> every minute
+&lt;ul>
+&lt;li>You can generate times to your liking easily with &lt;a class="link" href="https://crontab.guru/#*_*_*_*_*" target="_blank" rel="noopener"
+>this website&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Example cron job:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Run Backblaze automation every day at 12:00 AM&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">0&lt;/span> &lt;span class="m">12&lt;/span> * * * /home/user/backblaze-backup.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Host your website on Cloudflare</title><link>https://thequib.github.io/p/host-your-website-on-cloudflare/</link><pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/host-your-website-on-cloudflare/</guid><description>&lt;img src="https://thequib.github.io/p/host-your-website-on-cloudflare/featuredImage.png" alt="Featured image of post Host your website on Cloudflare" />&lt;h2 id="what-is-this">What is this?&lt;/h2>
 &lt;p>&lt;a class="link" href="https://pages.cloudflare.com/" target="_blank" rel="noopener"
 >Cloudflare pages&lt;/a> is a web app hosting platform that hosts websites for free. It&amp;rsquo;s free to anyone with a Cloudflare account, and super easy to set up!&lt;/p>
 &lt;p>I&amp;rsquo;ll be using the Hugo static site generator. I have a full tutorial on how to get this set up and working in your own environment &lt;a class="link" href="https://quibtech.com/p/create-a-static-website/" target="_blank" rel="noopener"
