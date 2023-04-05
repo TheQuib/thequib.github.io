@@ -52,7 +52,7 @@ params:
 
   sidebar:
     emoji: ☕
-    subtitle: Professional coffee drinker
+    subtitle: Some say I do too much. They're probably right.
     avatar:
       enabled: true
       local: true
