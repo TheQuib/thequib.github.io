@@ -3,7 +3,7 @@ author: "Quinn Henry"
 title: "Welcome to the site"
 date: "2022-03-20"
 description: "Thanks for visiting!"
-categories: ["Welcome!"]
+categories: ["Pinned", "Welcome!"]
 weight: 1
 image: "featuredImage.png"
 ---
