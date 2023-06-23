@@ -5,7 +5,6 @@ date: "2022-06-12"
 description: "A challenge by TechnoTim, challenging everyone to work on something in their homelab at least 1 hour a day, for 100 days."
 tags: ["100DaysOfHomelab", "automation", "homelab", "networking", "containerization"]
 categories: ["100DaysOfHomelab"]
-#weight: 1
 image: featuredImage.png
 draft: yes
 ---
