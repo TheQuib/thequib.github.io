@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>automation on QuibTech</title><link>https://thequib.github.io/tags/automation/</link><description>Recent content in automation on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Backup Linux Directories to Backblaze B2</title><link>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</link><pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</guid><description>&lt;img src="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/featuredImage.png" alt="Featured image of post Backup Linux Directories to Backblaze B2" />&lt;p>I recently set off to find a cheap (and hopefully free) cloud backup solution for some crucial files in my home infrastructure. I stumbled upon Backblaze&amp;rsquo;s B2 object storage solution (similar to Amazon S3 or Azure Blob). Backblaze is pretty awesome, and provides up to 10GB free storage across multiple buckets to try it out!&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>automation on QuibTech</title><link>https://thequib.github.io/tags/automation/</link><description>Recent content in automation on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Backup Linux Directories to Backblaze B2</title><link>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</link><pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/</guid><description>&lt;img src="https://thequib.github.io/p/backup-linux-directories-to-backblaze-b2/featuredImage.png" alt="Featured image of post Backup Linux Directories to Backblaze B2" />&lt;p>I recently set off to find a cheap (and hopefully free) cloud backup solution for some crucial files in my home infrastructure. I stumbled upon Backblaze&amp;rsquo;s B2 object storage solution (similar to Amazon S3 or Azure Blob). Backblaze is pretty awesome, and provides up to 10GB free storage across multiple buckets to try it out!&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>
@@ -189,44 +189,7 @@ data-flex-basis="2452px"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">0&lt;/span> &lt;span class="m">12&lt;/span> * * * /home/user/backblaze-backup.sh
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>100 Days of Homelab</title><link>https://thequib.github.io/p/100-days-of-homelab/</link><pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/100-days-of-homelab/</guid><description>&lt;img src="https://thequib.github.io/p/100-days-of-homelab/featuredImage.png" alt="Featured image of post 100 Days of Homelab" />&lt;h2 id="-the-challenge">📆 The challenge!&lt;/h2>
-&lt;p>If my calculations are correct, this extends out to September 20, 2022.&lt;/p>
-&lt;p>This challenge calls for 100 days of homelabbing from everyone! Dedicating at least 1 hour a day to learning something new, adding something, figuring something out&amp;hellip; anything!&lt;/p>
-&lt;p>The official website can be found &lt;a class="link" href="https://100daysofhomelab.com" target="_blank" rel="noopener"
->here&lt;/a>!&lt;/p>
-&lt;h2 id="-keeping-track-">📝 Keeping track 📱&lt;/h2>
-&lt;ul>
-&lt;li>This post is meant to keep track of my plans for the next 100 days. I will be adding and changing the different things I will be doing as I go, with a few starters for now.&lt;/li>
-&lt;li>I will also be posting to social media with all of my accomplishments for the day&lt;/li>
-&lt;/ul>
-&lt;h2 id="-roadmap">🛣️ Roadmap&lt;/h2>
-&lt;p>With no particular dates or order, here&amp;rsquo;s what I&amp;rsquo;m planning on accomplishing:&lt;/p>
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> The constant improvement and documentation on this website (completed projects)
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Fix Favicon not showing on every page except home&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Kubernetes cluster (k3s)
-&lt;ul>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> With running services&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
->Packer&lt;/a>&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
->Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> SnipeIT for inventory of all the things&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Automate Cloudflare DNS records using host data from Traefik&amp;rsquo;s API&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Create functions for Bash and Powershell to make command line tasks more efficient (and maybe a bit easier)&lt;/li>
-&lt;/ul></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
+&lt;/div></description></item><item><title>Automate server deployment in Linode</title><link>https://thequib.github.io/p/automate-server-deployment-in-linode/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/automate-server-deployment-in-linode/</guid><description>&lt;img src="https://thequib.github.io/p/automate-server-deployment-in-linode/featuredImage.png" alt="Featured image of post Automate server deployment in Linode" />&lt;p>In case you&amp;rsquo;re not aware, Terraform is pretty cool. It is super powerful, providing the ability to provision infrastructure in seconds using code. Linode and it&amp;rsquo;s Terraform provider are no exception to this ability. Let&amp;rsquo;s dive into that&amp;hellip;&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;ul>

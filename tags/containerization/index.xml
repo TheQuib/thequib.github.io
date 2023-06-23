@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 26 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Docker Containers in Proxmox LXC</title><link>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</link><pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</guid><description>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/featuredImage.png" alt="Featured image of post Run Docker Containers in Proxmox LXC" />&lt;h2 id="-why-would-i-do-this">🙋 Why would I do this?&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Docker Containers in Proxmox LXC</title><link>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</link><pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</guid><description>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/featuredImage.png" alt="Featured image of post Run Docker Containers in Proxmox LXC" />&lt;h2 id="-why-would-i-do-this">🙋 Why would I do this?&lt;/h2>
 &lt;p>One awesome feature in Proxmox VE is to run an LXC (Linux Container) directly from the web interface. A quick machine can be spun up that works and acts just like a regular full-blown Linux Virtual machine.&lt;/p>
 &lt;p>The downside to this is we are limited to what resources you provide the VM, not the resources that are given to an LXC (which is essentially the maximum of the host system).&lt;/p>
 &lt;h2 id="-side-note">➡️ Side Note&lt;/h2>
@@ -80,44 +80,7 @@ data-flex-basis="952px"
 &lt;h2 id="install-docker">Install Docker&lt;/h2>
 &lt;p>Head over to &lt;a class="link" href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener"
 >Docker&amp;rsquo;s docs&lt;/a>, and find the steps to install docker for your distro.&lt;/p>
-&lt;p>Once all set up, test out the installation with &lt;code>docker run hello-world&lt;/code> and it should be working!&lt;/p></description></item><item><title>100 Days of Homelab</title><link>https://thequib.github.io/p/100-days-of-homelab/</link><pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/100-days-of-homelab/</guid><description>&lt;img src="https://thequib.github.io/p/100-days-of-homelab/featuredImage.png" alt="Featured image of post 100 Days of Homelab" />&lt;h2 id="-the-challenge">📆 The challenge!&lt;/h2>
-&lt;p>If my calculations are correct, this extends out to September 20, 2022.&lt;/p>
-&lt;p>This challenge calls for 100 days of homelabbing from everyone! Dedicating at least 1 hour a day to learning something new, adding something, figuring something out&amp;hellip; anything!&lt;/p>
-&lt;p>The official website can be found &lt;a class="link" href="https://100daysofhomelab.com" target="_blank" rel="noopener"
->here&lt;/a>!&lt;/p>
-&lt;h2 id="-keeping-track-">📝 Keeping track 📱&lt;/h2>
-&lt;ul>
-&lt;li>This post is meant to keep track of my plans for the next 100 days. I will be adding and changing the different things I will be doing as I go, with a few starters for now.&lt;/li>
-&lt;li>I will also be posting to social media with all of my accomplishments for the day&lt;/li>
-&lt;/ul>
-&lt;h2 id="-roadmap">🛣️ Roadmap&lt;/h2>
-&lt;p>With no particular dates or order, here&amp;rsquo;s what I&amp;rsquo;m planning on accomplishing:&lt;/p>
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> The constant improvement and documentation on this website (completed projects)
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Fix Favicon not showing on every page except home&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> A self-hosted GitHub runner for pushing out this site&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Kubernetes cluster (k3s)
-&lt;ul>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> With running services&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Custom Linux images on Proxmox with &lt;a class="link" href="https://www.packer.io/" target="_blank" rel="noopener"
->Packer&lt;/a>&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> &lt;a class="link" href="https://www.hashicorp.com/products/terraform" target="_blank" rel="noopener"
->Terraform&lt;/a> projects that create virtual machines from the previous Packer image&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Getting to know the Cloudflare platform (and it&amp;rsquo;s dashboard) a little better, and taking advantage of their free products&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Making a good [and secure] mix between local and cloud-hosted services by use of cloudflare DNS under a single domain&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> SSH Key &lt;em>everything&lt;/em>&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Set up IPMI port on Proxmox host&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Run updates on all servers&lt;/li>
-&lt;li>&lt;input checked="" disabled="" type="checkbox"> Take a dive into Jekyll and other static site generators (as I primarily use Hugo)&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> SnipeIT for inventory of all the things&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Automate Cloudflare DNS records using host data from Traefik&amp;rsquo;s API&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Create functions for Bash and Powershell to make command line tasks more efficient (and maybe a bit easier)&lt;/li>
-&lt;/ul></description></item><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
+&lt;p>Once all set up, test out the installation with &lt;code>docker run hello-world&lt;/code> and it should be working!&lt;/p></description></item><item><title>Stop using weird ports for your Minecraft Servers</title><link>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</link><pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/</guid><description>&lt;img src="https://thequib.github.io/p/stop-using-weird-ports-for-your-minecraft-servers/featuredImage.png" alt="Featured image of post Stop using weird ports for your Minecraft Servers" />&lt;h1 id="the-scoop">The scoop&lt;/h1>
 &lt;p>When I host Minecraft servers for my friends, I seriously hate having to tell them to connect to &lt;code>example.com:25567&lt;/code> or &lt;code>example.com:25568&lt;/code>.&lt;/p>
 &lt;p>Luckily, there is an amazing solution for this: &lt;em>Reverse Proxies&lt;/em>&lt;/p>
 &lt;p> &lt;/p>
