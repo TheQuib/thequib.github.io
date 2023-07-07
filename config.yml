@@ -135,6 +135,12 @@ menu:
       url: https://instagram.com/brit_boi_
       params:
         icon: brand-instagram-thin
+    
+    - identifier: threads
+      name: Threads
+      url: https://threads.net/@quibtech
+      params:
+        icon: brand-threads
 
     - identifier: twitter
       name: twitter
