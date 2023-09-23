@@ -2367,12 +2367,12 @@ data-flex-basis="3078px"
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Module used to hide passwords in the console&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">import&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">getpass&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">getpass&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for username&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">username&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a username to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">username&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a username to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for password using getpass&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a password to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a password to connect with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Ask user for secret password&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">secret&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getpass&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getpass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please enter a secret password to enable with:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -2400,22 +2400,22 @@ data-flex-basis="3078px"
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">host&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">host&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hostConfig&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="c1">#Accept unknown SSH keys&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Command to be sent to the machine&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="s1">&amp;#39;ip address&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;ip address&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>This code creates a Python dictionary that contains the items &lt;em>device_type&lt;/em>, &lt;em>host&lt;/em>, &lt;em>password&lt;/em>, &lt;em>secret&lt;/em>, and &lt;em>use_keys&lt;/em>, and then sets a variable to the string &lt;em>&amp;lsquo;ip address&amp;rsquo;&lt;/em>.&lt;/p>
@@ -2446,25 +2446,25 @@ data-flex-basis="3078px"
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#Defined host IP address, make sure this matches your machine&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hosts&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="p">[&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="s1">&amp;#39;4.3.2.1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">hosts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;1.2.3.4&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="s1">&amp;#39;4.3.2.1&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="ow">in&lt;/span>&lt;span class="err">  &lt;/span>&lt;span class="n">hosts&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="n">hostConfig&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">host&lt;/span> &lt;span class="ow">in&lt;/span>  &lt;span class="n">hosts&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Configuration dictionary that netmiko will use&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">hostConfig&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;device_type&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;cisco_ios&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;host&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">host&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;username&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">username&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;password&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">password&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#Used for exec priv commands if necessary&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="c1">#Accept unknown SSH keys&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">        &lt;/span>&lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="kc">True&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="c1">#Command to be sent to the machine&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">    &lt;/span>&lt;span class="n">command&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="err"> &lt;/span>&lt;span class="s1">&amp;#39;sh run&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;secret&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">secret&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="c1">#Accept unknown SSH keys&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">        &lt;span class="s1">&amp;#39;use_keys&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="c1">#Command to be sent to the machine&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">    &lt;span class="n">command&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;sh run&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="sending-your-first-command">Sending your first command&lt;/h2>
