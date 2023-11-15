@@ -1,4 +1,318 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 26 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Run Docker Containers in Proxmox LXC</title><link>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</link><pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</guid><description>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/featuredImage.png" alt="Featured image of post Run Docker Containers in Proxmox LXC" />&lt;h2 id="-why-would-i-do-this">🙋 Why would I do this?&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>containerization on QuibTech</title><link>https://thequib.github.io/tags/containerization/</link><description>Recent content in containerization on QuibTech</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 14 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://thequib.github.io/tags/containerization/index.xml" rel="self" type="application/rss+xml"/><item><title>Dockge - A new stack manager</title><link>https://thequib.github.io/p/dockge-a-new-stack-manager/</link><pubDate>Tue, 14 Nov 2023 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/dockge-a-new-stack-manager/</guid><description>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/featuredImage.png" alt="Featured image of post Dockge - A new stack manager" />&lt;p>A static website is a plain and simple site with some HTML and CSS, without the need for a database or a beefy server.&lt;/p>
+&lt;p>Hugo is one of many different static site generators. The most popular is called &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
+>Jekyll&lt;/a>, and is a bit simpler to use than Hugo. It&amp;rsquo;s mostly personal preference, but here we&amp;rsquo;ll be going through setup for Hugo.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>A Linux computer or virtual machine with Docker and the Compose plugin installed
+&lt;ul>
+&lt;li>You can install Docker using their &lt;a class="link" href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener"
+>official documentation&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="optionals">Optionals&lt;/h2>
+&lt;ul>
+&lt;li>Traefik reverse proxy to easily secure with TLS&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-create-directories">📁 Create directories&lt;/h2>
+&lt;p>Firstly, you&amp;rsquo;ll have to create two directories. One of these will store the &lt;em>Dockge&lt;/em> compose file (&lt;code>/opt/dockge&lt;/code>), the other will store all of your other stacks (&lt;code>/opt/stacks&lt;/code>).&lt;/p>
+&lt;ul>
+&lt;li>Log into your server&lt;/li>
+&lt;li>Run the following to creat the directories:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo mkdir /opt/dockge
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mkdir /opt/stacks
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-create-and-spin-up-dockge-container">🐋 Create and spin up &lt;em>Dockge&lt;/em> container&lt;/h2>
+&lt;h3 id="-create-project">📋 Create project&lt;/h3>
+&lt;ul>
+&lt;li>With the directories created, &lt;code>cd&lt;/code> into the &lt;code>/opt/dockge&lt;/code> directory and create the &lt;code>compose.yml&lt;/code> file&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /opt/dockge
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo touch compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Edit the file&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo nano compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Add the following contents to the file (the defaults should be fine for getting started quick):
+&lt;ul>
+&lt;li>This example can also be found on this projects &lt;a class="link" href="https://github.com/louislam/dockge" target="_blank" rel="noopener"
+>repository&lt;/a>&lt;/li>
+&lt;li>You may notice the tag is &lt;code>1&lt;/code>, this seems to be the tag used for the latest version, you can also get a specific version from the &lt;a class="link" href="https://github.com/louislam/dockge/releases/tag/1.0.3" target="_blank" rel="noopener"
+>releases&lt;/a> page of the repository&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;3.8&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">dockge&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">louislam/dockge:1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">container_name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">dockge&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">restart&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">unless-stopped&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ports&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="m">5001&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="m">5001&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/var/run/docker.sock:/var/run/docker.sock&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./data:/app/data&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">/opt/stacks:/opt/stacks&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">DOCKGE_STACKS_DIR=/opt/stacks&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-spin-up-dockge">✨ Spin up &lt;em>Dockge&lt;/em>&lt;/h3>
+&lt;ul>
+&lt;li>With the &lt;code>compose&lt;/code> file created, spin it up with &lt;code>docker compose&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>This will pull the latest version of &lt;em>Dockge&lt;/em> and run it&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-connect-and-perform-first-time-setup">✨ Connect and perform first time setup&lt;/h2>
+&lt;ul>
+&lt;li>Get the IP address of your machine using the command &lt;code>ip address&lt;/code>
+&lt;ul>
+&lt;li>This is typically found in &lt;code>eth0&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Open a web browser and navigate to &lt;em>&lt;a class="link" href="http://your.ip.address.here:5001" target="_blank" rel="noopener"
+>http://your.ip.address.here:5001&lt;/a>&lt;/em>
+&lt;ul>
+&lt;li>Ex. &lt;code>http://192.168.1.10:5001&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>You should be presented with a page to create your admin account:&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-setup-screen.png"
+width="441"
+height="579"
+srcset="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-setup-screen_hud9d810c8833c3b8fc4a5b3d2efa2b927_23776_480x0_resize_box_3.png 480w, https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-setup-screen_hud9d810c8833c3b8fc4a5b3d2efa2b927_23776_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Dockge account creation page"
+class="gallery-image"
+data-flex-grow="76"
+data-flex-basis="182px"
+>&lt;/p>
+&lt;ul>
+&lt;li>Fill in the details as you see fit, and click &lt;code>Create&lt;/code>&lt;/li>
+&lt;li>This should take you to the Dockge home page&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-using-dockge">✅ Using Dockge&lt;/h2>
+&lt;h3 id="-home-page">📃 Home page&lt;/h3>
+&lt;p>The home page shows you current managed and non-managed stacks. Managed stacks are in the directory created earlier, &lt;code>/opt/stacks&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>You can create a stack by clicking the &lt;code>+ Compose&lt;/code> button, or by entering a &lt;em>docker run&lt;/em> command to convert it to a compose file&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-home-screen.png"
+width="1082"
+height="470"
+srcset="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-home-screen_hufbbe1ac7de73949ac4a6665d829e16bd_24417_480x0_resize_box_3.png 480w, https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-home-screen_hufbbe1ac7de73949ac4a6665d829e16bd_24417_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Dockge home page"
+class="gallery-image"
+data-flex-grow="230"
+data-flex-basis="552px"
+>&lt;/p>
+&lt;h3 id="-compose-page">📃 Compose page&lt;/h3>
+&lt;p>Clicking the &lt;code>+ Compose&lt;/code> button or converting a docker run command will take you to the &lt;em>Compose&lt;/em> page.&lt;/p>
+&lt;p>Let&amp;rsquo;s say you want to spin up nginx with the command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Entering this to be converted to &lt;em>Compose&lt;/em> will result with the following page:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-compose-screen.png"
+width="1420"
+height="627"
+srcset="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-compose-screen_hu68c426a2474df6bb5ca41edb49ffee42_63305_480x0_resize_box_3.png 480w, https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-compose-screen_hu68c426a2474df6bb5ca41edb49ffee42_63305_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Dockge compose screen"
+class="gallery-image"
+data-flex-grow="226"
+data-flex-basis="543px"
+>\&lt;/p>
+&lt;p>You can managed more container settings by clicking the &lt;code>Edit&lt;/code> button under &lt;code>Containers&lt;/code>.&lt;/p>
+&lt;h4 id="-starting-a-container">⬆️ Starting a container&lt;/h4>
+&lt;p>Once you&amp;rsquo;re satisfied with the container, click &lt;code>Deploy&lt;/code> and watch the magic happen!&lt;/p>
+&lt;p>Dockge will do the rest of the work, and provide a realtime terminal output of the progress, and present with the result:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-progress.png"
+width="940"
+height="211"
+srcset="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-progress_hua40ecc6f74ca11a212f476464c7114c5_18318_480x0_resize_box_3.png 480w, https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-progress_hua40ecc6f74ca11a212f476464c7114c5_18318_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Dockge container progress output"
+class="gallery-image"
+data-flex-grow="445"
+data-flex-basis="1069px"
+>&lt;/p>
+&lt;h4 id="-container-controls">🕹️ Container controls&lt;/h4>
+&lt;p>Once the container is running, it will show with an &lt;code>active&lt;/code> badge next to it, and present you with a few options to manage it. All of which are pretty self-explanatory:&lt;/p>
+&lt;p>&lt;img src="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-settings.png"
+width="561"
+height="115"
+srcset="https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-settings_hue978cb37985138d03ac9798c35f439e9_9799_480x0_resize_box_3.png 480w, https://thequib.github.io/p/dockge-a-new-stack-manager/dockge-container-settings_hue978cb37985138d03ac9798c35f439e9_9799_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Dockge container settings"
+class="gallery-image"
+data-flex-grow="487"
+data-flex-basis="1170px"
+>&lt;/p>
+&lt;hr>
+&lt;p> &lt;/p>
+&lt;h2 id="-using-with-traefik">✈️ Using with &lt;em>Traefik&lt;/em>&lt;/h2>
+&lt;p>To proxy Dockge through traefik, there are two options: If Dockge is running on the same local server as the Traefik container, or on a remote server. This will go over the labels for running on the same server as &lt;em>Traefik&lt;/em>.&lt;/p>
+&lt;h3 id="-on-same-server-as-traefik-container">✅ On same server as &lt;em>Traefik&lt;/em> container&lt;/h3>
+&lt;ul>
+&lt;li>Edit your &lt;em>Dockge&lt;/em> &lt;code>compose.yml&lt;/code> file:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo nano /opt/dockge/compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Add the following labels as such:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Traefik labels&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">labels&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.enable=true&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge.entrypoints=http&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge.rule=Host(`dockge.example.com`)&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Replace with your subdomain&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.middlewares.dockge-https-redirect.redirectscheme.scheme=https&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge.middlewares=dockge-https-redirect&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge-secure.entrypoints=https&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge-secure.rule=Host(`dockge.example.com`)&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># Replace with your subdomain&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge-secure.tls=true&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.routers.dockge-secure.service=dockge&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.http.services.dockge.loadbalancer.server.port=5001&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># This should match the container port (to the right of the &amp;#34;:&amp;#34;)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="s2">&amp;#34;traefik.docker.network=proxy&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># Make sure to include your Traefik network, mine is named &amp;#34;proxy&amp;#34;, this should match the value of traefik.docker.network&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">networks&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">proxy&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">external&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>After updating, recreate the container:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker compose up -d --force-recreate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>As long as your &lt;em>Traefik&lt;/em> instance is working, and all labels match your instance settings (you may need to change some things based on how you have &lt;em>Traefik&lt;/em> set up), you should be able to navigate to your subdomain name!&lt;/p>
+&lt;h2 id="-updating-dockge">⬆️ Updating Dockge&lt;/h2>
+&lt;p>To update Dockge, run the following commands:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> /opt/dockge
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker pull louislam/dockge:1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>These command will:&lt;/p>
+&lt;ul>
+&lt;li>Change your directory to the where the &lt;em>Dockge&lt;/em> &lt;code>compose.yml&lt;/code> file is&lt;/li>
+&lt;li>Pull the latest version of &lt;em>Dockge&lt;/em> (&lt;code>louislam/dockge:1&lt;/code>)&lt;/li>
+&lt;li>Recreate the container with the latest pulled image&lt;/li>
+&lt;/ul></description></item><item><title>Run Docker Containers in Proxmox LXC</title><link>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</link><pubDate>Sun, 26 Jun 2022 00:00:00 +0000</pubDate><guid>https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/</guid><description>&lt;img src="https://thequib.github.io/p/run-docker-containers-in-proxmox-lxc/featuredImage.png" alt="Featured image of post Run Docker Containers in Proxmox LXC" />&lt;h2 id="-why-would-i-do-this">🙋 Why would I do this?&lt;/h2>
 &lt;p>One awesome feature in Proxmox VE is to run an LXC (Linux Container) directly from the web interface. A quick machine can be spun up that works and acts just like a regular full-blown Linux Virtual machine.&lt;/p>
 &lt;p>The downside to this is we are limited to what resources you provide the VM, not the resources that are given to an LXC (which is essentially the maximum of the host system).&lt;/p>
 &lt;h2 id="-side-note">➡️ Side Note&lt;/h2>
