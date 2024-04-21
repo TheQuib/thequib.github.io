@@ -52,7 +52,7 @@ params:
 
   sidebar:
     emoji: ☕
-    subtitle: "[Un]professional espresso artist."
+    subtitle: "(Un)professional espresso artist."
     avatar:
       enabled: true
       local: true
