@@ -4,7 +4,7 @@ baseurl: "https://thequib.github.io"
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: QuibTech
+title: QuibTech | Quinn Henry
 
 permalinks:
   post: /p/:slug/
@@ -20,7 +20,7 @@ googleAnalytics: G-8ZBSRDLF9W
 languages:
   en:
     languageName: English
-    title: QuibTech
+    title: Quinn Henry
     weight: 1
 
 DefaultContentLanguage: en
@@ -52,7 +52,7 @@ params:
 
   sidebar:
     emoji: ☕
-    subtitle: Some say I do too much. They're probably right.
+    subtitle: "[Un]professional espresso artist."
     avatar:
       enabled: true
       local: true
