@@ -11,11 +11,13 @@ menu:
             icon: messages
 ---
 
-Just a few projects I've worked on along the way.
+&nbsp;
 
-------
+### Microsoft Intune Deployment
 
-## Projects
+Configuration and deployment of 400+ devices in using *Windows Autopilot* and *Microsoft Intune*.
+
+***2024***
 
 ### Enterprise Door Access System
 
